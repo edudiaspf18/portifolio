@@ -1,5 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/sections/hero';
+import { ProjectsSection } from '@/components/sections/projects';
 import { TimelineSection } from '@/components/sections/timeline';
 
 interface PageProps {
@@ -13,6 +14,7 @@ export default async function HomePage({ params }: PageProps) {
     <>
       <Hero />
       <TimelineSection />
+      <ProjectsSection />
     </>
   );
 }
