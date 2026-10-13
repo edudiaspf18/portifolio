@@ -36,6 +36,10 @@ const targets: readonly Target[] = [
 
 const onlyIdx = process.argv.indexOf('--only');
 const onlyId = onlyIdx >= 0 ? process.argv[onlyIdx + 1] : undefined;
+if (onlyIdx >= 0 && (!onlyId || onlyId.startsWith('--'))) {
+  console.error('--only requer um id (ex: --only winner)');
+  process.exit(1);
+}
 const selected = onlyId ? targets.filter((t) => t.id === onlyId) : targets;
 if (onlyId && selected.length === 0) {
   console.error(`--only: id desconhecido "${onlyId}"`);
@@ -105,9 +109,15 @@ async function capture(browser: Browser, url: string, file: string): Promise<voi
     const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 45_000 });
     if (!response?.ok()) throw new Error(`HTTP ${response?.status() ?? 'sem resposta'} em ${url}`);
     await page.addStyleTag({ content: hideDevIndicator });
-    const consent = page.getByRole('button', { name: /recusar|aceitar|reject|accept/i }).first();
+    // Banner de cookies: em dev ele aparece so apos hidratacao (pode passar de 2s). Espera ate 8s.
+    const consent = page
+      .locator('button, a, [role="button"]')
+      .filter({ hasText: /^\s*(recusar|rejeitar|aceitar|reject|decline|accept)/i })
+      .first();
     try {
-      await consent.click({ timeout: 2_000 });
+      await consent.waitFor({ state: 'visible', timeout: 8_000 });
+      await consent.click({ timeout: 3_000 });
+      await consent.waitFor({ state: 'hidden', timeout: 3_000 });
     } catch {
       /* sem banner de cookies */
     }
