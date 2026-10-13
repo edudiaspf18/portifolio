@@ -90,11 +90,8 @@
     "items": {
       "charles": { "niche": "Used cars and rentals · Anápolis, Brazil", "description": "Showcase of 26 vehicles with filters, a page per car and a direct WhatsApp CTA." },
       "alianca": { "niche": "Office furniture", "description": "Conversion landing page with GTM tracking and end-to-end tests." },
-      "evelyn": { "niche": "Nutrition · Anápolis, Brazil", "description": "Authority landing page that drives appointment booking through WhatsApp." },
       "cecilia": { "niche": "Aesthetic biomedicine · Uberlândia, Brazil", "description": "Editorial landing page with professional credentials up front and the patient journey." },
-      "esther": { "niche": "Online nutrition · Anápolis, Brazil", "description": "Online care across Brazil, in-person assessment and booking via WhatsApp." },
-      "angelica": { "niche": "Dentistry", "description": "Vectorized identity, editorial typography, SEO, tracking and cookie consent." },
-      "winner": { "niche": "Corporate · Winner Tech", "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer." }
+      "esther": { "niche": "Online nutrition · Anápolis, Brazil", "description": "Online care across Brazil, in-person assessment and booking via WhatsApp." }
     }
   },
   "stack": {
@@ -142,7 +139,7 @@
     },
     "stats": {
       "years": "years in IT",
-      "sites": "sites delivered",
+      "landings": "landing pages delivered",
       "languages": "languages"
     }
   }

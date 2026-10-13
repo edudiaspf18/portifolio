@@ -4,7 +4,6 @@ import { CursorLabel } from "@/components/motion/cursor-label";
 import { Badge } from "@/components/ui/badge";
 import type { Project } from "@/content/projects";
 import { hasShot } from "@/lib/shots";
-import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,7 +12,6 @@ interface ProjectCardProps {
   soonLabel: string;
   visitLabel: string;
   tagLabels: readonly string[];
-  featured?: boolean;
 }
 
 export function ProjectCard({
@@ -23,7 +21,6 @@ export function ProjectCard({
   soonLabel,
   visitLabel,
   tagLabels,
-  featured = false,
 }: ProjectCardProps) {
   const shot = hasShot(project.id);
   const image = shot ? (
@@ -31,11 +28,7 @@ export function ProjectCard({
       src={`/projects/${project.id}.jpg`}
       alt=""
       fill
-      sizes={
-        featured
-          ? "(min-width: 1152px) 560px, 100vw"
-          : "(min-width: 1152px) 560px, (min-width: 768px) 50vw, 100vw"
-      }
+      sizes="(min-width: 1152px) 560px, (min-width: 768px) 50vw, 100vw"
       className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
     />
   ) : (
@@ -47,10 +40,7 @@ export function ProjectCard({
   return (
     <article
       data-testid="project-card"
-      className={cn(
-        "group relative flex h-full flex-col border border-border bg-background transition-all duration-200 ease-in-out hover:border-foreground",
-        featured && "md:grid md:grid-cols-2",
-      )}
+      className="group relative flex h-full flex-col border border-border bg-background transition-all duration-200 ease-in-out hover:border-foreground"
     >
       <span
         aria-hidden
@@ -59,10 +49,7 @@ export function ProjectCard({
       <CursorLabel
         label={visitLabel}
         enabled={Boolean(project.url)}
-        className={cn(
-          "relative aspect-[16/10] overflow-hidden border-b border-border bg-muted md:aspect-auto md:min-h-72",
-          featured && "md:border-b-0 md:border-r",
-        )}
+        className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted md:aspect-auto md:min-h-72"
       >
         {project.url ? (
           <a

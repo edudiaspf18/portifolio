@@ -21,14 +21,15 @@ describe('about content', () => {
       claude: 'using',
     });
   });
-  it('números: 5+ anos, 7 sites, 2 idiomas, com rótulos', () => {
+  it('números: 5+ anos, 4 landings, 2 idiomas, com rótulos', () => {
     expect(stats.map((s) => [s.id, s.value, s.suffix])).toEqual([
       ['years', 5, '+'],
-      ['sites', 7, ''],
+      ['landings', 4, ''],
       ['languages', 2, ''],
     ]);
     for (const { id } of stats) {
       expect((pt.about.stats as Record<string, string>)[id], id).toBeTruthy();
+      expect((en.about.stats as Record<string, string>)[id], id).toBeTruthy();
     }
   });
 });

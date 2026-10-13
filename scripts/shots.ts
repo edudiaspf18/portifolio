@@ -27,17 +27,14 @@ const outDir = path.join(process.cwd(), 'public', 'projects');
 const targets: readonly Target[] = [
   { id: 'charles', dir: path.join(landings, '001 - LP CharlesV'), live: null, port: 3101 },
   { id: 'alianca', dir: path.join(landings, '002 - LP AliancaM'), live: null, port: 3102 },
-  { id: 'evelyn', dir: path.join(landings, '003 - LP Evelyn'), live: 'https://www.evelynrafaelanutri.com.br', port: 3103 },
   { id: 'cecilia', dir: path.join(landings, '004 - LP Cecilia Fontoura'), live: null, port: 3104 },
   { id: 'esther', dir: path.join(landings, '005 - LP Esther Duarte'), live: 'https://www.estherduartenutri.com.br', port: 3105 },
-  { id: 'angelica', dir: path.join(landings, '006 - LP Angelica'), live: 'https://www.dra-angelicabatista.com.br', port: 3106 },
-  { id: 'winner', dir: path.join(devRoot, 'winner-tech'), live: null, port: 3107 },
 ];
 
 const onlyIdx = process.argv.indexOf('--only');
 const onlyId = onlyIdx >= 0 ? process.argv[onlyIdx + 1] : undefined;
 if (onlyIdx >= 0 && (!onlyId || onlyId.startsWith('--'))) {
-  console.error('--only requer um id (ex: --only winner)');
+  console.error('--only requer um id (ex: --only esther)');
   process.exit(1);
 }
 const selected = onlyId ? targets.filter((t) => t.id === onlyId) : targets;

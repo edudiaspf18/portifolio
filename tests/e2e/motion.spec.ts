@@ -21,19 +21,10 @@ test('menu desktop marca a seção ativa', async ({ page }) => {
   await expect(nav.getByRole('link', { name: 'Contato' })).not.toHaveAttribute('aria-current', 'location');
 });
 
-test('projetos: 7º card em destaque ocupa a largura toda', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/pt');
-  const cards = page.getByTestId('project-card');
-  const last = await cards.last().boundingBox();
-  const first = await cards.first().boundingBox();
-  expect(last && first && last.width).toBeGreaterThan((first?.width ?? 0) * 1.8);
-});
-
 test('projetos com link: etiqueta "Ver site" existe e imagem é link', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/pt');
-  const card = page.getByTestId('project-card').nth(2);
+  const card = page.getByTestId('project-card').nth(3);
   await expect(card.locator('a[target="_blank"]')).toHaveCount(2);
   await expect(card.getByTestId('cursor-label')).toBeAttached();
 });
@@ -59,7 +50,7 @@ test('card sem URL não tem etiqueta de cursor', async ({ page }) => {
 test('etiqueta de cursor fica dentro da imagem perto da borda direita', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/pt');
-  const card = page.getByTestId('project-card').nth(2);
+  const card = page.getByTestId('project-card').nth(3);
   await card.scrollIntoViewIfNeeded();
   const box = await card.locator('a[target="_blank"]').first().boundingBox();
   if (!box) throw new Error('sem box');
@@ -80,7 +71,7 @@ test('reduced motion: etiqueta de cursor oculta', async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1280, height: 900 } });
   const page = await ctx.newPage();
   await page.goto('/pt');
-  await expect(page.getByTestId('project-card').nth(2).getByTestId('cursor-label')).toHaveCSS('display', 'none');
+  await expect(page.getByTestId('project-card').nth(3).getByTestId('cursor-label')).toHaveCSS('display', 'none');
   await ctx.close();
 });
 

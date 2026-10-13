@@ -18,7 +18,7 @@ test('sobre: foto carrega, texto, ênfase e números finais', async ({ page }) =
   await expect(tsLink).toHaveAccessibleName(/Tipagem estrita/);
   await page.getByTestId('stats').scrollIntoViewIfNeeded();
   await expect(page.getByTestId('stat-years')).toHaveText('5+', { timeout: 5000 });
-  await expect(page.getByTestId('stat-sites')).toHaveText('7');
+  await expect(page.getByTestId('stat-landings')).toHaveText('4');
   await expect(page.getByTestId('stat-languages')).toHaveText('2');
 });
 

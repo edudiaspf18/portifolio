@@ -3,11 +3,9 @@ import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ProjectCard } from "@/components/sections/project-card";
 import { projects } from "@/content/projects";
-import { cn } from "@/lib/utils";
 
 export async function ProjectsSection() {
   const t = await getTranslations("projects");
-  const lastIndex = projects.length - 1;
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
       <SectionHeading
@@ -18,11 +16,7 @@ export async function ProjectsSection() {
       />
       <div className="mt-16 grid gap-8 md:grid-cols-2">
         {projects.map((project, i) => (
-          <Reveal
-            key={project.id}
-            delay={(i % 2) * 0.1}
-            className={cn(i === lastIndex && "md:col-span-2")}
-          >
+          <Reveal key={project.id} delay={(i % 2) * 0.1}>
             <ProjectCard
               project={project}
               niche={t(`items.${project.id}.niche`)}
@@ -30,7 +24,6 @@ export async function ProjectsSection() {
               soonLabel={t("soon")}
               visitLabel={t("visit")}
               tagLabels={project.tags.map((tag) => t(`tags.${tag}`))}
-              featured={i === lastIndex}
             />
           </Reveal>
         ))}

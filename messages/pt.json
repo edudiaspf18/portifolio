@@ -90,11 +90,8 @@
     "items": {
       "charles": { "niche": "Seminovos e locadora · Anápolis, GO", "description": "Vitrine de 26 veículos com filtros, página por carro e CTA direto ao WhatsApp." },
       "alianca": { "niche": "Móveis para escritório", "description": "Landing de conversão com tracking via GTM e testes end-to-end." },
-      "evelyn": { "niche": "Nutrição · Anápolis, GO", "description": "Landing de autoridade que leva ao agendamento da consulta pelo WhatsApp." },
       "cecilia": { "niche": "Biomedicina estética · Uberlândia, MG", "description": "Landing editorial com credibilidade profissional à vista e jornada da paciente." },
-      "esther": { "niche": "Nutrição online · Anápolis, GO", "description": "Atendimento online para todo o Brasil, avaliação presencial e agendamento via WhatsApp." },
-      "angelica": { "niche": "Odontologia", "description": "Identidade vetorizada, tipografia editorial, SEO, tracking e consentimento de cookies." },
-      "winner": { "niche": "Institucional · Winner Tech", "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida." }
+      "esther": { "niche": "Nutrição online · Anápolis, GO", "description": "Atendimento online para todo o Brasil, avaliação presencial e agendamento via WhatsApp." }
     }
   },
   "stack": {
@@ -142,7 +139,7 @@
     },
     "stats": {
       "years": "anos em TI",
-      "sites": "sites entregues",
+      "landings": "landings entregues",
       "languages": "idiomas"
     }
   }
