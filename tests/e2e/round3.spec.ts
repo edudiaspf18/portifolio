@@ -193,9 +193,14 @@ test('projetos: reveal circular, borda SVG e ilustração do Caminu', async ({ p
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/pt');
   const cards = page.getByTestId('project-card');
+  // estado inicial: card abaixo da dobra comeca recortado
+  expect(await cards.nth(5).evaluate((el) => getComputedStyle(el).clipPath)).toMatch(/circle\(0%/);
   await cards.first().scrollIntoViewIfNeeded();
   await expect.poll(() => cards.first().evaluate((el) => getComputedStyle(el).clipPath)).toMatch(/none|circle\((1[0-9]{2}|[2-9][0-9]{2})%/);
   await expect(cards.first().getByTestId('project-frame')).toBeAttached();
+  const frameRect = cards.first().locator('[data-testid="project-frame"] rect');
+  expect(await frameRect.evaluate((el) => (el as SVGGraphicsElement).getBBox().width)).toBeGreaterThan(100);
+  expect(await frameRect.evaluate((el) => (el as SVGGraphicsElement).getBBox().height)).toBeGreaterThan(100);
   await cards.nth(5).scrollIntoViewIfNeeded();
   await expect(cards.nth(5).getByTestId('project-art')).toBeVisible();
   await expect(cards.nth(5).locator('img')).toHaveCount(0);
