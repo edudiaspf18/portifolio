@@ -9,18 +9,18 @@ interface StackItemCardProps {
 export async function StackItemCard({ item }: StackItemCardProps) {
   const t = await getTranslations('stack');
   return (
-    <li data-testid="stack-item" className="group flex flex-col items-center gap-3 text-center">
-      <span className="flex size-16 items-center justify-center rounded-full border border-border transition-all duration-200 ease-in-out group-hover:border-foreground">
-        <TechIcon icon={item.icon} className="size-7" />
-      </span>
-      <span className="text-sm">{item.name}</span>
-      {/* espaço separa nome e nota no texto acessível */}
-      {item.note && ' '}
-      {item.note && (
-        <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          {t(`notes.${item.note}`)}
+    <li data-testid="stack-item" className="group text-center">
+      <div data-testid={`stack-item-${item.id}`} className="flex flex-col items-center gap-3">
+        <span className="flex size-16 items-center justify-center rounded-full border border-border transition-all duration-200 ease-in-out group-hover:border-foreground">
+          <TechIcon icon={item.icon} className="size-7" />
         </span>
-      )}
+        <span className="text-sm">{item.name}</span>
+        {item.note && (
+          <span className="-mx-3 text-balance font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+            {t(`notes.${item.note}`)}
+          </span>
+        )}
+      </div>
     </li>
   );
 }

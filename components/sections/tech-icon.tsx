@@ -19,7 +19,7 @@ export function TechIcon({ icon, className }: TechIconProps) {
     return <Icon aria-hidden strokeWidth={1.5} className={className} />;
   }
   const found = stackIcons.find((i) => i.id === icon.id);
-  if (!found) return null;
+  if (!found) throw new Error(`TechIcon: ícone Simple Icons desconhecido: ${icon.id}`);
   return (
     <svg aria-hidden viewBox="0 0 24 24" role="presentation" className={`fill-current ${className ?? ''}`}>
       <path d={found.path} />

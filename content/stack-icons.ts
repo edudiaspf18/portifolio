@@ -1,4 +1,4 @@
-// Gerado por scripts/gen-stack-icons.ts a partir do Simple Icons (CC0). Não editar à mão.
+// Gerado por scripts/gen-stack-icons.ts. Logos do Simple Icons (CC0), exceto `linkedin`: glifo da marca LinkedIn usado de forma nominativa (não distribuído pelo Simple Icons). Não editar à mão.
 export interface StackIcon {
   id: string;
   name: string;

@@ -12,7 +12,7 @@ export async function EmphasisMedallions() {
       </h3>
       <ul
         data-testid="emphasis-medallions"
-        className="mt-6 flex snap-x gap-6 overflow-x-auto pb-4 lg:grid lg:grid-cols-5 lg:overflow-visible"
+        className="mt-6 flex snap-x gap-6 overflow-x-auto pb-4 pt-2 lg:grid lg:grid-cols-5 lg:overflow-visible"
       >
         {emphasis.map((item) => (
           <li

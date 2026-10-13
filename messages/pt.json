@@ -160,7 +160,6 @@
       "using": "usando",
       "learning": "aprendendo"
     },
-    "viewInStack": "Ver na stack",
     "emphasis": {
       "typescript": "Tipagem estrita em tudo que escrevo agora. Aprendendo a fazer certo desde o começo.",
       "react": "Componentes e Server Components. Aprendendo a pensar interface como sistema.",

@@ -240,7 +240,8 @@ test('stack: três grupos com ícone + nome, C em noções com nota', async ({ p
   await expect(page.getByTestId('stack-group-using').getByTestId('stack-item')).toHaveCount(10);
   await expect(page.getByTestId('stack-group-learning').getByTestId('stack-item')).toHaveCount(6);
   await expect(page.getByTestId('stack-group-basic').getByTestId('stack-item')).toHaveCount(5);
-  const c = page.getByTestId('stack-group-basic').getByTestId('stack-item').filter({ hasText: /^C\b/ });
+  const c = page.getByTestId('stack-item-c');
   await expect(c).toContainText('primeiros períodos');
-  await expect(page.getByTestId('stack-item').first().locator('svg')).toHaveCount(1);
+  await expect(page.getByTestId('stack-item')).toHaveCount(21);
+  await expect(page.locator('[data-testid=stack-item] svg')).toHaveCount(21);
 });

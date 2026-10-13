@@ -61,6 +61,9 @@ Mensagens novas/alteradas em pt e en: `intro.label` ("Abrindo o site…" para `a
 - Unit: `content/stack.ts` (todo item com ícone resolvível: `si` existe em `stack-icons`, lucide nomeado), `projects` com 6 ids e `kind`, `stats.landings = 4`, paridade pt/en, `stack-icons` ≥ 18 itens.
 - e2e: cortina presente no primeiro carregamento e `visibility: hidden` após ≤ 2 s; segunda navegação no mesmo contexto não mostra a cortina (`data-intro=seen`); reduced-motion termina em ≤ 0,5 s; sem JS termina oculta; hero sem "Claude" na linha do cargo e meta description sem "Claude"; trajetória com 6 anos em coluna e conteúdo ocupando ≥ 60% da largura do contêiner em 1440; projetos 6 cards, 1 link (Esther), Caminu com "Projeto acadêmico" e sem link, borda SVG presente, reveal visível em reduced-motion/sem JS; contato: botão WhatsApp com `wa.me`, botão e-mail copia (permissão `clipboard-read/write` no contexto) e mostra "Copiado", 4 fichas com links corretos; medalhões 5 com descrição visível sem hover; stack 3 grupos, 21 itens com nome visível, nota do C; ritmo: distância vertical entre o fim de uma seção e o título da próxima ≤ 160 px em 1440; 375 px sem overflow; a11y 100 no Lighthouse; currículo regenerado (cargo sem Claude).
 
+## Divergências
+- §8: o path do `linkedin` não foi desenhado à mão; é o glifo da marca LinkedIn que o Simple Icons distribuía, usado de forma nominativa. O cabeçalho de `content/stack-icons.ts` registra isso.
+
 ## Pendências do Eduardo
 - URL ao vivo do site da Winner Tech, de Charles, Aliança e Cecília.
 - Captura do Caminu, se quiser substituir a ilustração.
