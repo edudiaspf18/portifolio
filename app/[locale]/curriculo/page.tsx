@@ -95,11 +95,21 @@ export default async function ResumePage({ params }: PageProps) {
             <section>
               <h2 className="font-mono text-[8pt] uppercase tracking-widest text-[#5c5850]">{r('sections.contact')}</h2>
               <ul className="mt-3 space-y-1.5 break-words">
-                <li>{profile.email}</li>
-                <li>{profile.phone}</li>
-                <li>{profile.linkedin}</li>
-                <li>{profile.github}</li>
-                <li>{profile.instagram}</li>
+                <li>
+                  <a href={`mailto:${profile.email}`} className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.email}</a>
+                </li>
+                <li>
+                  <a href="https://wa.me/5562994267841" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.phone}</a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/eduardo-dias-8a924131a" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.linkedin.replace('linkedin.com/', '')}</a>
+                </li>
+                <li>
+                  <a href="https://github.com/edudiaspf18" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.github}</a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/dudu_diaspf/" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.instagram}</a>
+                </li>
                 <li>{th('local')}</li>
               </ul>
             </section>
