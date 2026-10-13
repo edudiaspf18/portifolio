@@ -29,6 +29,19 @@ test('contato: botões, cópia de e-mail e fichas de redes', async ({ browser })
   await ctx.close();
 });
 
+test('contato: sem clipboard, e-mail cai para mailto', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('denied')) } });
+    HTMLAnchorElement.prototype.click = function (this: HTMLAnchorElement) {
+      (window as unknown as { __mailto: string }).__mailto = this.href;
+    };
+  });
+  await page.goto('/pt');
+  await expect(page.getByTestId('intro-curtain')).toBeHidden();
+  await page.getByTestId('contact-email').click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { __mailto?: string }).__mailto)).toBe('mailto:dududiaspf@gmail.com');
+});
+
 test('contato em 375: fichas em linha, sem overflow', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 800 });
   await page.goto('/pt');

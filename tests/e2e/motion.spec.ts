@@ -78,19 +78,21 @@ test('reduced motion: etiqueta de cursor oculta', async ({ browser }) => {
   await ctx.close();
 });
 
-test('hover em CTA: tinta escura sobre signal no tema escuro', async ({ page }) => {
+test('hover em CTA: tinta escura sobre signal no tema escuro; currículo outline: borda foreground', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.addInitScript(() => localStorage.setItem('theme', 'dark'));
   await page.goto('/pt');
   await expect(page.locator('html')).toHaveClass(/dark/);
-  const targets = [
-    page.getByRole('link', { name: 'Ver projetos' }),
-    page.locator('section:has(#contact)').locator('a[href="/curriculo-eduardo-dias-pt.pdf"]'),
-  ];
-  for (const el of targets) {
-    await el.scrollIntoViewIfNeeded();
-    await el.hover();
-    await expect(el).toHaveCSS('background-color', 'rgb(255, 90, 31)');
-    await expect(el).toHaveCSS('color', 'rgb(15, 14, 12)');
-  }
+  const cta = page.getByRole('link', { name: 'Ver projetos' });
+  await cta.scrollIntoViewIfNeeded();
+  await cta.hover();
+  await expect(cta).toHaveCSS('background-color', 'rgb(255, 90, 31)');
+  await expect(cta).toHaveCSS('color', 'rgb(15, 14, 12)');
+  // currículo é outline: no hover a borda fica foreground e o fundo muda (muted/input no escuro)
+  const resume = page.getByTestId('contact-resume');
+  await resume.scrollIntoViewIfNeeded();
+  const bgBefore = await resume.evaluate((el) => getComputedStyle(el).backgroundColor);
+  await resume.hover();
+  await expect.poll(() => resume.evaluate((el) => getComputedStyle(el).backgroundColor)).not.toBe(bgBefore);
+  await expect(resume).toHaveCSS('border-top-color', await page.evaluate(() => getComputedStyle(document.body).color));
 });

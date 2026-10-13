@@ -10,11 +10,13 @@ interface ContactOrbitProps {
 }
 
 export function ContactOrbit({ label, email }: ContactOrbitProps) {
+  const [user, domain] = email.split('@');
   return (
-    <div data-testid="contact-orbit" className="relative mx-auto w-full max-w-sm md:aspect-square">
+    <div data-testid="contact-orbit" className="relative mx-auto w-full max-w-[22rem] md:aspect-square">
+      <div aria-hidden className="absolute inset-[28%] hidden rounded-full border border-border md:block" />
       <ul
         aria-label={label}
-        className="flex flex-wrap justify-center gap-4 md:absolute md:inset-8 md:block md:animate-orbit motion-reduce:animate-none"
+        className="flex flex-wrap justify-center gap-4 md:absolute md:inset-8 md:block md:animate-orbit md:rounded-full md:border md:border-border motion-reduce:animate-none"
       >
         {chips.map((chip, i) => {
           const pos = orbitPosition(i, chips.length);
@@ -36,8 +38,8 @@ export function ContactOrbit({ label, email }: ContactOrbitProps) {
           );
         })}
       </ul>
-      <p className="mt-6 text-center font-mono text-xs text-muted-foreground md:absolute md:inset-0 md:mt-0 md:flex md:items-center md:justify-center md:px-[28%]">
-        {email.split('@')[0]}@<wbr />{email.split('@')[1]}
+      <p className="mt-6 text-center font-mono text-xs text-muted-foreground md:absolute md:inset-0 md:mt-0 md:flex md:items-center md:justify-center md:px-[34%]">
+        {user}@<wbr />{domain}
       </p>
     </div>
   );
