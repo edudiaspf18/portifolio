@@ -72,3 +72,33 @@ test('ritmo: padding das seções e vão entre seções', async ({ page }) => {
     expect(gap, id).toBeLessThanOrEqual(170);
   }
 });
+
+test('cortina: aparece no primeiro carregamento, some, e não repete na sessão', async ({ browser }) => {
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  await page.goto('/pt');
+  const curtain = page.getByTestId('intro-curtain');
+  await expect(curtain).toBeAttached();
+  expect(await page.locator('html').getAttribute('data-intro')).not.toBe('seen');
+  await expect(curtain).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await page.goto('/en'); // goto só com hash não recarrega a página
+  expect(await page.locator('html').getAttribute('data-intro')).toBe('seen');
+  await expect(page.getByTestId('intro-curtain')).toHaveCSS('display', 'none');
+  await ctx.close();
+});
+
+test('cortina: reduced motion termina em menos de 600ms; sem JS termina oculta', async ({ browser }) => {
+  const reduced = await browser.newContext({ reducedMotion: 'reduce' });
+  const p1 = await reduced.newPage();
+  const started = Date.now();
+  await p1.goto('/pt');
+  await expect(p1.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 1500 });
+  expect(Date.now() - started).toBeLessThan(2500);
+  await reduced.close();
+  const nojs = await browser.newContext({ javaScriptEnabled: false });
+  const p2 = await nojs.newPage();
+  await p2.goto('/pt');
+  await expect(p2.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
+  await nojs.close();
+});
