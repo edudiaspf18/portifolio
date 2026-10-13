@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 import { useRef } from 'react';
 
@@ -12,16 +12,15 @@ interface AboutPhotoProps {
 
 export function AboutPhoto({ src, alt, tag }: AboutPhotoProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [24, -24]);
+  const y = useTransform(scrollYProgress, [0, 1], [24, -24]);
 
   return (
     // A detecção de viewport fica no wrapper (sem clip-path): um alvo 100% recortado tem área
     // de interseção zero e o IntersectionObserver nunca o marcaria como visível em telas estreitas.
     <motion.div
       ref={ref}
-      initial={reduce ? false : 'hidden'}
+      initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
       className="relative mx-auto max-w-md pb-4 pr-4 md:max-w-none"
@@ -32,7 +31,7 @@ export function AboutPhoto({ src, alt, tag }: AboutPhotoProps) {
         style={{ y }}
         variants={{ hidden: { clipPath: 'inset(0 0 100% 0)' }, visible: { clipPath: 'inset(0 0 0% 0)' } }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="relative aspect-square overflow-hidden border border-foreground bg-muted motion-reduce:[clip-path:none]! noscript:[clip-path:none]!"
+        className="relative aspect-square overflow-hidden border border-foreground bg-muted motion-reduce:[clip-path:none]! noscript:[clip-path:none]! noscript:transform-none! motion-reduce:transform-none!"
       >
         <Image src={src} alt={alt} fill sizes="(min-width: 768px) 440px, 90vw" className="object-cover" />
       </motion.div>

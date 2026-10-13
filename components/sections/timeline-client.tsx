@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
 import { useRef } from "react";
 import type { TimelineKind } from "@/content/timeline";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,6 @@ interface TimelineClientProps {
 
 export function TimelineClient({ items }: TimelineClientProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 70%", "end 70%"],
@@ -31,15 +30,15 @@ export function TimelineClient({ items }: TimelineClientProps) {
     restDelta: 0.001,
   });
 
-  // Reduced motion: o ramo JS (initial=false, scaleY=1) e os overrides CSS motion-reduce se sobrepõem de
-  // propósito (CSS cobre o SSR antes da hidratação). noscript:* cobre JS desabilitado, onde o
-  // opacity:0 inline do SSR nunca seria removido.
+  // Servidor e cliente renderizam o mesmo estilo inicial (evita erro de hidratação, pois
+  // useReducedMotion é null no servidor). Reduced motion e sem JS são cobertos pelos overrides
+  // CSS motion-reduce:* / noscript:*.
   return (
     <div ref={ref} className="relative ml-2 border-l border-border">
       <motion.span
         aria-hidden
         data-testid="timeline-line"
-        style={{ scaleY: reduce ? 1 : scaleY }}
+        style={{ scaleY }}
         className="absolute -left-px top-0 h-full w-px origin-top bg-signal motion-reduce:!transform-none noscript:!transform-none"
       />
       <ol>
@@ -47,7 +46,7 @@ export function TimelineClient({ items }: TimelineClientProps) {
           <motion.li
             key={item.id}
             data-testid="timeline-item"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
