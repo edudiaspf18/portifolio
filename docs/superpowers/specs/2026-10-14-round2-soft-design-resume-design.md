@@ -75,3 +75,13 @@ Novas/alteradas chaves em `messages/pt.json` e `en.json` (paridade garantida pel
 - URLs ao vivo de Charles, Aliança e Cecília (hoje "Em breve"); `npm run shots` com internet para prints dos sites no ar.
 - Confirmar a copy nova do Sobre e do currículo; texto do Caminu foi escrito a partir da sua descrição.
 - Se o repositório do Caminu virar público, passar a URL para adicionar o link.
+
+## Divergências da implementação
+- Ícone CSS: `siCss` no lugar de `siCss3` (nome exportado pelo pacote Simple Icons).
+- Tooltip da órbita é só visual (hover, com fade `scale-0 opacity-0` para não gerar overflow); os nomes ficam em `sr-only`; logos não focáveis e ficha sem tab stop.
+- Sobre em duas colunas a partir de `lg`, com retrato `sticky`.
+- Parallax movido para a montagem da órbita.
+- Currículo: tamanhos de fonte aumentados em relação ao spec; stack anunciada uma vez (linha visível `aria-hidden`); container A4 dentro de `<main>`.
+- `opengraph-image` movido para o grupo de rotas `(site)`; `/curriculo` fica fora do header/footer do site.
+- Numeração dos projetos exibe 001, 002, 004, 005 (ids de conteúdo existentes, sem 003).
+- Lighthouse: performance oscila 91-97 entre execuções; `/pt/curriculo` é `noindex`, então SEO 58 (is-crawlable e meta-description) é esperado.

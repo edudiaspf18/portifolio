@@ -2,6 +2,10 @@
 
 Site pessoal bilíngue (PT/EN) de Eduardo Dias, AI Engineer em formação: hero, trajetória, projetos (landing pages reais), stack e contato. Rotas `/pt` e `/en`, tema claro/escuro, SEO completo (metadata, hreflang, JSON-LD, sitemap, OG image, favicon gerado).
 
+## Identidade (round 2)
+
+Design suave: saudação gigante ("Olá, eu sou" + nome em itálico) com cargo logo abaixo, círculos orbitais no hero, divisores em curva, números de seção em círculo, cards arredondados 2×2 e pílulas. Uma cor de destaque (laranja). Sobre tem retrato circular com órbita de 9 logos de tecnologias (`components/sections/stack-orbit.tsx`, ícones em `content/stack-icons.ts`, Simple Icons); a órbita fica estática em reduced motion.
+
 ## Stack
 
 Next.js 16 (App Router, RSC) · React 19 · TypeScript · Tailwind v4 · shadcn/ui · next-intl · next-themes · motion · Vitest · Playwright.
@@ -25,6 +29,8 @@ Next.js 16 (App Router, RSC) · React 19 · TypeScript · Tailwind v4 · shadcn/
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `next typegen` + `tsc --noEmit` |
 | `npm test` | testes unitários (Vitest) |
+| `npm run gen:icons` | regenera `content/stack-icons.ts` a partir do Simple Icons (`scripts/gen-stack-icons.ts`) |
+| `npm run resume` | gera os PDFs do currículo em `public/` (precisa do servidor de produção no ar) |
 | `npm run e2e` | Playwright; builda com `NEXT_PUBLIC_SITE_URL=http://localhost:3100` e sobe na porta 3100 |
 | `npm run shots` | gera `public/projects/<id>.jpg` |
 
