@@ -7,7 +7,7 @@ export async function ProjectsSection() {
   const t = await getTranslations('projects');
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <SectionHeading id="projects" title={t('title')} intro={t('intro')} />
+      <SectionHeading id="projects" index="03" title={t('title')} intro={t('intro')} />
       <div className="mt-16 grid gap-8 md:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard

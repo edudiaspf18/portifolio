@@ -37,7 +37,7 @@ export async function StackSection() {
   const t = await getTranslations('stack');
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <SectionHeading id="stack" title={t('title')} />
+      <SectionHeading id="stack" index="04" title={t('title')} />
       <div className="mt-16 grid gap-8 md:grid-cols-3">
         <Group title={t('using')} items={stackUsing} />
         <Group title={t('learning')} items={stackLearning} accent />

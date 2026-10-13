@@ -9,7 +9,7 @@ export async function ContactSection() {
   const t = await getTranslations('contact');
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <SectionHeading id="contact" title={t('title')} intro={t('subtitle')} />
+      <SectionHeading id="contact" index="05" title={t('title')} intro={t('subtitle')} />
       <ul className="mt-16 divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
         {socials.map((social) => (
           <li key={social.id}>

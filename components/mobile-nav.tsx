@@ -26,13 +26,13 @@ export function MobileNav({ label, navLabel, links }: MobileNavProps) {
     <details className="group relative md:hidden" onKeyDown={onEscape}>
       <summary
         aria-label={label}
-        className="flex size-9 cursor-pointer list-none items-center justify-center rounded-md border border-zinc-200 text-zinc-950 transition-all duration-200 ease-in-out hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 group-open:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-900 dark:group-open:bg-zinc-900 [&::-webkit-details-marker]:hidden"
+        className="flex size-9 cursor-pointer list-none items-center justify-center rounded-md border border-border text-foreground transition-all duration-200 ease-in-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal group-open:bg-muted [&::-webkit-details-marker]:hidden"
       >
         <Menu className="size-4" aria-hidden />
       </summary>
       <nav
         aria-label={navLabel}
-        className="absolute right-0 top-full z-50 mt-3 w-56 rounded-md border border-zinc-200 bg-white px-4 py-2 shadow-sm dark:border-zinc-800 dark:bg-zinc-950"
+        className="absolute right-0 top-full z-50 mt-3 w-56 rounded-md border border-border bg-background px-4 py-2 shadow-sm"
       >
         <ul className="flex flex-col">
           {links.map((link) => (
@@ -40,7 +40,7 @@ export function MobileNav({ label, navLabel, links }: MobileNavProps) {
               <a
                 href={`#${link.id}`}
                 onClick={closeMenu}
-                className="block py-3 text-base text-zinc-500 dark:text-zinc-400 transition-all duration-200 ease-in-out hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:hover:text-zinc-50"
+                className="block py-3 text-base text-muted-foreground transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
               >
                 {link.label}
               </a>

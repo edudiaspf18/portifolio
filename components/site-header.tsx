@@ -9,11 +9,11 @@ const links = ['timeline', 'projects', 'stack', 'contact'] as const;
 export async function SiteHeader() {
   const t = await getTranslations('nav');
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+    <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-6">
         <Link
           href="/#top"
-          className="text-sm font-semibold tracking-tight transition-all duration-200 ease-in-out hover:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+          className="font-display text-xl tracking-tight transition-all duration-200 ease-in-out hover:text-signal-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
         >
           Eduardo Dias
         </Link>
@@ -22,7 +22,7 @@ export async function SiteHeader() {
             <a
               key={id}
               href={`#${id}`}
-              className="text-sm text-zinc-500 dark:text-zinc-400 transition-all duration-200 ease-in-out hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:hover:text-zinc-50"
+              className="text-sm text-muted-foreground transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
             >
               {t(id)}
             </a>
