@@ -21,6 +21,8 @@ export async function AboutSection() {
           ) : (
             <div
               data-testid="about-photo-placeholder"
+              role="img"
+              aria-label={t('photoAlt')}
               className="flex aspect-square items-center justify-center border border-foreground bg-muted font-display text-8xl"
             >
               ED

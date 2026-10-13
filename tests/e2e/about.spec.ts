@@ -13,6 +13,9 @@ test('sobre: foto carrega, texto, ênfase e números finais', async ({ page }) =
   await expect(rows.first()).toContainText('TypeScript');
   await expect(rows.first()).toContainText('aprendendo');
   await expect(rows.nth(3)).toContainText('usando');
+  const tsLink = page.getByRole('link', { name: /TypeScript/ });
+  await expect(tsLink).toHaveAccessibleName(/aprendendo/);
+  await expect(tsLink).toHaveAccessibleName(/Tipagem estrita/);
   await page.getByTestId('stats').scrollIntoViewIfNeeded();
   await expect(page.getByTestId('stat-years')).toHaveText('5+', { timeout: 5000 });
   await expect(page.getByTestId('stat-sites')).toHaveText('7');
