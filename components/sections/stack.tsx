@@ -20,7 +20,7 @@ function Group({ title, items, accent = false }: GroupProps) {
               variant="outline"
               className={
                 accent
-                  ? 'border-orange-600 font-normal text-orange-700 dark:border-orange-500 dark:text-orange-500'
+                  ? 'border-orange-700 font-normal text-orange-700 dark:border-orange-500 dark:text-orange-500'
                   : 'border-zinc-200 font-normal dark:border-zinc-800'
               }
             >
