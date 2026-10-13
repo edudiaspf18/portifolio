@@ -34,6 +34,14 @@ const targets: readonly Target[] = [
   { id: 'winner', dir: path.join(devRoot, 'winner-tech'), live: null, port: 3107 },
 ];
 
+const onlyIdx = process.argv.indexOf('--only');
+const onlyId = onlyIdx >= 0 ? process.argv[onlyIdx + 1] : undefined;
+const selected = onlyId ? targets.filter((t) => t.id === onlyId) : targets;
+if (onlyId && selected.length === 0) {
+  console.error(`--only: id desconhecido "${onlyId}"`);
+  process.exit(1);
+}
+
 const children = new Set<ChildProcess>();
 
 function killGroup(child: ChildProcess, signal: NodeJS.Signals): void {
@@ -103,7 +111,7 @@ async function capture(browser: Browser, url: string, file: string): Promise<voi
     } catch {
       /* sem banner de cookies */
     }
-    await page.waitForTimeout(1500);
+    await page.waitForTimeout(3000); // deixa animacoes de entrada terminarem
     await page.screenshot({ path: file, type: 'jpeg', quality: 82 });
   } finally {
     await page.close();
@@ -144,7 +152,7 @@ async function main(): Promise<void> {
   const missing: string[] = [];
 
   try {
-    for (const target of targets) {
+    for (const target of selected) {
       const file = path.join(outDir, `${target.id}.jpg`);
       if (target.live) {
         try {
