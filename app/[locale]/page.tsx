@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { AboutSection } from '@/components/sections/about';
 import { ContactSection } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import { Marquee } from '@/components/motion/marquee';
@@ -51,6 +52,7 @@ export default async function HomePage({ params }: PageProps) {
     '@type': 'Person',
     name: 'Eduardo Dias',
     url: `${siteUrl}/${locale}`,
+    image: `${siteUrl}/images/eduardo.jpg`,
     jobTitle: t('jobTitle'),
     description: t('description'),
     address: { '@type': 'PostalAddress', addressLocality: 'Anápolis', addressRegion: 'GO', addressCountry: 'BR' },
@@ -65,6 +67,7 @@ export default async function HomePage({ params }: PageProps) {
       />
       <Hero />
       <Marquee label={tm('label')} />
+      <AboutSection />
       <TimelineSection />
       <ProjectsSection />
       <StackSection />

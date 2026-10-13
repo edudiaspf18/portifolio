@@ -12,10 +12,11 @@ test('metadata por idioma, canonical e hreflang', async ({ page }) => {
 test('JSON-LD Person válido', async ({ page }) => {
   await page.goto('/pt');
   const raw = await page.locator('script[type="application/ld+json"]').first().textContent();
-  const data = JSON.parse(raw ?? '{}') as { '@type': string; name: string; sameAs: string[] };
+  const data = JSON.parse(raw ?? '{}') as { '@type': string; name: string; sameAs: string[]; image: string };
   expect(data['@type']).toBe('Person');
   expect(data.name).toBe('Eduardo Dias');
   expect(data.sameAs).toContain('https://github.com/edudiaspf18');
+  expect(data.image).toMatch(/\/images\/eduardo\.jpg$/);
 });
 
 test('sitemap, robots e og image respondem', async ({ request }) => {

@@ -4,7 +4,7 @@ import { MobileNav } from '@/components/mobile-nav';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Link } from '@/i18n/navigation';
 
-const links = ['timeline', 'projects', 'stack', 'contact'] as const;
+const links = ['about', 'timeline', 'projects', 'stack', 'contact'] as const;
 
 export async function SiteHeader() {
   const t = await getTranslations('nav');

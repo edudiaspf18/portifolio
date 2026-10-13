@@ -9,6 +9,7 @@
     "skip": "Skip to content",
     "mobile": "Navigation menu",
     "primary": "Main navigation",
+    "about": "About",
     "timeline": "Journey",
     "projects": "Projects",
     "stack": "Stack",
@@ -118,5 +119,31 @@
   "notFound": {
     "title": "Page not found",
     "back": "Back to home"
+  },
+  "about": {
+    "title": "About me",
+    "lead": "I started in tech support: assembling computers, running cable and solving real users' problems.",
+    "body1": "Five years of that taught me to design for the people who use things. Today I build interfaces and high-conversion landing pages, with UX, Figma and SEO.",
+    "body2": "Since September 2026 I'm specializing in AI Engineering, focused on Claude. I'm still studying Software Engineering at UniEVANGÉLICA.",
+    "photoAlt": "Portrait of Eduardo Dias, wearing round glasses and a black t-shirt, outdoors",
+    "tag": "Anápolis, Brazil",
+    "emphasisTitle": "Languages of focus",
+    "status": {
+      "using": "using",
+      "learning": "learning"
+    },
+    "viewInStack": "See in stack",
+    "emphasis": {
+      "typescript": "Strict typing in everything I write now. Learning to do it right from the start.",
+      "react": "Components and Server Components. Learning to think of interfaces as systems.",
+      "nextjs": "App Router, SEO and performance. It's where landing pages get fast.",
+      "tailwind": "All the visuals, with tokens and zero loose CSS.",
+      "claude": "Claude Code every day, API and Agent SDK in my studies. It's my specialization."
+    },
+    "stats": {
+      "years": "years in IT",
+      "sites": "sites delivered",
+      "languages": "languages"
+    }
   }
 }

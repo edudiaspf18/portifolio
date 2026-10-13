@@ -9,6 +9,7 @@
     "skip": "Pular para o conteúdo",
     "mobile": "Menu de navegação",
     "primary": "Navegação principal",
+    "about": "Sobre",
     "timeline": "Trajetória",
     "projects": "Projetos",
     "stack": "Stack",
@@ -118,5 +119,31 @@
   "notFound": {
     "title": "Página não encontrada",
     "back": "Voltar ao início"
+  },
+  "about": {
+    "title": "Sobre mim",
+    "lead": "Comecei no suporte técnico: montando computadores, passando cabo e resolvendo problema de usuário de verdade.",
+    "body1": "Cinco anos nisso me ensinaram a projetar para quem usa. Hoje desenvolvo interfaces e landing pages de alta conversão, com UX, Figma e SEO.",
+    "body2": "Desde setembro de 2026 me especializo em AI Engineering, com foco em Claude. Sigo cursando Engenharia de Software na UniEVANGÉLICA.",
+    "photoAlt": "Retrato de Eduardo Dias, de óculos redondos e camiseta preta, ao ar livre",
+    "tag": "Anápolis, GO",
+    "emphasisTitle": "Linguagens de ênfase",
+    "status": {
+      "using": "usando",
+      "learning": "aprendendo"
+    },
+    "viewInStack": "Ver na stack",
+    "emphasis": {
+      "typescript": "Tipagem estrita em tudo que escrevo agora. Aprendendo a fazer certo desde o começo.",
+      "react": "Componentes e Server Components. Aprendendo a pensar interface como sistema.",
+      "nextjs": "App Router, SEO e performance. É onde as landings ganham velocidade.",
+      "tailwind": "Todo o visual, com tokens e zero CSS solto.",
+      "claude": "Claude Code no dia a dia, API e Agent SDK nos estudos. É a minha especialização."
+    },
+    "stats": {
+      "years": "anos em TI",
+      "sites": "sites entregues",
+      "languages": "idiomas"
+    }
   }
 }
