@@ -41,7 +41,8 @@ Para cada projeto, tenta a URL ao vivo; se falhar ou não houver, sobe `npm run 
 ## Identidade e movimento
 
 - Tema claro é o padrão (papel `#f5f2eb`, tinta quente, sinal laranja); o escuro é opt-in via toggle. Tokens (`--signal`, `--signal-ink`, `--ring`, fontes, animações `marquee`, `word-up`, `draw`) em `app/globals.css`.
-- Movimento em `components/motion/*` (reveal, magnetic, contador, relógio, barra de progresso, marquee). Todo movimento respeita `prefers-reduced-motion` e funciona sem JS.
+- Movimento em `components/motion/*` (reveal, magnetic, contador, relógio, barra de progresso, marquee). Todo movimento respeita `prefers-reduced-motion`; sem JS o conteúdo continua visível (as animações simplesmente não aparecem).
+- Lighthouse: a performance varia de 91 a 96 entre execuções nesta máquina (LCP ~100–200 ms, CLS 0; acessibilidade, boas práticas e SEO são 100), então a meta "≥ 95" só é atingida em algumas execuções. Falham no laboratório o LCP simulado e o CSS que bloqueia renderização; várias correções foram tentadas sem ganho confiável.
 - Foto da seção Sobre: `public/images/eduardo.jpg`. Para gerar de novo:
 
 ```bash

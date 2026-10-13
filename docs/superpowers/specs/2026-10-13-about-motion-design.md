@@ -69,3 +69,9 @@ Foto via `next/image` (`priority` apenas se acima da dobra, senão lazy), dimens
 - Foto em JPEG (`public/images/eduardo.jpg`, gerada com `sips`), não WebP; `next/image` serve WebP/AVIF ao navegador.
 - O card de projeto não tem tilt: usa zoom da imagem, barra superior e etiqueta que segue o cursor.
 - Animação do título do hero em CSS puro (keyframes `word-up`/`draw`) em vez de `motion`, para o texto do LCP não depender de hidratação.
+- Lighthouse (desvio aceito): a performance varia de 91 a 96 entre execuções nesta máquina (LCP observado ~100–200 ms, CLS 0; acessibilidade, boas práticas e SEO são 100). A meta "≥ 95" é atingida só em algumas execuções. As auditorias de laboratório que falham são LCP simulado e CSS que bloqueia renderização; várias correções foram tentadas sem ganho confiável.
+- O parallax da foto é inline em `about-photo.tsx` (não existe `parallax.tsx` separado).
+- O item ativo do menu usa um snapshot de scroll via `useSyncExternalStore` (não `useInView`).
+- O contador usa `onViewportEnter` (não `useInView`).
+- A grade de pontos no tema escuro usa 14% do foreground (não 4%).
+- Algumas transições usam duração maior de propósito (`duration-500` no zoom do card e na barra superior, `duration-300` na barra de ênfase, `transition-opacity` na etiqueta do cursor), como exceção aceita a `duration-200`.
