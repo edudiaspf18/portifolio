@@ -31,7 +31,7 @@ export async function Hero() {
           {t('role')}
           <span className="text-signal">.</span>
         </p>
-        <Reveal delay={0.5} className="relative z-10 mt-10 grid gap-10 md:grid-cols-12">
+        <Reveal delay={0} className="relative z-10 mt-10 grid gap-10 md:grid-cols-12">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:col-span-6">
             {t('subtitle')}
           </p>

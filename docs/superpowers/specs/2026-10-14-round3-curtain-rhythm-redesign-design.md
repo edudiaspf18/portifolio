@@ -69,7 +69,7 @@ Mensagens novas/alteradas em pt e en: `intro.label` ("Abrindo o site…" para `a
 - Contato (§5): o botão de currículo é pílula com contorno (não preenchida); só o WhatsApp usa a cor de destaque. `socials` monta e-mail e WhatsApp a partir de `contactEmail`/`whatsappHref`.
 - Cortina (§1): em reduced motion o atraso do hero é 0,3 s, aplicado só quando a cortina ainda não foi vista.
 - Resolvido: o resumo do currículo (`resume.summary`) também perdeu "foco em Claude" (pt e en).
-- LCP: em viewport desktop (1440) o elemento LCP é o h1 (~48 ms). Em viewport móvel (412) e no Lighthouse é o parágrafo do hero (~1,22 s medido; 3,6 s simulado), igual em contexto novo e com `intro-seen`: o atraso vem do `Reveal` (delay 0,5 s) do bloco do parágrafo, não da cortina. `--intro-delay` caiu para 0,9 s (só h1 e sublinhado o usam); LCP e Lighthouse (perf 90) não mudaram. Trade-off aceito para não antecipar o Reveal atrás da cortina.
+- LCP: em viewport desktop (1440) o elemento LCP é o h1 (~48 ms). Em viewport móvel (412) e no Lighthouse é o parágrafo do hero (~1,22 s medido; 3,6 s simulado), igual em contexto novo e com `intro-seen`: o atraso vem do `Reveal` (delay 0,5 s) do bloco do parágrafo, não da cortina. `--intro-delay` caiu para 0,9 s (só h1 e sublinhado o usam); LCP e Lighthouse (perf 90) não mudaram. O `Reveal` do hero passou a `delay={0}` (a cortina já cobre o hero por 0,7 s): LCP medido a 412 px caiu de ~1,22 s para ~0,12 s; o Lighthouse (simulado) segue em 3,6 s / perf 90.
 
 ## Pendências do Eduardo
 - URL ao vivo do site da Winner Tech, de Charles, Aliança e Cecília.
