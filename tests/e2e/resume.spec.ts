@@ -7,6 +7,7 @@ for (const locale of ['pt', 'en'] as const) {
     await expect(resume).toBeVisible();
     await expect(page.getByRole('banner')).toHaveCount(0);
     await expect(page.getByTestId('scroll-progress')).toHaveCount(0);
+    await expect(page.getByRole('link', { name: /Pular|Skip/ })).toHaveCount(0);
     await expect(resume.getByRole('heading', { level: 1 })).toHaveText('Eduardo Dias');
     await expect(resume).toContainText('dududiaspf@gmail.com');
     await expect(resume).toContainText('(62) 99426-7841');
