@@ -19,8 +19,11 @@ export function LiveClock({ label }: LiveClockProps) {
   const time = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   if (!time) return <span aria-hidden className="inline-block w-[5ch]" />;
   return (
-    <time data-testid="live-clock" aria-label={`${label} ${time}`} className="tabular-nums">
-      {time}
-    </time>
+    <span>
+      <span className="sr-only">{label} </span>
+      <time data-testid="live-clock" className="tabular-nums">
+        {time}
+      </time>
+    </span>
   );
 }

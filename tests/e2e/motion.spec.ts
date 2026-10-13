@@ -100,3 +100,24 @@ test('hover em CTA: tinta escura sobre signal no tema escuro', async ({ page }) 
     await expect(el).toHaveCSS('color', 'rgb(15, 14, 12)');
   }
 });
+
+test('marquee em reduced motion mostra todos os itens sem overflow horizontal', async ({ browser }) => {
+  const context = await browser.newContext({
+    reducedMotion: 'reduce',
+    viewport: { width: 375, height: 800 },
+    baseURL: 'http://localhost:3100',
+  });
+  const page = await context.newPage();
+  await page.goto('/pt');
+  const marquee = page.getByTestId('marquee');
+  for (const name of ['TypeScript', 'React', 'Next.js', 'Tailwind', 'Claude', 'Figma', 'SEO']) {
+    await expect(marquee.getByText(name, { exact: true }).first()).toBeVisible();
+  }
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(overflow).toBeLessThanOrEqual(0);
+  const inner = await marquee.evaluate((el) => el.scrollWidth - el.clientWidth);
+  expect(inner).toBeLessThanOrEqual(0);
+  await context.close();
+});
