@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { notFound } from 'next/navigation';
@@ -6,11 +7,14 @@ import { setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
 import { SiteHeader } from '@/components/site-header';
 import { routing } from '@/i18n/routing';
+import { siteUrl } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import '../globals.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+
+export const metadata: Metadata = { metadataBase: new URL(siteUrl) };
 
 interface LayoutProps {
   children: ReactNode;

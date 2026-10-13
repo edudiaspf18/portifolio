@@ -14,18 +14,28 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
+const OG_LOCALES: Record<string, string> = { pt: 'pt_BR', en: 'en_US' };
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
   return {
-    metadataBase: new URL(siteUrl),
     title: t('title'),
     description: t('description'),
     alternates: {
       canonical: `/${locale}`,
-      languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
+      languages: {
+        ...Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
+        'x-default': `/${routing.defaultLocale}`,
+      },
     },
-    openGraph: { title: t('title'), description: t('description'), locale, type: 'website' },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      locale: OG_LOCALES[locale] ?? locale,
+      type: 'website',
+    },
+    twitter: { card: 'summary_large_image', title: t('title'), description: t('description') },
   };
 }
 

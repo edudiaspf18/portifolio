@@ -29,3 +29,28 @@ test('sitemap, robots e og image respondem', async ({ request }) => {
   expect(og.status()).toBe(200);
   expect(og.headers()['content-type']).toContain('image/png');
 });
+
+test('og:locale e twitter card', async ({ page }) => {
+  await page.goto('/pt');
+  await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute('content', 'pt_BR');
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
+  await page.goto('/en');
+  await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute('content', 'en_US');
+  await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute('href', /\/pt$/);
+});
+
+test('URLs absolutas usam o siteUrl do build, nunca localhost:3000', async ({ page, request }) => {
+  const origin = 'http://localhost:3100';
+  await page.goto('/pt');
+  const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
+  const ogImage = await page.locator('meta[property="og:image"]').getAttribute('content');
+  const raw = await page.locator('script[type="application/ld+json"]').first().textContent();
+  const ld = JSON.parse(raw ?? '{}') as { url: string };
+  const xml = await (await request.get('/sitemap.xml')).text();
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  expect(locs.length).toBeGreaterThan(0);
+  for (const u of [canonical ?? '', ogImage ?? '', ld.url, ...locs]) {
+    expect(u.startsWith(origin)).toBe(true);
+    expect(u).not.toContain('localhost:3000');
+  }
+});

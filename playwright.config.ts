@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   use: { baseURL: 'http://localhost:3100' },
   webServer: {
-    command: 'npm run build && npx next start -p 3100',
+    command: 'NEXT_PUBLIC_SITE_URL=http://localhost:3100 npm run build && NEXT_PUBLIC_SITE_URL=http://localhost:3100 npx next start -p 3100',
     url: 'http://localhost:3100/pt',
     timeout: 240_000,
     reuseExistingServer: !process.env.CI,
