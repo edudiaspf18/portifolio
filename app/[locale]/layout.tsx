@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
+import { ScrollProgress } from '@/components/motion/scroll-progress';
 import { SiteHeader } from '@/components/site-header';
 import { routing } from '@/i18n/routing';
 import { siteUrl } from '@/lib/site';
@@ -58,6 +59,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             >
               {t('skip')}
             </a>
+            <ScrollProgress />
             <SiteHeader />
             <main id="content">{children}</main>
           </ThemeProvider>

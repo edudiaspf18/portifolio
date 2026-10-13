@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react';
-import { useRef } from 'react';
-import type { TimelineKind } from '@/content/timeline';
-import { cn } from '@/lib/utils';
+import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { useRef } from "react";
+import type { TimelineKind } from "@/content/timeline";
+import { cn } from "@/lib/utils";
 
 export interface TimelineItem {
   id: string;
@@ -21,46 +21,61 @@ interface TimelineClientProps {
 export function TimelineClient({ items }: TimelineClientProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 70%', 'end 70%'] });
-  const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 70%", "end 70%"],
+  });
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   // Reduced motion: o ramo JS (initial=false, scaleY=1) e os overrides CSS motion-reduce se sobrepõem de
   // propósito (CSS cobre o SSR antes da hidratação). noscript:* cobre JS desabilitado, onde o
   // opacity:0 inline do SSR nunca seria removido.
   return (
-    <div ref={ref} className="relative ml-2 border-l border-zinc-200 dark:border-zinc-800">
+    <div ref={ref} className="relative ml-2 border-l border-border">
       <motion.span
         aria-hidden
         data-testid="timeline-line"
         style={{ scaleY: reduce ? 1 : scaleY }}
-        className="absolute -left-px top-0 h-full w-px origin-top bg-orange-600 motion-reduce:!transform-none noscript:!transform-none dark:bg-orange-500"
+        className="absolute -left-px top-0 h-full w-px origin-top bg-signal motion-reduce:!transform-none noscript:!transform-none"
       />
       <ol>
-      {items.map((item) => (
-        <motion.li
-          key={item.id}
-          data-testid="timeline-item"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="relative pb-14 pl-8 last:pb-0 motion-reduce:!transform-none motion-reduce:!opacity-100 noscript:!transform-none noscript:!opacity-100 md:pl-12"
-        >
-          <span
-            aria-hidden
-            className={cn(
-              'absolute -left-[5px] top-2 size-2.5 rounded-full border bg-white dark:bg-zinc-950',
-              item.kind === 'milestone'
-                ? 'border-orange-600 bg-orange-600 dark:border-orange-500 dark:bg-orange-500'
-                : 'border-zinc-400 dark:border-zinc-600',
-            )}
-          />
-          <p className="font-mono text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">{item.period}</p>
-          <h3 className="mt-2 text-xl font-semibold tracking-tight">{item.title}</h3>
-          <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">{item.org}</p>
-          <p className="mt-3 max-w-xl leading-relaxed text-zinc-500 dark:text-zinc-400">{item.description}</p>
-        </motion.li>
-      ))}
+        {items.map((item) => (
+          <motion.li
+            key={item.id}
+            data-testid="timeline-item"
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="relative pb-14 pl-8 last:pb-0 motion-reduce:!transform-none motion-reduce:!opacity-100 noscript:!transform-none noscript:!opacity-100 md:pl-12"
+          >
+            <span
+              aria-hidden
+              className={cn(
+                "absolute -left-[5px] top-2 size-2.5 rounded-full border bg-background",
+                item.kind === "milestone"
+                  ? "border-signal bg-signal"
+                  : "border-muted-foreground",
+              )}
+            />
+            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              {item.period}
+            </p>
+            <h3 className="mt-2 font-display text-3xl tracking-tight">
+              {item.title}
+            </h3>
+            <p className="mt-1 text-sm font-medium text-muted-foreground">
+              {item.org}
+            </p>
+            <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
+              {item.description}
+            </p>
+          </motion.li>
+        ))}
       </ol>
     </div>
   );

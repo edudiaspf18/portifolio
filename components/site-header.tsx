@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { LocaleSwitch } from '@/components/locale-switch';
 import { MobileNav } from '@/components/mobile-nav';
+import { SectionNav } from '@/components/section-nav';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Link } from '@/i18n/navigation';
 
@@ -17,17 +18,7 @@ export async function SiteHeader() {
         >
           Eduardo Dias
         </Link>
-        <nav aria-label={t('primary')} className="hidden items-center gap-6 md:flex">
-          {links.map((id) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              className="text-sm text-muted-foreground transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
-            >
-              {t(id)}
-            </a>
-          ))}
-        </nav>
+        <SectionNav label={t('primary')} links={links.map((id) => ({ id, label: t(id) }))} />
         <div className="flex items-center gap-2">
           <LocaleSwitch />
           <ThemeToggle />
