@@ -164,5 +164,20 @@
     "orbit": {
       "label": "Technologies in my stack"
     }
+  },
+  "resume": {
+    "metaTitle": "Resume · Eduardo Dias",
+    "summary": "Front-end developer and AI Engineer in training, focused on Claude. Solid foundation in HTML5, CSS3 and ES6+ JavaScript, hands-on SEO and high-conversion landing pages. Five years in technical support taught me to design for the people who use things.",
+    "sections": {
+      "contact": "Contact",
+      "profile": "Profile",
+      "experience": "Experience",
+      "education": "Education",
+      "projects": "Projects",
+      "stack": "Stack",
+      "certification": "Certification",
+      "languages": "Languages"
+    },
+    "caminuLine": "Caminu: AI-powered trip planning app, accessible for people with disabilities and pet friendly (React Native, in progress)."
   }
 }

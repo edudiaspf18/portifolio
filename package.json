@@ -11,7 +11,8 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "shots": "tsx scripts/shots.ts",
-    "gen:icons": "tsx scripts/gen-stack-icons.ts"
+    "gen:icons": "tsx scripts/gen-stack-icons.ts",
+    "resume": "tsx scripts/resume-pdf.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

@@ -13,7 +13,7 @@ Next.js 16 (App Router, RSC) · React 19 · TypeScript · Tailwind v4 · shadcn/
 - `components/sections/` seções da página (hero, timeline, projects, stack, contact, footer)
 - `content/` dados tipados: `projects.ts`, `stack.ts`, `timeline.ts`, `socials.ts`
 - `messages/pt.json`, `messages/en.json` todo o texto (mesmas chaves nos dois, validado por teste)
-- `public/projects/` screenshots dos projetos · `public/curriculo-eduardo-dias.pdf` currículo (apenas PT)
+- `public/projects/` screenshots dos projetos · `public/curriculo-eduardo-dias-{pt,en}.pdf` currículos gerados
 - `scripts/shots.ts` gerador de screenshots · `tests/unit`, `tests/e2e`
 
 ## Scripts
@@ -51,12 +51,18 @@ sips -s format jpeg -s formatOptions 82 -Z 800 "foto perfil/foto minha.png" --ou
 
 `foto perfil/` está no `.gitignore` (original nunca vai para o repositório).
 
+## Currículo
+
+- Rota A4 sem header do site: `/pt/curriculo` e `/en/curriculo` (`app/[locale]/curriculo/page.tsx`, `noindex`). Dados fixos em `content/profile.ts`; o resto vem das mensagens.
+- PDFs commitados em `public/curriculo-eduardo-dias-{pt,en}.pdf`. Para regenerar: `npm run build && npm start -- -p 3100` e, em outro terminal, `npm run resume`.
+- Os botões do hero e do contato baixam o PDF do idioma atual.
+
 ## Como editar
 
 - Adicionar projeto ou trocar URL ao vivo: `content/projects.ts` (campo `url`; `null` mostra "Em breve"), incluir `niche` e `description` em `messages/*.json` (`projects.items.<id>`), rodar `npm run shots -- --only <id>`.
 - Textos: `messages/pt.json` e `messages/en.json`, sempre com as mesmas chaves.
 - Stack, trajetória e redes: `content/stack.ts`, `content/timeline.ts`, `content/socials.ts`.
-- Currículo: substituir `public/curriculo-eduardo-dias.pdf` (só existe em PT; o botão aponta para o mesmo arquivo nos dois idiomas).
+- Currículo: ver seção "Currículo".
 
 ## Deploy
 

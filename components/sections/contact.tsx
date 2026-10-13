@@ -1,5 +1,5 @@
 import { ArrowUpRight, Download } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { buttonVariants } from "@/components/ui/button";
@@ -7,7 +7,7 @@ import { socials } from "@/content/socials";
 import { cn } from "@/lib/utils";
 
 export async function ContactSection() {
-  const t = await getTranslations("contact");
+  const [t, locale] = await Promise.all([getTranslations("contact"), getLocale()]);
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
       <SectionHeading
@@ -37,7 +37,7 @@ export async function ContactSection() {
       </Reveal>
       <div className="mt-10 flex flex-wrap items-center gap-6">
         <a
-          href="/curriculo-eduardo-dias.pdf"
+          href={`/curriculo-eduardo-dias-${locale}.pdf`}
           download
           className={cn(
             buttonVariants({ size: "lg" }),

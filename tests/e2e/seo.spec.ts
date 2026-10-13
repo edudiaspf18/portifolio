@@ -19,14 +19,18 @@ test('JSON-LD Person válido', async ({ page }) => {
   expect(data.image).toMatch(/\/images\/eduardo\.jpg$/);
 });
 
-test('sitemap, robots e og image respondem', async ({ request }) => {
+test('sitemap, robots e og image respondem', async ({ page, request }) => {
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
   expect(xml).toContain('/pt');
   expect(xml).toContain('/en');
   expect((await request.get('/robots.txt')).status()).toBe(200);
-  const og = await request.get('/pt/opengraph-image');
+  // no route group (site) a URL da imagem OG ganha sufixo de hash: lê do <meta>.
+  await page.goto('/pt');
+  const ogUrl = await page.locator('meta[property="og:image"]').getAttribute('content');
+  expect(ogUrl).toContain('/pt/opengraph-image');
+  const og = await request.get(new URL(ogUrl ?? '').pathname + new URL(ogUrl ?? '').search);
   expect(og.status()).toBe(200);
   expect(og.headers()['content-type']).toContain('image/png');
 });

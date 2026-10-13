@@ -12,11 +12,16 @@ test('contato: 5 redes com hrefs corretos e currículo baixável', async ({ page
     'https://www.instagram.com/dudu_diaspf/',
     'https://wa.me/5562994267841',
   ]);
-  const resume = page.locator('a[href="/curriculo-eduardo-dias.pdf"]');
-  await expect(resume).toHaveAttribute('href', '/curriculo-eduardo-dias.pdf');
-  const res = await request.get('/curriculo-eduardo-dias.pdf');
-  expect(res.status()).toBe(200);
-  expect(res.headers()['content-type']).toContain('pdf');
+  for (const [locale, label] of [['pt', 'Baixar currículo'], ['en', 'Download resume']] as const) {
+    await page.goto(`/${locale}`);
+    const href = `/curriculo-eduardo-dias-${locale}.pdf`;
+    const resume = page.locator(`a[href="${href}"]`).filter({ hasText: label });
+    await expect(resume.last()).toHaveAttribute('href', href);
+    await expect(resume.last()).toHaveAttribute('download', '');
+    const res = await request.get(href);
+    expect(res.status()).toBe(200);
+    expect(res.headers()['content-type']).toContain('pdf');
+  }
 });
 
 test('stack: separa "uso" de "estudando"', async ({ page }) => {
