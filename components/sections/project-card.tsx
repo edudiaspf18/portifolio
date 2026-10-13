@@ -31,17 +31,17 @@ export function ProjectCard({ project, niche, description, soonLabel, visitLabel
             className="object-cover object-top"
           />
         ) : (
-          <div className="flex size-full items-center justify-center font-mono text-sm text-zinc-500">
+          <div className="flex size-full items-center justify-center font-mono text-sm text-zinc-500 dark:text-zinc-400">
             {project.number}
           </div>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-4 p-6">
-        <p className="font-mono text-xs uppercase tracking-wide text-zinc-500">
+        <p className="font-mono text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
           {project.number} · {niche}
         </p>
         <h3 className="text-2xl font-semibold tracking-tight">{project.name}</h3>
-        <p className="leading-relaxed text-zinc-500">{description}</p>
+        <p className="leading-relaxed text-zinc-500 dark:text-zinc-400">{description}</p>
         <ul className="flex flex-wrap gap-2">
           {tagLabels.map((label) => (
             <li key={label}>
@@ -51,7 +51,7 @@ export function ProjectCard({ project, niche, description, soonLabel, visitLabel
             </li>
           ))}
         </ul>
-        <p className="font-mono text-xs text-zinc-500">{project.stack.join(' · ')}</p>
+        <p className="font-mono text-xs text-zinc-500 dark:text-zinc-400">{project.stack.join(' · ')}</p>
         <div className="mt-auto pt-2">
           {project.url ? (
             <a
@@ -59,7 +59,7 @@ export function ProjectCard({ project, niche, description, soonLabel, visitLabel
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-orange-600 transition-all duration-200 ease-in-out hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:text-orange-500"
+              className="inline-flex items-center gap-1 text-sm font-medium text-orange-700 transition-all duration-200 ease-in-out hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:text-orange-500"
             >
               {visitLabel}
               <ArrowUpRight className="size-4" />

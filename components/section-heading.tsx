@@ -14,7 +14,7 @@ export function SectionHeading({ id, title, intro }: SectionHeadingProps) {
         {title}
       </h2>
       {intro ? (
-        <p className="max-w-xl leading-relaxed text-zinc-500 md:col-span-7">{intro}</p>
+        <p className="max-w-xl leading-relaxed text-zinc-500 dark:text-zinc-400 md:col-span-7">{intro}</p>
       ) : null}
     </div>
   );

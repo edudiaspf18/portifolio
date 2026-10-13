@@ -54,10 +54,10 @@ export function TimelineClient({ items }: TimelineClientProps) {
                 : 'border-zinc-400 dark:border-zinc-600',
             )}
           />
-          <p className="font-mono text-xs uppercase tracking-wide text-zinc-500">{item.period}</p>
+          <p className="font-mono text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">{item.period}</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">{item.title}</h3>
-          <p className="mt-1 text-sm font-medium text-zinc-500">{item.org}</p>
-          <p className="mt-3 max-w-xl leading-relaxed text-zinc-500">{item.description}</p>
+          <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">{item.org}</p>
+          <p className="mt-3 max-w-xl leading-relaxed text-zinc-500 dark:text-zinc-400">{item.description}</p>
         </motion.li>
       ))}
     </ol>

@@ -32,7 +32,7 @@ export function MobileNav({ label, links }: MobileNavProps) {
               <a
                 href={`#${link.id}`}
                 onClick={closeMenu}
-                className="block py-3 text-base text-zinc-500 transition-all duration-200 ease-in-out hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:hover:text-zinc-50"
+                className="block py-3 text-base text-zinc-500 dark:text-zinc-400 transition-all duration-200 ease-in-out hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:hover:text-zinc-50"
               >
                 {link.label}
               </a>

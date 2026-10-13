@@ -20,7 +20,7 @@ export function LocaleSwitch() {
           aria-current={locale === active ? 'true' : undefined}
           className={cn(
             'rounded-md px-2 py-1 uppercase transition-all duration-200 ease-in-out hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:hover:text-zinc-50',
-            locale === active ? 'text-zinc-950 dark:text-zinc-50' : 'text-zinc-500',
+            locale === active ? 'text-zinc-950 dark:text-zinc-50' : 'text-zinc-500 dark:text-zinc-400',
           )}
         >
           {locale}

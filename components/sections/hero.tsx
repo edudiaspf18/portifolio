@@ -8,11 +8,11 @@ export async function Hero() {
   return (
     <section id="top" className="mx-auto max-w-6xl px-6 pb-24 pt-24 md:pt-36">
       <div className="max-w-4xl">
-        <p className="text-sm font-medium text-orange-600 dark:text-orange-500">{t('eyebrow')}</p>
+        <p className="text-sm font-medium text-orange-700 dark:text-orange-500">{t('eyebrow')}</p>
         <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
           {t('title')}
         </h1>
-        <p className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-500">{t('subtitle')}</p>
+        <p className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">{t('subtitle')}</p>
         <div className="mt-10 flex flex-wrap gap-3">
           <a
             href="#projects"

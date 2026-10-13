@@ -21,7 +21,7 @@ export async function SiteHeader() {
             <a
               key={id}
               href={`#${id}`}
-              className="text-sm text-zinc-500 transition-all duration-200 ease-in-out hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:hover:text-zinc-50"
+              className="text-sm text-zinc-500 dark:text-zinc-400 transition-all duration-200 ease-in-out hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 dark:hover:text-zinc-50"
             >
               {t(id)}
             </a>
