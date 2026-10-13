@@ -36,6 +36,7 @@ test('hero: reduced motion mostra tudo de imediato', async ({ browser }) => {
   for (let i = 0; i < (await words.count()); i++) {
     await expect(words.nth(i)).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
   }
+  await expect(page.getByText('Construo landing pages').locator('..')).toHaveCSS('opacity', '1');
   await ctx.close();
 });
 
@@ -47,5 +48,7 @@ test('hero: sem JS o título fica visível', async ({ browser }) => {
   for (let i = 0; i < (await words.count()); i++) {
     await expect(words.nth(i)).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
   }
+  await expect(page.getByText('Construo landing pages').locator('..')).toHaveCSS('opacity', '1');
+  await expect(page.getByTestId('hero-underline')).toHaveCSS('stroke-dasharray', 'none');
   await ctx.close();
 });
