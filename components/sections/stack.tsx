@@ -23,8 +23,8 @@ function Group({ title, items, accent = false }: GroupProps) {
               variant="outline"
               className={
                 accent
-                  ? "border-signal-ink font-normal text-signal-ink"
-                  : "border-border font-normal"
+                  ? "rounded-full border-signal-ink font-normal text-signal-ink"
+                  : "rounded-full border-border font-normal"
               }
             >
               {item}

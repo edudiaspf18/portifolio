@@ -15,7 +15,7 @@ export function ThemeToggle() {
       size="icon"
       aria-label={t('theme')}
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-      className="transition-all duration-200 ease-in-out hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
+      className="rounded-full transition-all duration-200 ease-in-out hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Sun className="size-4 dark:hidden" />
       <Moon className="hidden size-4 dark:block" />

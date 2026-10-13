@@ -43,10 +43,8 @@ export function SectionNav({ label, links }: SectionNavProps) {
           href={`#${link.id}`}
           aria-current={active === link.id ? "location" : undefined}
           className={cn(
-            "border-b border-transparent pb-0.5 text-sm transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-            active === link.id
-              ? "border-signal text-foreground"
-              : "text-muted-foreground",
+            "relative rounded-full px-2 py-1 text-sm transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring after:absolute after:left-1/2 after:top-full after:size-1 after:-translate-x-1/2 after:rounded-full after:bg-signal after:opacity-0 after:transition-all after:duration-200 aria-[current=location]:text-foreground aria-[current=location]:after:opacity-100",
+            active === link.id ? "text-foreground" : "text-muted-foreground",
           )}
         >
           {link.label}

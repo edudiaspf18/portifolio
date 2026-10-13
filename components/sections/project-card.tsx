@@ -40,7 +40,7 @@ export function ProjectCard({
   return (
     <article
       data-testid="project-card"
-      className="group relative flex h-full flex-col border border-border bg-background transition-all duration-200 ease-in-out hover:border-foreground"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-border bg-background transition-all duration-200 ease-in-out hover:border-foreground"
     >
       <span
         aria-hidden
@@ -75,7 +75,7 @@ export function ProjectCard({
         <ul className="flex flex-wrap gap-2">
           {tagLabels.map((label) => (
             <li key={label}>
-              <Badge variant="outline" className="border-border font-normal">
+              <Badge variant="outline" className="rounded-full border-border font-normal">
                 {label}
               </Badge>
             </li>
@@ -100,7 +100,7 @@ export function ProjectCard({
             <Badge
               data-testid="project-soon"
               variant="secondary"
-              className="font-normal"
+              className="rounded-full font-normal"
             >
               {soonLabel}
             </Badge>

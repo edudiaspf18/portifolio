@@ -17,16 +17,16 @@ export async function ContactSection() {
         intro={t("subtitle")}
       />
       <Reveal className="mt-16">
-        <ul className="divide-y divide-border border-y border-border">
+        <ul className="border-t border-border/60">
           {socials.map((social) => (
-            <li key={social.id}>
+            <li key={social.id} className="border-b border-border/60">
               <a
                 data-testid="social-link"
                 href={social.href}
                 {...(social.href.startsWith("http")
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                className="group flex items-center justify-between py-6 font-display text-3xl tracking-tight transition-all duration-200 ease-in-out hover:text-signal-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-5xl"
+                className="group -mx-6 flex items-center justify-between rounded-full px-6 py-6 font-display text-3xl tracking-tight transition-all duration-200 ease-in-out hover:bg-muted hover:text-signal-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-5xl"
               >
                 {social.label}
                 <ArrowUpRight className="size-6 text-muted-foreground transition-all duration-200 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-1 md:size-8" />
@@ -41,7 +41,7 @@ export async function ContactSection() {
           download
           className={cn(
             buttonVariants({ size: "lg" }),
-            "transition-all duration-200 ease-in-out hover:bg-signal hover:text-signal-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "rounded-full transition-all duration-200 ease-in-out hover:bg-signal hover:text-signal-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           )}
         >
           <Download className="size-4" />

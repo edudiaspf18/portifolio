@@ -26,13 +26,13 @@ export function MobileNav({ label, navLabel, links }: MobileNavProps) {
     <details className="group relative md:hidden" onKeyDown={onEscape}>
       <summary
         aria-label={label}
-        className="flex size-9 cursor-pointer list-none items-center justify-center rounded-md border border-border text-foreground transition-all duration-200 ease-in-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring group-open:bg-muted [&::-webkit-details-marker]:hidden"
+        className="flex size-9 cursor-pointer list-none items-center justify-center rounded-full border border-border text-foreground transition-all duration-200 ease-in-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring group-open:bg-muted [&::-webkit-details-marker]:hidden"
       >
         <Menu className="size-4" aria-hidden />
       </summary>
       <nav
         aria-label={navLabel}
-        className="absolute right-0 top-full z-50 mt-3 w-56 rounded-md border border-border bg-background px-4 py-2 shadow-sm"
+        className="absolute right-0 top-full z-50 mt-3 w-56 rounded-3xl border border-border bg-background px-4 py-2 shadow-sm"
       >
         <ul className="flex flex-col">
           {links.map((link) => (

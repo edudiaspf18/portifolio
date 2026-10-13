@@ -30,7 +30,7 @@ export async function Hero() {
               href="#projects"
               className={cn(
                 buttonVariants({ size: 'lg' }),
-                'transition-all duration-200 ease-in-out hover:bg-signal hover:text-signal-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                'rounded-full transition-all duration-200 ease-in-out hover:bg-signal hover:text-signal-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
               )}
             >
               {t('ctaProjects')}
@@ -42,7 +42,7 @@ export async function Hero() {
               href="#contact"
               className={cn(
                 buttonVariants({ size: 'lg', variant: 'outline' }),
-                'border-border transition-all duration-200 ease-in-out hover:border-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                'rounded-full border-border transition-all duration-200 ease-in-out hover:border-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
               )}
             >
               {t('ctaContact')}

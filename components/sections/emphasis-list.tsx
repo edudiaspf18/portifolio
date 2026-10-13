@@ -18,7 +18,7 @@ export async function EmphasisList() {
             >
               <span
                 aria-hidden
-                className="absolute inset-y-0 left-0 w-0 bg-signal transition-all duration-300 ease-in-out group-hover:w-1.5 group-focus-visible:w-1.5"
+                className="absolute left-0 top-1/2 size-0 -translate-y-1/2 rounded-full bg-signal transition-all duration-300 ease-in-out group-hover:size-3 group-focus-visible:size-3"
               />
               <span className="font-display text-4xl tracking-tight transition-all duration-200 ease-in-out group-hover:translate-x-3 group-focus-visible:translate-x-3 motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0 md:col-span-5 md:text-6xl">
                 {item.name}

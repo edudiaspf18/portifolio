@@ -19,8 +19,8 @@ export function LocaleSwitch() {
           locale={locale}
           aria-current={locale === active ? 'page' : undefined}
           className={cn(
-            'rounded-md px-2 py-1 uppercase transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-            locale === active ? 'text-foreground' : 'text-muted-foreground',
+            'rounded-full border px-2 py-1 uppercase transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+            locale === active ? 'border-border text-foreground' : 'border-transparent text-muted-foreground',
           )}
         >
           {locale}
