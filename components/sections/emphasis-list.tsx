@@ -31,7 +31,7 @@ export async function EmphasisList() {
               >
                 {t(`status.${item.status}`)}
               </span>
-              <span className="text-muted-foreground transition-all duration-200 ease-in-out md:col-span-5 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:opacity-100">
+              <span className="text-muted-foreground transition-all duration-200 ease-in-out md:col-span-5 [@media(hover:hover)]:opacity-60 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:opacity-100">
                 {t(`emphasis.${item.id}`)}
               </span>
               <span className="sr-only">{t('viewInStack')}</span>
