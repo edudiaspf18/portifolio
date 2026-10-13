@@ -14,7 +14,7 @@ export async function EmphasisList() {
           <li key={item.id}>
             <a
               href="#stack"
-              className="group relative grid items-baseline gap-2 py-6 pl-4 transition-all duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal md:grid-cols-12 md:gap-6"
+              className="group relative grid items-baseline gap-2 py-6 pl-4 transition-all duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:grid-cols-12 md:gap-6"
             >
               <span
                 aria-hidden

@@ -104,7 +104,7 @@ export function ProjectCard({
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-signal-ink transition-all duration-200 ease-in-out hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
+              className="inline-flex items-center gap-1 text-sm font-medium text-signal-ink transition-all duration-200 ease-in-out hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {visitLabel}
               <ArrowUpRight className="size-4" />

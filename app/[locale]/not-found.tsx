@@ -8,7 +8,7 @@ export default async function NotFound() {
       <h1 className="font-display text-6xl tracking-tight">{t('title')}</h1>
       <Link
         href="/"
-        className="mt-8 inline-block text-sm text-muted-foreground transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
+        className="mt-8 inline-block text-sm text-muted-foreground transition-all duration-200 ease-in-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         {t('back')}
       </Link>
