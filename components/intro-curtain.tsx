@@ -4,7 +4,7 @@ export function IntroCurtain() {
     <div
       data-testid="intro-curtain"
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-[60] animate-curtain-hide motion-reduce:animate-curtain-fade [html[data-intro=seen]_&]:hidden"
+      className="pointer-events-none fixed inset-0 z-[60] overflow-hidden animate-curtain-hide motion-reduce:animate-curtain-fade [html[data-intro=seen]_&]:hidden"
     >
       <div className="absolute inset-y-0 left-0 w-1/2 bg-background animate-curtain-left motion-reduce:animate-none" />
       <div className="absolute inset-y-0 right-0 w-1/2 bg-background animate-curtain-right motion-reduce:animate-none" />

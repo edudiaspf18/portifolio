@@ -171,3 +171,20 @@ test('trajetória: anos em coluna e conteúdo ocupa a largura', async ({ page })
   const line = await page.getByTestId('timeline-line').boundingBox();
   expect(content && line && Math.abs(line.x - content.x)).toBeLessThanOrEqual(2);
 });
+
+test('375: sem overflow horizontal com e sem cortina; linha alinhada à borda do conteúdo', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('/pt');
+  const sw = () => page.evaluate(() => document.documentElement.scrollWidth);
+  await page.waitForTimeout(300);
+  expect(await sw()).toBeLessThanOrEqual(375);
+  await expect(page.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 4000 });
+  // o overflow das órbitas cresce com a rotação: amostra ao longo do tempo
+  for (let i = 0; i < 4; i++) {
+    expect(await sw()).toBeLessThanOrEqual(375);
+    await page.waitForTimeout(700);
+  }
+  const content = await page.getByTestId('timeline-item').first().locator('[data-testid="timeline-content"]').boundingBox();
+  const line = await page.getByTestId('timeline-line').boundingBox();
+  expect(content && line && Math.abs(line.x - content.x)).toBeLessThanOrEqual(2);
+});

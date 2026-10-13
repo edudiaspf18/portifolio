@@ -13,7 +13,7 @@ export async function AboutSection() {
   const photo = hasProfilePhoto();
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <section className="mx-auto overflow-x-clip max-w-6xl px-6 py-16 md:py-20">
       <SectionHeading id="about" index="01" title={t('title')} />
       <div className="mt-12 grid gap-16 lg:grid-cols-12">
         <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">

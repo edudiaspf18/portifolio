@@ -56,7 +56,7 @@ export function TimelineClient({ items }: TimelineClientProps) {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="grid md:grid-cols-12 md:gap-8 motion-reduce:!transform-none motion-reduce:!opacity-100 noscript:!transform-none noscript:!opacity-100"
           >
-            <div className="pt-10 md:col-span-3 md:pb-10">
+            <div className="pt-10 max-md:pl-4 md:col-span-3 md:pb-10">
               <p
                 data-testid="timeline-year"
                 className="font-display text-6xl leading-none tracking-tight md:sticky md:top-28 md:text-7xl"
@@ -71,7 +71,7 @@ export function TimelineClient({ items }: TimelineClientProps) {
               <span
                 aria-hidden
                 className={cn(
-                  "absolute -left-1.5 top-4 size-3 rounded-full border bg-background md:top-12",
+                  "absolute -left-1.5 top-4 z-20 size-3 rounded-full border bg-background md:top-12",
                   item.kind === "milestone"
                     ? "border-signal bg-signal"
                     : "border-foreground",
@@ -92,7 +92,7 @@ export function TimelineClient({ items }: TimelineClientProps) {
               <p className="mt-1 text-sm font-medium text-muted-foreground">
                 {item.org}
               </p>
-              <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground md:pr-20">
+              <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
                 {item.description}
               </p>
             </div>
