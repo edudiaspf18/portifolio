@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Eduardo Dias · AI Engineer in training",
+    "description": "Eduardo Dias' portfolio: AI Engineer in training focused on Claude, high-conversion landing pages and SEO. Anápolis, Brazil."
+  },
+  "nav": {
+    "timeline": "Journey",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact",
+    "theme": "Toggle theme",
+    "language": "Language",
+    "home": "Home"
+  },
+  "hero": {
+    "eyebrow": "Eduardo Dias · Anápolis, Brazil",
+    "title": "AI Engineer in training. Focused on Claude.",
+    "subtitle": "I build high-conversion landing pages with SEO and use AI to ship faster. Front-end and UX are my foundation.",
+    "ctaProjects": "See projects",
+    "ctaContact": "Get in touch"
+  },
+  "timeline": {
+    "title": "Journey",
+    "items": {
+      "techWinner": {
+        "period": "2020 – Mar 2025",
+        "title": "IT Technician",
+        "org": "Winner Tecnologia",
+        "description": "Computer assembly, structured cabling and hands-on technical support."
+      },
+      "baan": {
+        "period": "2021 – Mar 2025",
+        "title": "IT Assistant",
+        "org": "BAAN · Brazilian Air Force",
+        "description": "First-line support and help with core IT infrastructure routines, alongside Winner."
+      },
+      "cpet": {
+        "period": "2022 – 2023",
+        "title": "Technical Degree in Internet Computing",
+        "org": "CPET",
+        "description": "Technical training in web development."
+      },
+      "frontend": {
+        "period": "Mar 2025 – present",
+        "title": "Junior Front-End Developer",
+        "org": "Winner Tecnologia",
+        "description": "Web interfaces with UX/UI and Figma. High-conversion landing pages with SEO and tracking."
+      },
+      "ai": {
+        "period": "Sep 2026",
+        "title": "Started AI Engineering",
+        "org": "Focused on Claude",
+        "description": "AI in the development workflow, plus Claude Code, Claude API and Agent SDK studies."
+      },
+      "degree": {
+        "period": "Jun 2028 (expected)",
+        "title": "Software Engineering",
+        "org": "UniEVANGÉLICA",
+        "description": "Bachelor's degree in progress, 5th term."
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "Landing pages for real clients, built to convert and to be found on Google.",
+    "soon": "Coming soon",
+    "visit": "Visit site",
+    "tags": {
+      "seo": "SEO",
+      "ga4": "GA4",
+      "gtm": "GTM",
+      "whatsapp": "WhatsApp",
+      "cookies": "Cookies"
+    },
+    "items": {
+      "charles": { "niche": "Used cars and rentals · Anápolis, Brazil", "description": "Showcase of 26 vehicles with filters, a page per car and a direct WhatsApp CTA." },
+      "alianca": { "niche": "Office furniture", "description": "Conversion landing page with GTM tracking and end-to-end tests." },
+      "evelyn": { "niche": "Nutrition · Anápolis, Brazil", "description": "Authority landing page that drives appointment booking through WhatsApp." },
+      "cecilia": { "niche": "Aesthetic biomedicine · Uberlândia, Brazil", "description": "Editorial landing page with professional credentials up front and the patient journey." },
+      "esther": { "niche": "Online nutrition · Anápolis, Brazil", "description": "Online care across Brazil, in-person assessment and booking via WhatsApp." },
+      "angelica": { "niche": "Dentistry", "description": "Vectorized identity, editorial typography, SEO, tracking and cookie consent." },
+      "winner": { "niche": "Corporate · Winner Tech", "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer." }
+    }
+  },
+  "stack": {
+    "title": "Stack",
+    "using": "Daily drivers",
+    "learning": "Learning now",
+    "basic": "Basics",
+    "extras": "Certification and languages",
+    "scrum": "Scrum Foundation (completed)",
+    "languages": "Portuguese native · English basic"
+  },
+  "contact": {
+    "title": "Let's talk",
+    "subtitle": "A landing page, a website or an AI project. I reply fast.",
+    "resume": "Download resume",
+    "location": "Anápolis, Brazil"
+  },
+  "footer": {
+    "rights": "© 2026 Eduardo Dias.",
+    "built": "Built with Next.js, Tailwind and Claude."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "back": "Back to home"
+  }
+}
