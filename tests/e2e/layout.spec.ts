@@ -20,7 +20,7 @@ test('menu mobile: abre, navega para #projects, fecha e sem overflow', async ({ 
   const toggle = page.locator('summary[aria-label="Menu"]');
   await expect(toggle).toBeVisible();
   await toggle.click();
-  const link = page.getByRole('navigation', { name: 'Menu' }).getByRole('link', { name: 'Projetos' });
+  const link = page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('link', { name: 'Projetos' });
   await expect(link).toBeVisible();
   await link.click();
   await expect(page).toHaveURL(/#projects$/);
@@ -33,4 +33,15 @@ test('menu mobile: oculto em desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/pt');
   await expect(page.locator('summary[aria-label="Menu"]')).toBeHidden();
+});
+
+test('menu mobile: Escape fecha e devolve foco ao botão', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('/pt');
+  const toggle = page.locator('summary[aria-label="Menu"]');
+  await toggle.click();
+  await expect(page.locator('details[open]')).toHaveCount(1);
+  await page.keyboard.press('Escape');
+  await expect(page.locator('details[open]')).toHaveCount(0);
+  await expect(toggle).toBeFocused();
 });

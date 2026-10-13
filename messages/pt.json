@@ -5,6 +5,7 @@
   },
   "nav": {
     "menu": "Menu",
+    "primary": "Navegação principal",
     "timeline": "Trajetória",
     "projects": "Projetos",
     "stack": "Stack",

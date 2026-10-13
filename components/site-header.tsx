@@ -30,7 +30,7 @@ export async function SiteHeader() {
         <div className="flex items-center gap-2">
           <LocaleSwitch />
           <ThemeToggle />
-          <MobileNav label={t('menu')} links={links.map((id) => ({ id, label: t(id) }))} />
+          <MobileNav label={t('menu')} navLabel={t('primary')} links={links.map((id) => ({ id, label: t(id) }))} />
         </div>
       </div>
     </header>
