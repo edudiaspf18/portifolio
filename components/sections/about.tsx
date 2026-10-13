@@ -39,7 +39,7 @@ export async function AboutSection() {
           </Reveal>
           <dl data-testid="stats" className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
             {stats.map((stat) => (
-              <div key={stat.id} className="flex flex-col-reverse gap-1">
+              <div key={stat.id} className="flex flex-col-reverse justify-end gap-1">
                 <dt className="text-sm text-muted-foreground">{t(`stats.${stat.id}`)}</dt>
                 <dd data-testid={`stat-${stat.id}`} className="font-display text-5xl tracking-tight md:text-6xl">
                   <CountUp to={stat.value} suffix={stat.suffix} />
