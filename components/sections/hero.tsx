@@ -20,7 +20,7 @@ export async function Hero() {
       <div className="mt-8">
         <HeroTitle lead={t('titleLead')} focus={t('titleFocus')} keyword={t('titleKey')} />
       </div>
-      <Reveal delay={0.9} className="mt-10 grid gap-10 md:grid-cols-12">
+      <Reveal delay={0.5} className="mt-10 grid gap-10 md:grid-cols-12">
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:col-span-6">
           {t('subtitle')}
         </p>
@@ -30,7 +30,7 @@ export async function Hero() {
               href="#projects"
               className={cn(
                 buttonVariants({ size: 'lg' }),
-                'transition-all duration-200 ease-in-out hover:bg-signal hover:text-[#0f0e0c] focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2',
+                'transition-all duration-200 ease-in-out hover:bg-signal hover:text-[#0f0e0c] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
               )}
             >
               {t('ctaProjects')}
@@ -42,7 +42,7 @@ export async function Hero() {
               href="#contact"
               className={cn(
                 buttonVariants({ size: 'lg', variant: 'outline' }),
-                'border-border transition-all duration-200 ease-in-out hover:border-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2',
+                'border-border transition-all duration-200 ease-in-out hover:border-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
               )}
             >
               {t('ctaContact')}

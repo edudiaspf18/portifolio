@@ -1,6 +1,3 @@
-'use client';
-
-import { motion, useReducedMotion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
 interface HeroTitleProps {
@@ -9,7 +6,8 @@ interface HeroTitleProps {
   keyword: string;
 }
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+// Animação em CSS puro: o texto do LCP não depende de hidratação do JS.
+const delay = (index: number): string => `${0.05 + index * 0.04}s`;
 
 interface WordProps {
   text: string;
@@ -18,24 +16,20 @@ interface WordProps {
 }
 
 function Word({ text, index, italic = false }: WordProps) {
-  const reduce = useReducedMotion();
   return (
-    <span className="inline-block overflow-hidden pb-[0.14em] pr-[0.08em] align-bottom">
-      <motion.span
+    <span className={'inline-block overflow-hidden pb-[0.14em] pr-[0.08em] align-bottom'}>
+      <span
         data-testid="hero-word"
-        initial={reduce ? false : { y: '110%' }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, delay: 0.15 + index * 0.07, ease: EASE }}
-        className={cn('inline-block motion-reduce:!transform-none noscript:!transform-none', italic && 'italic')}
+        style={{ animationDelay: delay(index) }}
+        className={cn('inline-block animate-word-up motion-reduce:animate-none', italic && 'italic')}
       >
         {text}
-      </motion.span>
+      </span>
     </span>
   );
 }
 
 export function HeroTitle({ lead, focus, keyword }: HeroTitleProps) {
-  const reduce = useReducedMotion();
   const leadWords = lead.split(' ');
   const focusWords = focus.split(' ');
   const offset = leadWords.length;
@@ -62,21 +56,20 @@ export function HeroTitle({ lead, focus, keyword }: HeroTitleProps) {
           preserveAspectRatio="none"
           className="absolute -bottom-1 left-0 h-3 w-full text-signal md:h-4"
         >
-          <motion.path
+          <path
             data-testid="hero-underline"
+            pathLength={1}
             d="M2 8 C 40 2, 90 12, 130 6 S 190 4, 198 7"
             fill="none"
             stroke="currentColor"
             strokeWidth="4"
             strokeLinecap="round"
-            initial={reduce ? false : { pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.9, delay: 0.15 + keyIndex * 0.07 + 0.4, ease: EASE }}
-            className="motion-reduce:![stroke-dasharray:none] noscript:![stroke-dasharray:none]"
+            style={{ animationDelay: `${0.05 + keyIndex * 0.04 + 0.3}s` }}
+            className="animate-draw motion-reduce:animate-none"
           />
         </svg>
       </span>
-      <span className="text-signal">.</span>
+      <span className="-ml-[0.1em] text-signal">.</span>
     </h1>
   );
 }
