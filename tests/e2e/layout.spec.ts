@@ -45,3 +45,14 @@ test('menu mobile: Escape fecha e devolve foco ao botão', async ({ page }) => {
   await expect(page.locator('details[open]')).toHaveCount(0);
   await expect(toggle).toBeFocused();
 });
+
+test('375px: sem overflow em projetos e contato após rolar a página', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('/pt');
+  for (const id of ['projects', 'contact']) {
+    await page.evaluate((i) => document.getElementById(i)?.scrollIntoView(), id);
+    await page.waitForTimeout(800);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
+  }
+});

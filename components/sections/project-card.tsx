@@ -36,7 +36,7 @@ export function ProjectCard({
           ? "(min-width: 1152px) 560px, 100vw"
           : "(min-width: 1152px) 560px, (min-width: 768px) 50vw, 100vw"
       }
-      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
     />
   ) : (
     <div className="flex size-full items-center justify-center font-display text-6xl text-muted-foreground">
@@ -54,12 +54,15 @@ export function ProjectCard({
     >
       <span
         aria-hidden
-        className="absolute left-0 top-0 z-10 h-0.5 w-0 bg-signal transition-all duration-500 ease-out group-hover:w-full"
+        className="absolute left-0 top-0 z-10 h-0.5 w-0 bg-signal transition-all duration-500 ease-out group-hover:w-full motion-reduce:transition-none"
       />
       <CursorLabel
         label={visitLabel}
         enabled={Boolean(project.url)}
-        className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted md:aspect-auto md:min-h-72"
+        className={cn(
+          "relative aspect-[16/10] overflow-hidden border-b border-border bg-muted md:aspect-auto md:min-h-72",
+          featured && "md:border-b-0 md:border-r",
+        )}
       >
         {project.url ? (
           <a

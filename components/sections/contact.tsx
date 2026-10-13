@@ -41,7 +41,7 @@ export async function ContactSection() {
           download
           className={cn(
             buttonVariants({ size: "lg" }),
-            "transition-all duration-200 ease-in-out hover:bg-signal hover:text-foreground focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2",
+            "transition-all duration-200 ease-in-out hover:bg-signal hover:text-[#0f0e0c] focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2",
           )}
         >
           <Download className="size-4" />
