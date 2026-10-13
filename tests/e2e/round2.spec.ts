@@ -33,3 +33,17 @@ test('item ativo do menu mostra ponto laranja, não sublinhado reto', async ({ p
   const other = page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('link', { name: 'Stack' });
   await expect.poll(() => dotOpacity(other)).toBe('0');
 });
+
+for (const width of [800, 1024]) {
+  test(`contato sem scroll horizontal e pílula dentro da tela em ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/pt');
+    await page.evaluate(() => document.getElementById('contact')?.scrollIntoView());
+    const row = page.getByTestId('social-link').first();
+    await row.hover();
+    const box = await row.boundingBox();
+    expect(box?.x ?? -1).toBeGreaterThanOrEqual(0);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
+  });
+}
