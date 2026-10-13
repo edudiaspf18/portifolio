@@ -38,6 +38,18 @@ Atenção: `npm run e2e` builda em `.next` com `localhost:3100`. Rebuilde com a 
 
 Para cada projeto, tenta a URL ao vivo; se falhar ou não houver, sobe `npm run dev` dentro da landing irmã em `~/DevWeb` (pode criar/atualizar `.next`, `next-env.d.ts` e `tsbuildinfo` nesses projetos; nenhum código-fonte é editado). Raiz alterável com `SHOTS_ROOT`. Um projeto só: `npm run shots -- --only <id>`.
 
+## Identidade e movimento
+
+- Tema claro é o padrão (papel `#f5f2eb`, tinta quente, sinal laranja); o escuro é opt-in via toggle. Tokens (`--signal`, `--signal-ink`, `--ring`, fontes, animações `marquee`, `word-up`, `draw`) em `app/globals.css`.
+- Movimento em `components/motion/*` (reveal, magnetic, contador, relógio, barra de progresso, marquee). Todo movimento respeita `prefers-reduced-motion` e funciona sem JS.
+- Foto da seção Sobre: `public/images/eduardo.jpg`. Para gerar de novo:
+
+```bash
+sips -s format jpeg -s formatOptions 82 -Z 800 "foto perfil/foto minha.png" --out public/images/eduardo.jpg
+```
+
+`foto perfil/` está no `.gitignore` (original nunca vai para o repositório).
+
 ## Como editar
 
 - Adicionar projeto ou trocar URL ao vivo: `content/projects.ts` (campo `url`; `null` mostra "Em breve"), incluir `niche` e `description` em `messages/*.json` (`projects.items.<id>`), rodar `npm run shots -- --only <id>`.

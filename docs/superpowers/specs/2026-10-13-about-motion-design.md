@@ -63,3 +63,9 @@ Foto via `next/image` (`priority` apenas se acima da dobra, senão lazy), dimens
 - Revisar o texto de "Sobre mim" (rascunho baseado só no currículo).
 - Confirmar "7 sites entregues" e "5+ anos em TI".
 - Confirmar o status "Agora: estudando Next.js, construindo com Claude Code".
+
+## Divergências da implementação
+
+- Foto em JPEG (`public/images/eduardo.jpg`, gerada com `sips`), não WebP; `next/image` serve WebP/AVIF ao navegador.
+- O card de projeto não tem tilt: usa zoom da imagem, barra superior e etiqueta que segue o cursor.
+- Animação do título do hero em CSS puro (keyframes `word-up`/`draw`) em vez de `motion`, para o texto do LCP não depender de hidratação.
