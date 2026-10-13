@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Eduardo Dias · AI Engineer in training",
-    "description": "Eduardo Dias' portfolio: AI Engineer in training focused on Claude, high-conversion landing pages and SEO. Anápolis, Brazil.",
+    "description": "Eduardo Dias' portfolio: AI Engineer in training, high-conversion landing pages and SEO. Anápolis, Brazil.",
     "jobTitle": "AI Engineer in training"
   },
   "nav": {
@@ -20,7 +20,7 @@
   },
   "hero": {
     "eyebrow": "Eduardo Dias · Anápolis, Brazil",
-    "title": "AI Engineer in training. Focused on Claude.",
+    "title": "AI Engineer in training.",
     "subtitle": "I build high-conversion landing pages with SEO and use AI to ship faster. Front-end and UX are my foundation.",
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
@@ -30,8 +30,7 @@
     "greeting": "Hi, I'm",
     "name": "Eduardo Dias",
     "nickname": "you can call me Dias",
-    "role": "AI Engineer in training, focused on",
-    "roleKeyword": "Claude",
+    "role": "AI Engineer in training",
     "ctaResume": "Download resume"
   },
   "timeline": {
@@ -85,7 +84,9 @@
       "ga4": "GA4",
       "gtm": "GTM",
       "whatsapp": "WhatsApp",
-      "cookies": "Cookies"
+      "cookies": "Cookies",
+      "ai": "AI",
+      "a11y": "Accessibility"
     },
     "items": {
       "charles": {
@@ -103,8 +104,17 @@
       "esther": {
         "niche": "Online nutrition · Anápolis, Brazil",
         "description": "Online care across Brazil, in-person assessment and booking via WhatsApp."
+      },
+      "winner": {
+        "niche": "Corporate · Winner Tech",
+        "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer."
+      },
+      "caminu": {
+        "niche": "AI travel app · React Native",
+        "description": "Plans the trip itinerary with built-in AI: suggests destinations and sights, is accessible for people with disabilities, pet friendly and avoids the usual routes."
       }
-    }
+    },
+    "academic": "Academic project · UniEVANGÉLICA"
   },
   "stack": {
     "title": "Stack",
@@ -134,7 +144,7 @@
     "lead": "I started with the foundation: computer assembly and maintenance, networks and a lot of development in my Technical Degree in Internet Computing.",
     "body1": "Since finishing the technical course, I practice HTML5, CSS3 and ES6+ JavaScript. The IT routine at BAAN, solving real users' problems, taught me to design for the people who use things and helped me become the developer I am today.",
     "body2": "In practice, I learned SEO and I build high-conversion landing pages: fast, clear and made to lead people to act.",
-    "body3": "Now my focus is AI Engineering, with Claude. I'm in the 5th term of Software Engineering and working on a React Native project, Caminu.",
+    "body3": "Now my focus is AI Engineering, with Claude. I'm in the 5th term of Software Engineering and building an academic React Native project, Caminu (see Projects).",
     "photoAlt": "Portrait of Eduardo Dias, wearing round glasses and a black t-shirt, outdoors",
     "tag": "Anápolis, Brazil",
     "emphasisTitle": "Languages of focus",
@@ -154,12 +164,6 @@
       "years": "years in IT",
       "landings": "landing pages delivered",
       "languages": "languages"
-    },
-    "caminu": {
-      "kicker": "In progress",
-      "name": "Caminu",
-      "description": "An app that plans your trip itinerary with built-in AI: it suggests the best destinations and sights, is fully accessible for people with disabilities, pet friendly and proposes itineraries that avoid the usual tourist routes.",
-      "chip": "React Native"
     },
     "orbit": {
       "label": "Technologies in my stack"

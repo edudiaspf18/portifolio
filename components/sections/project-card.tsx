@@ -10,6 +10,7 @@ interface ProjectCardProps {
   niche: string;
   description: string;
   soonLabel: string;
+  academicLabel: string;
   visitLabel: string;
   tagLabels: readonly string[];
 }
@@ -19,10 +20,11 @@ export function ProjectCard({
   niche,
   description,
   soonLabel,
+  academicLabel,
   visitLabel,
   tagLabels,
 }: ProjectCardProps) {
-  const shot = hasShot(project.id);
+  const shot = project.hasImage && hasShot(project.id);
   const image = shot ? (
     <Image
       src={`/projects/${project.id}.jpg`}
@@ -96,6 +98,13 @@ export function ProjectCard({
               {visitLabel}
               <ArrowUpRight className="size-4" />
             </a>
+          ) : project.kind === "academic" ? (
+            <span
+              data-testid="project-academic"
+              className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+            >
+              {academicLabel}
+            </span>
           ) : (
             <Badge
               data-testid="project-soon"

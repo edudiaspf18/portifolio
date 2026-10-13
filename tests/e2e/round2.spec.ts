@@ -101,7 +101,7 @@ test('sobre: sem overflow em 375px com movimento normal', async ({ browser }) =>
   await ctx.close();
 });
 
-test('sobre: copy nova e bloco Caminu sem link', async ({ page }) => {
+test('sobre: copy nova cita o Caminu em uma frase, sem card', async ({ page }) => {
   await page.goto('/pt');
   const about = page.locator('section:has(#about)');
   await expect(about).toContainText('Técnico em Informática para Internet');
@@ -109,16 +109,12 @@ test('sobre: copy nova e bloco Caminu sem link', async ({ page }) => {
   await expect(about).toContainText('BAAN');
   await expect(about).toContainText('SEO');
   await expect(about).toContainText('5º período');
-  const caminu = page.getByTestId('caminu-card');
-  await expect(caminu).toContainText('Caminu');
-  await expect(caminu).toContainText('React Native');
-  await expect(caminu).toContainText('PcD');
-  await expect(caminu).toContainText('pet friendly');
-  await expect(caminu.locator('a')).toHaveCount(0);
+  await expect(about).toContainText('Caminu');
+  await expect(page.getByTestId('caminu-card')).toHaveCount(0);
 });
 
-test('sobre em inglês: bloco Caminu traduzido', async ({ page }) => {
+test('sobre em inglês: Caminu citado sem card', async ({ page }) => {
   await page.goto('/en');
-  await expect(page.getByTestId('caminu-card')).toContainText('pet friendly');
-  await expect(page.getByTestId('caminu-card')).toContainText('In progress');
+  await expect(page.locator('section:has(#about)')).toContainText('Caminu');
+  await expect(page.getByTestId('caminu-card')).toHaveCount(0);
 });

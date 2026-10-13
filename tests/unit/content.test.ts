@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { projects } from '@/content/projects';
 import { socials } from '@/content/socials';
 import { timeline } from '@/content/timeline';
+import en from '@/messages/en.json';
 import pt from '@/messages/pt.json';
 
 describe('content', () => {
@@ -12,23 +13,37 @@ describe('content', () => {
       expect(Object.keys(item).sort()).toEqual(['description', 'org', 'period', 'title']);
     }
   });
-  it('projects: ids únicos, textos presentes, url null ou https', () => {
+  it('projects: 6 ids únicos numerados, kinds, imagens, textos pt/en', () => {
     const ids = projects.map((p) => p.id);
-    expect(ids).toEqual(['charles', 'alianca', 'cecilia', 'esther']);
-    expect(new Set(ids).size).toBe(4);
-    expect(projects.map((p) => p.number)).toEqual(['001', '002', '004', '005']);
+    expect(ids).toEqual(['charles', 'alianca', 'cecilia', 'esther', 'winner', 'caminu']);
+    expect(new Set(ids).size).toBe(6);
+    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06']);
     expect(projects.filter((p) => p.url !== null).map((p) => [p.id, p.url])).toEqual([
       ['esther', 'https://www.estherduartenutri.com.br'],
     ]);
-    for (const p of projects) {
-      const item = (pt.projects.items as Record<string, Record<string, string>>)[p.id];
-      expect(item, p.id).toBeDefined();
-      expect(item.niche).toBeTruthy();
-      expect(item.description).toBeTruthy();
-      if (p.url !== null) expect(p.url.startsWith('https://')).toBe(true);
-      for (const tag of p.tags) {
-        expect((pt.projects.tags as Record<string, string>)[tag], tag).toBeTruthy();
+    expect(Object.fromEntries(projects.map((p) => [p.id, p.kind]))).toEqual({
+      charles: 'landing',
+      alianca: 'landing',
+      cecilia: 'landing',
+      esther: 'landing',
+      winner: 'site',
+      caminu: 'academic',
+    });
+    expect(projects.filter((p) => !p.hasImage).map((p) => p.id)).toEqual(['caminu']);
+    for (const messages of [pt, en]) {
+      expect((messages.projects as Record<string, unknown>).academic).toBeTruthy();
+      for (const p of projects) {
+        const item = (messages.projects.items as Record<string, Record<string, string>>)[p.id];
+        expect(item, p.id).toBeDefined();
+        expect(item.niche).toBeTruthy();
+        expect(item.description).toBeTruthy();
+        for (const tag of p.tags) {
+          expect((messages.projects.tags as Record<string, string>)[tag], tag).toBeTruthy();
+        }
       }
+    }
+    for (const p of projects) {
+      if (p.url !== null) expect(p.url.startsWith('https://')).toBe(true);
     }
   });
   it('socials: hrefs fixos', () => {

@@ -9,14 +9,14 @@ import { cn } from "@/lib/utils";
 export async function ContactSection() {
   const [t, locale] = await Promise.all([getTranslations("contact"), getLocale()]);
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <SectionHeading
         id="contact"
         index="05"
         title={t("title")}
         intro={t("subtitle")}
       />
-      <Reveal className="mt-16">
+      <Reveal className="mt-12">
         <ul className="border-t border-border/60">
           {socials.map((social) => (
             <li key={social.id} className="border-b border-border/60">

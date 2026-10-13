@@ -39,9 +39,9 @@ function Group({ title, items, accent = false }: GroupProps) {
 export async function StackSection() {
   const t = await getTranslations("stack");
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <SectionHeading id="stack" index="04" title={t("title")} />
-      <Reveal className="mt-16">
+      <Reveal className="mt-12">
         <div className="grid gap-8 md:grid-cols-3">
           <Group title={t("using")} items={stackUsing} />
           <Group title={t("learning")} items={stackLearning} accent />

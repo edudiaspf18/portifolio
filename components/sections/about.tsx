@@ -3,7 +3,6 @@ import { CountUp } from '@/components/motion/count-up';
 import { Reveal } from '@/components/motion/reveal';
 import { SectionHeading } from '@/components/section-heading';
 import { AboutPhoto } from '@/components/sections/about-photo';
-import { CaminuCard } from '@/components/sections/caminu-card';
 import { EmphasisList } from '@/components/sections/emphasis-list';
 import { StackOrbit } from '@/components/sections/stack-orbit';
 import { stats } from '@/content/stats';
@@ -14,9 +13,9 @@ export async function AboutSection() {
   const photo = hasProfilePhoto();
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <SectionHeading id="about" index="01" title={t('title')} />
-      <div className="mt-16 grid gap-16 lg:grid-cols-12">
+      <div className="mt-12 grid gap-16 lg:grid-cols-12">
         <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           {photo ? (
             <AboutPhoto src="/images/eduardo.jpg" alt={t('photoAlt')} tag={t('tag')}>
@@ -52,10 +51,9 @@ export async function AboutSection() {
               </div>
             ))}
           </dl>
-          <CaminuCard />
         </div>
       </div>
-      <div className="mt-24">
+      <div className="mt-16">
         <Reveal>
           <EmphasisList />
         </Reveal>

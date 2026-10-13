@@ -7,8 +7,8 @@ test('hero pt: saudação, nome, cargo, relógio, status e sem marquee', async (
   await expect(h1).toContainText('Eduardo Dias');
   await expect(page.getByText('pode me chamar de Dias')).toBeVisible();
   const role = page.getByTestId('hero-role');
-  await expect(role).toContainText('AI Engineer em formação, foco em');
-  await expect(role).toContainText('Claude');
+  await expect(role).toHaveText(/^AI Engineer em formação\.$/);
+  await expect(role).not.toContainText('Claude');
   await expect(page.getByTestId('live-clock')).toHaveText(/^\d{2}:\d{2}$/);
   await expect(page.getByText('Agora: estudando Next.js')).toBeVisible();
   await expect(page.getByTestId('marquee')).toHaveCount(0);
@@ -34,7 +34,7 @@ test('hero en: saudação e cargo em inglês', async ({ page }) => {
   await expect(h1).toContainText("Hi, I'm");
   await expect(h1).toContainText('Eduardo Dias');
   await expect(page.getByText('you can call me Dias')).toBeVisible();
-  await expect(page.getByTestId('hero-role')).toContainText('AI Engineer in training, focused on');
+  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training\.$/);
   await expect(page.getByText('Now: learning Next.js')).toBeVisible();
 });
 

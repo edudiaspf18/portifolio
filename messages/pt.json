@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Eduardo Dias · AI Engineer em formação",
-    "description": "Portfólio de Eduardo Dias: AI Engineer em formação com foco em Claude, landing pages de alta conversão e SEO. Anápolis, GO.",
+    "description": "Portfólio de Eduardo Dias: AI Engineer em formação, landing pages de alta conversão e SEO. Anápolis, GO.",
     "jobTitle": "AI Engineer em formação"
   },
   "nav": {
@@ -20,7 +20,7 @@
   },
   "hero": {
     "eyebrow": "Eduardo Dias · Anápolis, GO",
-    "title": "AI Engineer em formação. Foco em Claude.",
+    "title": "AI Engineer em formação.",
     "subtitle": "Construo landing pages de alta conversão com SEO e uso IA para entregar mais rápido. Front-end e UX são a minha base.",
     "ctaProjects": "Ver projetos",
     "ctaContact": "Falar comigo",
@@ -30,8 +30,7 @@
     "greeting": "Olá, eu sou",
     "name": "Eduardo Dias",
     "nickname": "pode me chamar de Dias",
-    "role": "AI Engineer em formação, foco em",
-    "roleKeyword": "Claude",
+    "role": "AI Engineer em formação",
     "ctaResume": "Baixar currículo"
   },
   "timeline": {
@@ -85,7 +84,9 @@
       "ga4": "GA4",
       "gtm": "GTM",
       "whatsapp": "WhatsApp",
-      "cookies": "Cookies"
+      "cookies": "Cookies",
+      "ai": "IA",
+      "a11y": "Acessibilidade"
     },
     "items": {
       "charles": {
@@ -103,8 +104,17 @@
       "esther": {
         "niche": "Nutrição online · Anápolis, GO",
         "description": "Atendimento online para todo o Brasil, avaliação presencial e agendamento via WhatsApp."
+      },
+      "winner": {
+        "niche": "Institucional · Winner Tech",
+        "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida."
+      },
+      "caminu": {
+        "niche": "App de viagens com IA · React Native",
+        "description": "Monta o roteiro da viagem com IA integrada: sugere destinos e pontos turísticos, é acessível para PcD, pet friendly e foge do mais do mesmo."
       }
-    }
+    },
+    "academic": "Projeto acadêmico · UniEVANGÉLICA"
   },
   "stack": {
     "title": "Stack",
@@ -134,7 +144,7 @@
     "lead": "Comecei pela base: montagem e manutenção de computadores, redes e muito desenvolvimento no Técnico em Informática para Internet.",
     "body1": "Desde o fim do técnico, pratico HTML5, CSS3 e JavaScript ES6+. A rotina de TI na BAAN, resolvendo problema de usuário de verdade, me ensinou a projetar para quem usa e me ajudou a virar o dev que sou hoje.",
     "body2": "Na prática, aprendi SEO e construo landing pages de alta conversão: rápidas, claras e feitas para levar a pessoa à ação.",
-    "body3": "Agora meu foco é AI Engineering, com Claude. Estou no 5º período de Engenharia de Software e atuo em um projeto em React Native, o Caminu.",
+    "body3": "Agora meu foco é AI Engineering, com Claude. Estou no 5º período de Engenharia de Software e desenvolvo um projeto acadêmico em React Native, o Caminu (veja em Projetos).",
     "photoAlt": "Retrato de Eduardo Dias, de óculos redondos e camiseta preta, ao ar livre",
     "tag": "Anápolis, GO",
     "emphasisTitle": "Linguagens de ênfase",
@@ -154,12 +164,6 @@
       "years": "anos em TI",
       "landings": "landings entregues",
       "languages": "idiomas"
-    },
-    "caminu": {
-      "kicker": "Projeto em andamento",
-      "name": "Caminu",
-      "description": "App que monta o roteiro da sua viagem com IA integrada: sugere os melhores destinos e pontos turísticos, é totalmente acessível para PcD, pet friendly e propõe roteiros que fogem do mais do mesmo.",
-      "chip": "React Native"
     },
     "orbit": {
       "label": "Tecnologias da minha stack"

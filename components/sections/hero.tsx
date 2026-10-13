@@ -28,7 +28,8 @@ export async function Hero() {
           data-testid="hero-role"
           className="relative z-10 mt-6 font-display text-[clamp(1.75rem,4.6vw,3.75rem)] leading-tight tracking-tight"
         >
-          {t('role')} <em className="text-signal-ink">{t('roleKeyword')}</em>
+          {t('role')}
+          <span className="text-signal">.</span>
         </p>
         <Reveal delay={0.5} className="relative z-10 mt-10 grid gap-10 md:grid-cols-12">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:col-span-6">

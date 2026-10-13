@@ -51,7 +51,7 @@ export default async function ResumePage({ params }: PageProps) {
           <div>
             <h1 className="font-display text-[34pt] leading-none tracking-tight">{profile.name}</h1>
             <p className="mt-2 font-display text-[15pt] leading-tight">
-              {th('role')} <em className="text-[#c2410c]">{th('roleKeyword')}</em>
+              {th('role')}.
             </p>
           </div>
         </div>
