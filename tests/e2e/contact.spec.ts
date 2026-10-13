@@ -15,9 +15,9 @@ test('contato: 5 redes com hrefs corretos e currículo baixável', async ({ page
   for (const [locale, label] of [['pt', 'Baixar currículo'], ['en', 'Download resume']] as const) {
     await page.goto(`/${locale}`);
     const href = `/curriculo-eduardo-dias-${locale}.pdf`;
-    const resume = page.locator(`a[href="${href}"]`).filter({ hasText: label });
-    await expect(resume.last()).toHaveAttribute('href', href);
-    await expect(resume.last()).toHaveAttribute('download', '');
+    const resume = page.locator('section:has(#contact)').locator(`a[href="${href}"]`).filter({ hasText: label });
+    await expect(resume).toHaveAttribute('href', href);
+    await expect(resume).toHaveAttribute('download', '');
     const res = await request.get(href);
     expect(res.status()).toBe(200);
     expect(res.headers()['content-type']).toContain('pdf');

@@ -54,7 +54,7 @@ sips -s format jpeg -s formatOptions 82 -Z 800 "foto perfil/foto minha.png" --ou
 ## Currículo
 
 - Rota A4 sem header do site: `/pt/curriculo` e `/en/curriculo` (`app/[locale]/curriculo/page.tsx`, `noindex`). Dados fixos em `content/profile.ts`; o resto vem das mensagens.
-- PDFs commitados em `public/curriculo-eduardo-dias-{pt,en}.pdf`. Para regenerar: `npm run build && npm start -- -p 3100` e, em outro terminal, `npm run resume`.
+- PDFs commitados em `public/curriculo-eduardo-dias-{pt,en}.pdf`. Para regenerar: `npm run build && npm start -- -p 3100` e, em outro terminal, `npm run resume` (usa `BASE_URL`, padrão `http://localhost:3100`; ex.: `BASE_URL=http://localhost:3000 npm run resume`).
 - Os botões do hero e do contato baixam o PDF do idioma atual.
 
 ## Como editar

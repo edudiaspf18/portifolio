@@ -63,6 +63,8 @@ test('sobre: órbita com 9 tecnologias acessíveis, anel girando e sem pausar no
   const li = orbit.locator('li').nth(4);
   await li.locator('span[aria-hidden]').first().hover({ force: true });
   expect(await li.evaluate((el) => el.matches(':hover'))).toBe(true);
+  const tip = li.locator('span[aria-hidden]').nth(1);
+  await expect(tip).toHaveCSS('opacity', '1');
   expect(await orbit.evaluate((el) => getComputedStyle(el).animationPlayState)).toBe('running');
   // contra-rotação com mesma duração mantém as fichas em pé
   const ringDuration = await orbit.evaluate((el) => getComputedStyle(el).animationDuration);

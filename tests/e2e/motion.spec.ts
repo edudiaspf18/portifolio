@@ -82,7 +82,7 @@ test('hover em CTA: tinta escura sobre signal no tema escuro', async ({ page }) 
   await expect(page.locator('html')).toHaveClass(/dark/);
   const targets = [
     page.getByRole('link', { name: 'Ver projetos' }),
-    page.locator('a[href="/curriculo-eduardo-dias-pt.pdf"]').last(),
+    page.locator('section:has(#contact)').locator('a[href="/curriculo-eduardo-dias-pt.pdf"]'),
   ];
   for (const el of targets) {
     await el.scrollIntoViewIfNeeded();

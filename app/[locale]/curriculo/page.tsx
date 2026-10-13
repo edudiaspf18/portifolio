@@ -33,7 +33,7 @@ export default async function ResumePage({ params }: PageProps) {
   const photo = hasProfilePhoto();
 
   return (
-    <div className="min-h-screen bg-[#ebe6d9] print:bg-white">
+    <main className="min-h-screen bg-[#ebe6d9] print:bg-white">
       <div
         data-testid="resume"
         className="mx-auto h-[297mm] w-[210mm] overflow-hidden bg-[#f5f2eb] p-[14mm] text-[10.5pt] leading-snug text-[#0f0e0c]"
@@ -119,7 +119,7 @@ export default async function ResumePage({ params }: PageProps) {
               <h2 className="font-mono text-[8pt] uppercase tracking-widest text-[#5c5850]">{r('sections.stack')}</h2>
               <ul className="mt-3 flex flex-wrap gap-1.5">
                 {stackIcons.map((icon) => (
-                  <li key={icon.id} title={icon.name}>
+                  <li key={icon.id}>
                     <span className="sr-only">{icon.name}</span>
                     <span aria-hidden className="flex size-[8mm] items-center justify-center rounded-full border border-[#d8d3c7]">
                       <svg viewBox="0 0 24 24" className="size-[4mm] fill-current" role="presentation">
@@ -129,7 +129,7 @@ export default async function ResumePage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 font-mono text-[7.5pt] text-[#5c5850]">{stackIcons.map((i) => i.name).join(' · ')}</p>
+              <p aria-hidden className="mt-3 font-mono text-[7.5pt] text-[#5c5850]">{stackIcons.map((i) => i.name).join(' · ')}</p>
             </section>
             <section>
               <h2 className="font-mono text-[8pt] uppercase tracking-widest text-[#5c5850]">{r('sections.certification')}</h2>
@@ -142,6 +142,6 @@ export default async function ResumePage({ params }: PageProps) {
           </aside>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
