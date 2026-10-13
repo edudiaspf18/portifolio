@@ -1,14 +1,8 @@
-interface IntroCurtainProps {
-  label: string;
-}
-
 // Cortina em CSS puro: roda sem JS; o script inline do layout marca data-intro="seen" na 2ª navegação da sessão.
-export function IntroCurtain({ label }: IntroCurtainProps) {
+export function IntroCurtain() {
   return (
     <div
       data-testid="intro-curtain"
-      role="presentation"
-      aria-label={label}
       aria-hidden
       className="pointer-events-none fixed inset-0 z-[60] animate-curtain-hide motion-reduce:animate-curtain-fade [html[data-intro=seen]_&]:hidden"
     >

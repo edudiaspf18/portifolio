@@ -88,17 +88,72 @@ test('cortina: aparece no primeiro carregamento, some, e não repete na sessão'
   await ctx.close();
 });
 
-test('cortina: reduced motion termina em menos de 600ms; sem JS termina oculta', async ({ browser }) => {
+test('cortina: reduced motion usa curtain-fade e oculta em ~700ms; sem reduced usa curtain-hide e segue visível aos 500ms', async ({ browser }) => {
   const reduced = await browser.newContext({ reducedMotion: 'reduce' });
-  const p1 = await reduced.newPage();
-  const started = Date.now();
-  await p1.goto('/pt');
-  await expect(p1.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 1500 });
-  expect(Date.now() - started).toBeLessThan(2500);
-  await reduced.close();
+  const normal = await browser.newContext();
   const nojs = await browser.newContext({ javaScriptEnabled: false });
-  const p2 = await nojs.newPage();
-  await p2.goto('/pt');
-  await expect(p2.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
-  await nojs.close();
+  try {
+    const p1 = await reduced.newPage();
+    const started = Date.now();
+    await p1.goto('/pt');
+    const c1 = p1.getByTestId('intro-curtain');
+    await expect(c1).toHaveCSS('animation-name', 'curtain-fade');
+    await expect(c1).toHaveCSS('visibility', 'hidden', { timeout: 900 });
+    expect(Date.now() - started).toBeLessThan(2500);
+
+    const p2 = await normal.newPage();
+    const t0 = Date.now();
+    await p2.goto('/pt');
+    const c2 = p2.getByTestId('intro-curtain');
+    await expect(c2).toHaveCSS('animation-name', 'curtain-hide');
+    if (Date.now() - t0 < 500) {
+      await p2.waitForTimeout(500 - (Date.now() - t0));
+      await expect(c2).toHaveCSS('visibility', 'visible');
+    }
+    await expect(c2).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
+
+    const p3 = await nojs.newPage();
+    await p3.goto('/pt');
+    await expect(p3.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
+  } finally {
+    await reduced.close();
+    await normal.close();
+    await nojs.close();
+  }
+});
+
+test('cortina não intercepta cliques: link do header navega com a cortina visível', async ({ page }) => {
+  await page.goto('/pt');
+  await expect(page.getByTestId('intro-curtain')).toHaveCSS('visibility', 'visible');
+  await page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('link', { name: 'Projetos' }).click({ timeout: 1000 });
+  await expect(page).toHaveURL(/#projects$/);
+});
+
+test('hero: entrada espera a cortina na 1ª visita e roda sem atraso na sessão já vista', async ({ browser }) => {
+  const fresh = await browser.newContext();
+  const seen = await browser.newContext();
+  try {
+    await seen.addInitScript(() => {
+      try {
+        sessionStorage.setItem('intro-seen', '1');
+      } catch {}
+    });
+    const p1 = await fresh.newPage();
+    const t0 = Date.now();
+    await p1.goto('/pt');
+    const w1 = p1.getByTestId('hero-word').first();
+    await p1.waitForTimeout(Math.max(0, 500 - (Date.now() - t0)));
+    const transform = await w1.evaluate((el) => getComputedStyle(el).transform);
+    expect(transform).not.toBe('none');
+    expect(transform).not.toBe('matrix(1, 0, 0, 1, 0, 0)');
+
+    const p2 = await seen.newPage();
+    await p2.goto('/pt');
+    await expect
+      .poll(async () => p2.getByTestId('hero-word').first().evaluate((el) => getComputedStyle(el).transform), { timeout: 1000 })
+      .toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+  } finally {
+    await fresh.close();
+    await seen.close();
+  }
 });

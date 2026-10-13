@@ -6,7 +6,7 @@ interface HeroTitleProps {
 }
 
 // Animação em CSS puro: o texto do LCP não depende de hidratação do JS.
-const delay = (index: number): string => `${0.05 + index * 0.05}s`;
+const delay = (index: number): string => `calc(var(--intro-delay, 0s) + ${0.05 + index * 0.05}s)`;
 
 interface WordProps {
   text: string;
@@ -65,7 +65,7 @@ export function HeroTitle({ greeting, name }: HeroTitleProps) {
             stroke="currentColor"
             strokeWidth="4"
             strokeLinecap="round"
-            style={{ animationDelay: `${0.05 + lastIndex * 0.05 + 0.3}s` }}
+            style={{ animationDelay: `calc(var(--intro-delay, 0s) + ${0.05 + lastIndex * 0.05 + 0.3}s)` }}
             className="animate-draw motion-reduce:animate-none"
           />
         </svg>

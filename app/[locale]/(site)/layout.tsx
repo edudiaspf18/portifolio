@@ -21,7 +21,7 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
             "try{var k='intro-seen';if(sessionStorage.getItem(k)){document.documentElement.dataset.intro='seen'}else{sessionStorage.setItem(k,'1')}}catch(e){}",
         }}
       />
-      <IntroCurtain label={t('introLabel')} />
+      <IntroCurtain />
       <a
         href="#content"
         className="sr-only rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background transition-all duration-200 ease-in-out focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
