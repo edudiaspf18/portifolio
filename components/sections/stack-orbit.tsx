@@ -28,7 +28,7 @@ export function StackOrbit({ label }: StackOrbitProps) {
               </span>
               <span
                 aria-hidden
-                className="hidden pointer-events-none absolute left-1/2 top-full z-10 mt-2 -translate-x-1/2 whitespace-nowrap rounded-full bg-foreground px-3 py-1 text-xs text-background group-hover:block"
+                className="pointer-events-none absolute left-1/2 top-full z-10 mt-2 -translate-x-1/2 scale-0 whitespace-nowrap rounded-full bg-foreground px-3 py-1 text-xs text-background opacity-0 transition-all duration-200 ease-in-out origin-top group-hover:scale-100 group-hover:opacity-100"
               >
                 {icon.name}
               </span>
