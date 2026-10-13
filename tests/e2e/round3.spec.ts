@@ -188,3 +188,33 @@ test('375: sem overflow horizontal com e sem cortina; linha alinhada à borda do
   const line = await page.getByTestId('timeline-line').boundingBox();
   expect(content && line && Math.abs(line.x - content.x)).toBeLessThanOrEqual(2);
 });
+
+test('projetos: reveal circular, borda SVG e ilustração do Caminu', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/pt');
+  const cards = page.getByTestId('project-card');
+  await cards.first().scrollIntoViewIfNeeded();
+  await expect.poll(() => cards.first().evaluate((el) => getComputedStyle(el).clipPath)).toMatch(/none|circle\((1[0-9]{2}|[2-9][0-9]{2})%/);
+  await expect(cards.first().getByTestId('project-frame')).toBeAttached();
+  await cards.nth(5).scrollIntoViewIfNeeded();
+  await expect(cards.nth(5).getByTestId('project-art')).toBeVisible();
+  await expect(cards.nth(5).locator('img')).toHaveCount(0);
+  await cards.nth(3).scrollIntoViewIfNeeded();
+  await cards.nth(3).hover();
+  await expect
+    .poll(() => cards.nth(3).locator('[data-testid="project-frame"] rect').evaluate((el) => parseFloat(getComputedStyle(el).strokeDashoffset)))
+    .toBeLessThan(0.05);
+});
+
+test('projetos: reduced motion e sem JS mostram todos os cards', async ({ browser }) => {
+  for (const options of [{ reducedMotion: 'reduce' as const }, { javaScriptEnabled: false }]) {
+    const ctx = await browser.newContext(options);
+    const page = await ctx.newPage();
+    await page.goto('/pt');
+    const cards = page.getByTestId('project-card');
+    for (let i = 0; i < 6; i += 1) {
+      await expect(cards.nth(i)).toHaveCSS('clip-path', 'none');
+    }
+    await ctx.close();
+  }
+});

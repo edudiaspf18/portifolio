@@ -35,8 +35,8 @@ test('reduced motion e sem JS: seções revelam sem scroll', async ({ browser })
     const page = await ctx.newPage();
     await page.goto('/pt');
     const cards = page.getByTestId('project-card');
-    await expect(cards.first().locator('xpath=..')).toHaveCSS('opacity', '1');
-    await expect(cards.last().locator('xpath=..')).toHaveCSS('opacity', '1');
+    await expect(cards.first()).toHaveCSS('clip-path', 'none');
+    await expect(cards.last()).toHaveCSS('clip-path', 'none');
     await ctx.close();
   }
 });
@@ -52,10 +52,13 @@ test('etiqueta de cursor fica dentro da imagem perto da borda direita', async ({
   await page.goto('/pt');
   const card = page.getByTestId('project-card').nth(3);
   await card.scrollIntoViewIfNeeded();
-  const box = await card.locator('a[target="_blank"]').first().boundingBox();
+  // clip-path circular recorta hit-test ate o reveal terminar; cantos arredondados (32px) nao recebem hover
+  await expect.poll(() => card.evaluate((el) => getComputedStyle(el).clipPath)).toMatch(/circle\((1[0-9]{2}|[2-9][0-9]{2})%/);
+  // container visivel (a midia interna e maior e recortada por causa do parallax)
+  const box = await card.getByTestId('cursor-label').locator('xpath=..').boundingBox();
   if (!box) throw new Error('sem box');
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-  await page.mouse.move(box.x + box.width - 6, box.y + 6, { steps: 4 });
+  await page.mouse.move(box.x + box.width - 40, box.y + 40, { steps: 4 });
   const label = card.getByTestId('cursor-label');
   await expect(label).toHaveCSS('opacity', '1');
   const l = await label.boundingBox();

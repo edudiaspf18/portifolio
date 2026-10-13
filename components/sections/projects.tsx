@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ProjectCard } from "@/components/sections/project-card";
 import { projects } from "@/content/projects";
@@ -16,17 +15,17 @@ export async function ProjectsSection() {
       />
       <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, i) => (
-          <Reveal key={project.id} delay={(i % 3) * 0.1}>
-            <ProjectCard
-              project={project}
-              niche={t(`items.${project.id}.niche`)}
-              description={t(`items.${project.id}.description`)}
-              soonLabel={t("soon")}
-              academicLabel={t("academic")}
-              visitLabel={t("visit")}
-              tagLabels={project.tags.map((tag) => t(`tags.${tag}`))}
-            />
-          </Reveal>
+          <ProjectCard
+            key={project.id}
+            index={i}
+            project={project}
+            niche={t(`items.${project.id}.niche`)}
+            description={t(`items.${project.id}.description`)}
+            soonLabel={t("soon")}
+            academicLabel={t("academic")}
+            visitLabel={t("visit")}
+            tagLabels={project.tags.map((tag) => t(`tags.${tag}`))}
+          />
         ))}
       </div>
     </section>
