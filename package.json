@@ -10,7 +10,8 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "e2e": "playwright test",
-    "shots": "tsx scripts/shots.ts"
+    "shots": "tsx scripts/shots.ts",
+    "gen:icons": "tsx scripts/gen-stack-icons.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -35,6 +36,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "simple-icons": "^16.35.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
     "typescript": "^5",

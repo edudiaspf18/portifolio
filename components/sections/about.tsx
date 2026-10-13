@@ -3,7 +3,9 @@ import { CountUp } from '@/components/motion/count-up';
 import { Reveal } from '@/components/motion/reveal';
 import { SectionHeading } from '@/components/section-heading';
 import { AboutPhoto } from '@/components/sections/about-photo';
+import { CaminuCard } from '@/components/sections/caminu-card';
 import { EmphasisList } from '@/components/sections/emphasis-list';
+import { StackOrbit } from '@/components/sections/stack-orbit';
 import { stats } from '@/content/stats';
 import { hasProfilePhoto } from '@/lib/profile-photo';
 
@@ -12,30 +14,33 @@ export async function AboutSection() {
   const photo = hasProfilePhoto();
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section className="mx-auto max-w-6xl overflow-x-clip px-6 py-24">
       <SectionHeading id="about" index="01" title={t('title')} />
-      <div className="mt-16 grid gap-16 md:grid-cols-12">
-        <div className="md:col-span-5">
+      <div className="mt-16 grid gap-16 lg:grid-cols-12">
+        <div className="lg:col-span-5">
           {photo ? (
-            <AboutPhoto src="/images/eduardo.jpg" alt={t('photoAlt')} tag={t('tag')} />
+            <AboutPhoto src="/images/eduardo.jpg" alt={t('photoAlt')} tag={t('tag')}>
+              <StackOrbit label={t('orbit.label')} />
+            </AboutPhoto>
           ) : (
             <div
               data-testid="about-photo-placeholder"
               role="img"
               aria-label={t('photoAlt')}
-              className="flex aspect-square items-center justify-center border border-foreground bg-muted font-display text-8xl"
+              className="flex aspect-square items-center justify-center rounded-full border border-foreground bg-muted font-display text-8xl"
             >
               ED
             </div>
           )}
         </div>
-        <div className="md:col-span-7">
+        <div className="lg:col-span-7">
           <Reveal>
             <p className="font-display text-3xl leading-tight tracking-tight md:text-5xl">{t('lead')}</p>
           </Reveal>
           <Reveal delay={0.1} className="mt-8 max-w-xl space-y-4 text-lg leading-relaxed text-muted-foreground">
             <p>{t('body1')}</p>
             <p>{t('body2')}</p>
+            <p>{t('body3')}</p>
           </Reveal>
           <dl data-testid="stats" className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
             {stats.map((stat) => (
@@ -47,6 +52,7 @@ export async function AboutSection() {
               </div>
             ))}
           </dl>
+          <CaminuCard />
         </div>
       </div>
       <div className="mt-24">

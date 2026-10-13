@@ -47,3 +47,53 @@ for (const width of [800, 1024]) {
     expect(overflow).toBeLessThanOrEqual(0);
   });
 }
+
+test('sobre: órbita com 9 tecnologias acessíveis, anel girando e sem pausar no hover', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/pt');
+  const orbit = page.getByTestId('stack-orbit');
+  // o anel gira, então o Playwright nunca o considera "estável": rola via DOM
+  await orbit.evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  await expect(orbit.locator('li')).toHaveCount(9);
+  for (const name of ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Figma', 'Claude']) {
+    await expect(orbit.getByText(name, { exact: true })).toBeAttached();
+  }
+  expect(await orbit.evaluate((el) => getComputedStyle(el).animationName)).not.toBe('none');
+  // força: o anel gira, então o alvo nunca fica "estável" para o Playwright
+  await orbit.locator('li').nth(4).locator('span[aria-hidden]').first().hover({ force: true });
+  expect(await orbit.evaluate((el) => getComputedStyle(el).animationPlayState)).toBe('running');
+});
+
+test('sobre: órbita estática em reduced motion e sem overflow em 375px', async ({ browser }) => {
+  const ctx = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 375, height: 800 } });
+  const page = await ctx.newPage();
+  await page.goto('/pt');
+  const orbit = page.getByTestId('stack-orbit');
+  await orbit.scrollIntoViewIfNeeded();
+  expect(await orbit.evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow).toBeLessThanOrEqual(0);
+  await ctx.close();
+});
+
+test('sobre: copy nova e bloco Caminu sem link', async ({ page }) => {
+  await page.goto('/pt');
+  const about = page.locator('section:has(#about)');
+  await expect(about).toContainText('Técnico em Informática para Internet');
+  await expect(about).toContainText('HTML5, CSS3 e JavaScript ES6+');
+  await expect(about).toContainText('BAAN');
+  await expect(about).toContainText('SEO');
+  await expect(about).toContainText('5º período');
+  const caminu = page.getByTestId('caminu-card');
+  await expect(caminu).toContainText('Caminu');
+  await expect(caminu).toContainText('React Native');
+  await expect(caminu).toContainText('PcD');
+  await expect(caminu).toContainText('pet friendly');
+  await expect(caminu.locator('a')).toHaveCount(0);
+});
+
+test('sobre em inglês: bloco Caminu traduzido', async ({ page }) => {
+  await page.goto('/en');
+  await expect(page.getByTestId('caminu-card')).toContainText('pet friendly');
+  await expect(page.getByTestId('caminu-card')).toContainText('In progress');
+});

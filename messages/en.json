@@ -131,9 +131,10 @@
   },
   "about": {
     "title": "About me",
-    "lead": "I started in tech support: assembling computers, running cable and solving real users' problems.",
-    "body1": "Five years of that taught me to design for the people who use things. Today I build interfaces and high-conversion landing pages, with UX, Figma and SEO.",
-    "body2": "Since September 2026 I'm specializing in AI Engineering, focused on Claude. I'm still studying Software Engineering at UniEVANGÉLICA.",
+    "lead": "I started with the foundation: computer assembly and maintenance, networks and a lot of development in my Technical Degree in Internet Computing.",
+    "body1": "Since finishing the technical course, I practice HTML5, CSS3 and ES6+ JavaScript. The IT routine at BAAN, solving real users' problems, taught me to design for the people who use things and helped me become the developer I am today.",
+    "body2": "In practice, I learned SEO and I build high-conversion landing pages: fast, clear and made to lead people to act.",
+    "body3": "Now my focus is AI Engineering, with Claude. I'm in the 5th term of Software Engineering and working on a React Native project, Caminu.",
     "photoAlt": "Portrait of Eduardo Dias, wearing round glasses and a black t-shirt, outdoors",
     "tag": "Anápolis, Brazil",
     "emphasisTitle": "Languages of focus",
@@ -153,6 +154,15 @@
       "years": "years in IT",
       "landings": "landing pages delivered",
       "languages": "languages"
+    },
+    "caminu": {
+      "kicker": "In progress",
+      "name": "Caminu",
+      "description": "An app that plans your trip itinerary with built-in AI: it suggests the best destinations and sights, is fully accessible for people with disabilities, pet friendly and proposes itineraries that avoid the usual tourist routes.",
+      "chip": "React Native"
+    },
+    "orbit": {
+      "label": "Technologies in my stack"
     }
   }
 }

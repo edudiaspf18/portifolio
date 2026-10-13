@@ -131,9 +131,10 @@
   },
   "about": {
     "title": "Sobre mim",
-    "lead": "Comecei no suporte técnico: montando computadores, passando cabo e resolvendo problema de usuário de verdade.",
-    "body1": "Cinco anos nisso me ensinaram a projetar para quem usa. Hoje desenvolvo interfaces e landing pages de alta conversão, com UX, Figma e SEO.",
-    "body2": "Desde setembro de 2026 me especializo em AI Engineering, com foco em Claude. Sigo cursando Engenharia de Software na UniEVANGÉLICA.",
+    "lead": "Comecei pela base: montagem e manutenção de computadores, redes e muito desenvolvimento no Técnico em Informática para Internet.",
+    "body1": "Desde o fim do técnico, pratico HTML5, CSS3 e JavaScript ES6+. A rotina de TI na BAAN, resolvendo problema de usuário de verdade, me ensinou a projetar para quem usa e me ajudou a virar o dev que sou hoje.",
+    "body2": "Na prática, aprendi SEO e construo landing pages de alta conversão: rápidas, claras e feitas para levar a pessoa à ação.",
+    "body3": "Agora meu foco é AI Engineering, com Claude. Estou no 5º período de Engenharia de Software e atuo em um projeto em React Native, o Caminu.",
     "photoAlt": "Retrato de Eduardo Dias, de óculos redondos e camiseta preta, ao ar livre",
     "tag": "Anápolis, GO",
     "emphasisTitle": "Linguagens de ênfase",
@@ -153,6 +154,15 @@
       "years": "anos em TI",
       "landings": "landings entregues",
       "languages": "idiomas"
+    },
+    "caminu": {
+      "kicker": "Projeto em andamento",
+      "name": "Caminu",
+      "description": "App que monta o roteiro da sua viagem com IA integrada: sugere os melhores destinos e pontos turísticos, é totalmente acessível para PcD, pet friendly e propõe roteiros que fogem do mais do mesmo.",
+      "chip": "React Native"
+    },
+    "orbit": {
+      "label": "Tecnologias da minha stack"
     }
   }
 }
