@@ -24,15 +24,15 @@
     "subtitle": "I build high-conversion landing pages with SEO and use AI to ship faster. Front-end and UX are my foundation.",
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
-    "titleLead": "AI Engineer in training,",
-    "titleFocus": "focused on",
-    "titleKey": "Claude",
     "local": "Anápolis, Brazil",
     "clockLabel": "Local time",
-    "now": "Now: learning Next.js, building with Claude Code."
-  },
-  "marquee": {
-    "label": "Technologies in focus"
+    "now": "Now: learning Next.js, building with Claude Code.",
+    "greeting": "Hi, I'm",
+    "name": "Eduardo Dias",
+    "nickname": "you can call me Dias",
+    "role": "AI Engineer in training, focused on",
+    "roleKeyword": "Claude",
+    "ctaResume": "Download resume"
   },
   "timeline": {
     "title": "Journey",
@@ -88,10 +88,22 @@
       "cookies": "Cookies"
     },
     "items": {
-      "charles": { "niche": "Used cars and rentals · Anápolis, Brazil", "description": "Showcase of 26 vehicles with filters, a page per car and a direct WhatsApp CTA." },
-      "alianca": { "niche": "Office furniture", "description": "Conversion landing page with GTM tracking and end-to-end tests." },
-      "cecilia": { "niche": "Aesthetic biomedicine · Uberlândia, Brazil", "description": "Editorial landing page with professional credentials up front and the patient journey." },
-      "esther": { "niche": "Online nutrition · Anápolis, Brazil", "description": "Online care across Brazil, in-person assessment and booking via WhatsApp." }
+      "charles": {
+        "niche": "Used cars and rentals · Anápolis, Brazil",
+        "description": "Showcase of 26 vehicles with filters, a page per car and a direct WhatsApp CTA."
+      },
+      "alianca": {
+        "niche": "Office furniture",
+        "description": "Conversion landing page with GTM tracking and end-to-end tests."
+      },
+      "cecilia": {
+        "niche": "Aesthetic biomedicine · Uberlândia, Brazil",
+        "description": "Editorial landing page with professional credentials up front and the patient journey."
+      },
+      "esther": {
+        "niche": "Online nutrition · Anápolis, Brazil",
+        "description": "Online care across Brazil, in-person assessment and booking via WhatsApp."
+      }
     }
   },
   "stack": {

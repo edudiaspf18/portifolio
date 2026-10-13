@@ -24,15 +24,15 @@
     "subtitle": "Construo landing pages de alta conversão com SEO e uso IA para entregar mais rápido. Front-end e UX são a minha base.",
     "ctaProjects": "Ver projetos",
     "ctaContact": "Falar comigo",
-    "titleLead": "AI Engineer em formação,",
-    "titleFocus": "foco em",
-    "titleKey": "Claude",
     "local": "Anápolis, GO",
     "clockLabel": "Horário local",
-    "now": "Agora: estudando Next.js, construindo com Claude Code."
-  },
-  "marquee": {
-    "label": "Tecnologias em foco"
+    "now": "Agora: estudando Next.js, construindo com Claude Code.",
+    "greeting": "Olá, eu sou",
+    "name": "Eduardo Dias",
+    "nickname": "pode me chamar de Dias",
+    "role": "AI Engineer em formação, foco em",
+    "roleKeyword": "Claude",
+    "ctaResume": "Baixar currículo"
   },
   "timeline": {
     "title": "Trajetória",
@@ -88,10 +88,22 @@
       "cookies": "Cookies"
     },
     "items": {
-      "charles": { "niche": "Seminovos e locadora · Anápolis, GO", "description": "Vitrine de 26 veículos com filtros, página por carro e CTA direto ao WhatsApp." },
-      "alianca": { "niche": "Móveis para escritório", "description": "Landing de conversão com tracking via GTM e testes end-to-end." },
-      "cecilia": { "niche": "Biomedicina estética · Uberlândia, MG", "description": "Landing editorial com credibilidade profissional à vista e jornada da paciente." },
-      "esther": { "niche": "Nutrição online · Anápolis, GO", "description": "Atendimento online para todo o Brasil, avaliação presencial e agendamento via WhatsApp." }
+      "charles": {
+        "niche": "Seminovos e locadora · Anápolis, GO",
+        "description": "Vitrine de 26 veículos com filtros, página por carro e CTA direto ao WhatsApp."
+      },
+      "alianca": {
+        "niche": "Móveis para escritório",
+        "description": "Landing de conversão com tracking via GTM e testes end-to-end."
+      },
+      "cecilia": {
+        "niche": "Biomedicina estética · Uberlândia, MG",
+        "description": "Landing editorial com credibilidade profissional à vista e jornada da paciente."
+      },
+      "esther": {
+        "niche": "Nutrição online · Anápolis, GO",
+        "description": "Atendimento online para todo o Brasil, avaliação presencial e agendamento via WhatsApp."
+      }
     }
   },
   "stack": {

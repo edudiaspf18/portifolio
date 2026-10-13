@@ -14,10 +14,11 @@
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
   --color-signal-foreground: var(--signal-foreground);
-  --animate-marquee: marquee 40s linear infinite;
-  @keyframes marquee {
+  --animate-orbit: orbit 80s linear infinite;
+  --animate-orbit-reverse: orbit 80s linear infinite reverse;
+  @keyframes orbit {
     to {
-      transform: translateX(-50%);
+      transform: rotate(360deg);
     }
   }
   --animate-word-up: word-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;

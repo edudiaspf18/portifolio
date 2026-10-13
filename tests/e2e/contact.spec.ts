@@ -12,7 +12,7 @@ test('contato: 5 redes com hrefs corretos e currículo baixável', async ({ page
     'https://www.instagram.com/dudu_diaspf/',
     'https://wa.me/5562994267841',
   ]);
-  const resume = page.getByRole('link', { name: 'Baixar currículo' });
+  const resume = page.locator('a[href="/curriculo-eduardo-dias.pdf"]');
   await expect(resume).toHaveAttribute('href', '/curriculo-eduardo-dias.pdf');
   const res = await request.get('/curriculo-eduardo-dias.pdf');
   expect(res.status()).toBe(200);

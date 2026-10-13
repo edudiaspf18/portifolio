@@ -1,13 +1,12 @@
 import { cn } from '@/lib/utils';
 
 interface HeroTitleProps {
-  lead: string;
-  focus: string;
-  keyword: string;
+  greeting: string;
+  name: string;
 }
 
 // Animação em CSS puro: o texto do LCP não depende de hidratação do JS.
-const delay = (index: number): string => `${0.05 + index * 0.04}s`;
+const delay = (index: number): string => `${0.05 + index * 0.05}s`;
 
 interface WordProps {
   text: string;
@@ -17,7 +16,7 @@ interface WordProps {
 
 function Word({ text, index, italic = false }: WordProps) {
   return (
-    <span className={'inline-block overflow-hidden pb-[0.14em] pr-[0.08em] align-bottom'}>
+    <span className="inline-block overflow-hidden pb-[0.14em] pr-[0.08em] align-bottom">
       <span
         data-testid="hero-word"
         style={{ animationDelay: delay(index) }}
@@ -29,27 +28,29 @@ function Word({ text, index, italic = false }: WordProps) {
   );
 }
 
-export function HeroTitle({ lead, focus, keyword }: HeroTitleProps) {
-  const leadWords = lead.split(' ');
-  const focusWords = focus.split(' ');
-  const offset = leadWords.length;
-  const keyIndex = offset + focusWords.length;
+export function HeroTitle({ greeting, name }: HeroTitleProps) {
+  const greetingWords = greeting.split(' ');
+  const nameWords = name.split(' ');
+  const lastName = nameWords[nameWords.length - 1] ?? name;
+  const firstNames = nameWords.slice(0, -1);
+  const firstNameIndex = greetingWords.length;
+  const lastIndex = firstNameIndex + firstNames.length;
 
   return (
-    <h1 className="font-display text-[clamp(3.25rem,11vw,9.5rem)] leading-[0.95] tracking-tight">
-      {leadWords.map((word, i) => (
-        <span key={`l-${i}`}>
+    <h1 className="font-display text-[clamp(3.25rem,10.5vw,9.5rem)] leading-[0.95] tracking-tight">
+      {greetingWords.map((word, i) => (
+        <span key={`g-${i}`}>
           <Word text={word} index={i} />{' '}
         </span>
       ))}
       <br className="hidden md:block" />
-      {focusWords.map((word, i) => (
-        <span key={`f-${i}`}>
-          <Word text={word} index={offset + i} italic />{' '}
+      {firstNames.map((word, i) => (
+        <span key={`n-${i}`}>
+          <Word text={word} index={firstNameIndex + i} italic />{' '}
         </span>
       ))}
       <span className="relative inline-block">
-        <Word text={keyword} index={keyIndex} italic />
+        <Word text={lastName} index={lastIndex} italic />
         <svg
           aria-hidden
           viewBox="0 0 200 12"
@@ -64,7 +65,7 @@ export function HeroTitle({ lead, focus, keyword }: HeroTitleProps) {
             stroke="currentColor"
             strokeWidth="4"
             strokeLinecap="round"
-            style={{ animationDelay: `${0.05 + keyIndex * 0.04 + 0.3}s` }}
+            style={{ animationDelay: `${0.05 + lastIndex * 0.05 + 0.3}s` }}
             className="animate-draw motion-reduce:animate-none"
           />
         </svg>

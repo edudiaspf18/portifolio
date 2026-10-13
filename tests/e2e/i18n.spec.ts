@@ -36,10 +36,10 @@ test.describe('i18n', () => {
   test('switch pt → en muda URL, lang e h1', async ({ page }) => {
     await page.goto('/pt');
     await expect(page.locator('html')).toHaveAttribute('lang', 'pt');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('AI Engineer em formação');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Olá, eu sou');
     await page.getByRole('link', { name: 'en', exact: true }).click();
     await expect(page).toHaveURL(/\/en$/);
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('AI Engineer in training');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText("Hi, I'm");
   });
 });

@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { AboutSection } from '@/components/sections/about';
 import { ContactSection } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
-import { Marquee } from '@/components/motion/marquee';
 import { Hero } from '@/components/sections/hero';
 import { ProjectsSection } from '@/components/sections/projects';
 import { StackSection } from '@/components/sections/stack';
@@ -45,7 +44,6 @@ export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'meta' });
-  const tm = await getTranslations({ locale, namespace: 'marquee' });
 
   const personLd = {
     '@context': 'https://schema.org',
@@ -66,7 +64,6 @@ export default async function HomePage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd).replace(/</g, '\\u003c') }}
       />
       <Hero />
-      <Marquee label={tm('label')} />
       <AboutSection />
       <TimelineSection />
       <ProjectsSection />
