@@ -39,6 +39,15 @@ test('sobre: reduced motion e sem JS mostram foto e números finais', async ({ b
   }
 });
 
+test('sobre: sem JS a foto não recebe translate do parallax', async ({ browser }) => {
+  const ctx = await browser.newContext({ javaScriptEnabled: false });
+  const page = await ctx.newPage();
+  await page.goto('/pt');
+  const transform = await page.getByTestId('about-photo').evaluate((el) => getComputedStyle(el).transform);
+  expect(transform).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+  await ctx.close();
+});
+
 test('sobre: link do menu leva à seção', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/pt');

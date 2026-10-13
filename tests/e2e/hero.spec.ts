@@ -40,6 +40,19 @@ test('hero: reduced motion mostra tudo de imediato', async ({ browser }) => {
   await ctx.close();
 });
 
+test('hero: animação CSS roda sem reduced motion e é desligada com reduced motion', async ({ browser }) => {
+  const names: Record<string, string> = {};
+  for (const [key, reducedMotion] of [['normal', 'no-preference'], ['reduced', 'reduce']] as const) {
+    const ctx = await browser.newContext({ reducedMotion });
+    const page = await ctx.newPage();
+    await page.goto('/pt');
+    names[key] = await page.getByTestId('hero-word').first().evaluate((el) => getComputedStyle(el).animationName);
+    await ctx.close();
+  }
+  expect(names.normal).not.toBe('none');
+  expect(names.reduced).toBe('none');
+});
+
 test('hero: sem JS o título fica visível', async ({ browser }) => {
   const ctx = await browser.newContext({ javaScriptEnabled: false });
   const page = await ctx.newPage();

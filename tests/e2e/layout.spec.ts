@@ -20,13 +20,36 @@ test('menu mobile: abre, navega para #projects, fecha e sem overflow', async ({ 
   const toggle = page.locator('summary[aria-label="Menu"]');
   await expect(toggle).toBeVisible();
   await toggle.click();
-  const link = page.getByRole('navigation', { name: 'Menu de navegação' }).getByRole('link', { name: 'Projetos' });
+  const menu = page.getByRole('navigation', { name: 'Menu de navegação' });
+  const about = menu.getByRole('link', { name: 'Sobre' });
+  await expect(about).toBeVisible();
+  await about.click();
+  await expect(page).toHaveURL(/#about$/);
+  await toggle.click();
+  const link = menu.getByRole('link', { name: 'Projetos' });
   await expect(link).toBeVisible();
   await link.click();
   await expect(page).toHaveURL(/#projects$/);
   await expect(page.locator('details[open]')).toHaveCount(0);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
+});
+
+test('reduced motion: sem erro de console/hidratação ao rolar a página', async ({ browser }) => {
+  const ctx = await browser.newContext({ reducedMotion: 'reduce' });
+  const page = await ctx.newPage();
+  const errors: string[] = [];
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto('/pt');
+  await page.waitForLoadState('networkidle');
+  const height = await page.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y <= height; y += 600) {
+    await page.evaluate((top) => window.scrollTo(0, top), y);
+    await page.waitForTimeout(100);
+  }
+  expect(errors).toEqual([]);
+  await ctx.close();
 });
 
 test('menu mobile: oculto em desktop', async ({ page }) => {

@@ -105,7 +105,6 @@ test('marquee em reduced motion mostra todos os itens sem overflow horizontal', 
   const context = await browser.newContext({
     reducedMotion: 'reduce',
     viewport: { width: 375, height: 800 },
-    baseURL: 'http://localhost:3100',
   });
   const page = await context.newPage();
   await page.goto('/pt');
