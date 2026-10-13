@@ -41,7 +41,12 @@ test('hero en: saudação e cargo em inglês', async ({ page }) => {
 test('hero: palavras sobem e o traço desenha', async ({ page }) => {
   await page.goto('/pt');
   const words = page.getByTestId('hero-word');
-  expect(await words.count()).toBeGreaterThanOrEqual(5);
+  // Olá, eu, sou, Eduardo, Dias
+  await expect(words).toHaveCount(5);
+  await page.goto('/en');
+  // Hi,, I'm, Eduardo, Dias
+  await expect(page.getByTestId('hero-word')).toHaveCount(4);
+  await page.goto('/pt');
   await expect(words.last()).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
   await expect(page.getByTestId('hero-underline')).toBeAttached();
 });
@@ -95,4 +100,16 @@ test('hero: link de currículo discreto aponta para o PDF do idioma', async ({ p
     'href',
     '/curriculo-eduardo-dias-en.pdf',
   );
+});
+
+test('hero: círculos decorativos pintam atrás do texto', async ({ page }) => {
+  await page.goto('/pt');
+  const z = await page.evaluate(() => {
+    const h1Wrap = document.querySelector('h1')!.parentElement!;
+    const cs = getComputedStyle(h1Wrap);
+    return { position: cs.position, zIndex: cs.zIndex };
+  });
+  expect(z.position).toBe('relative');
+  expect(Number(z.zIndex)).toBeGreaterThanOrEqual(10);
+  await expect(page.getByTestId('hero-orbits')).toHaveCSS('pointer-events', 'none');
 });
