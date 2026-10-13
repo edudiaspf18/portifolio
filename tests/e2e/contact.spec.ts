@@ -104,3 +104,20 @@ for (const reduced of [false, true]) {
     });
   }
 }
+
+test('contato: reduced motion a 1440 não anima órbita nem chips', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
+  try {
+    const page = await ctx.newPage();
+    await page.goto('/pt');
+    const orbit = page.getByTestId('contact-orbit');
+    await expect(orbit.locator('ul')).toHaveCSS('animation-name', 'none');
+    const wrappers = orbit.locator('ul > li > div');
+    await expect(wrappers).toHaveCount(4);
+    for (let i = 0; i < 4; i += 1) {
+      await expect(wrappers.nth(i)).toHaveCSS('animation-name', 'none');
+    }
+  } finally {
+    await ctx.close();
+  }
+});

@@ -16,13 +16,13 @@ export function ContactOrbit({ label, email }: ContactOrbitProps) {
       <div aria-hidden className="absolute inset-[28%] hidden rounded-full border border-border md:block" />
       <ul
         aria-label={label}
-        className="flex flex-wrap justify-center gap-4 md:absolute md:inset-8 md:block md:animate-orbit md:rounded-full md:border md:border-border motion-reduce:animate-none"
+        className="flex flex-wrap justify-center gap-4 md:absolute md:inset-8 md:block motion-safe:md:animate-orbit md:rounded-full md:border md:border-border"
       >
         {chips.map((chip, i) => {
           const pos = orbitPosition(i, chips.length);
           return (
             <li key={chip.id} className="md:absolute md:size-0" style={{ left: pos.left, top: pos.top }}>
-              <div className="md:absolute md:-left-8 md:-top-8 md:size-16 md:animate-orbit-reverse motion-reduce:animate-none">
+              <div className="md:absolute md:-left-8 md:-top-8 md:size-16 motion-safe:md:animate-orbit-reverse">
                 <a
                   data-testid="social-link"
                   href={chip.href}
