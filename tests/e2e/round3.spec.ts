@@ -223,3 +223,24 @@ test('projetos: reduced motion e sem JS mostram todos os cards', async ({ browse
     await ctx.close();
   }
 });
+
+test('ênfase: 5 medalhões com descrição visível sem hover', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/pt');
+  const medals = page.getByTestId('emphasis-medallion');
+  await expect(medals).toHaveCount(5);
+  await expect(medals.first()).toContainText('TypeScript');
+  await expect(medals.first()).toContainText('aprendendo');
+  await expect(medals.first().getByText(/Tipagem estrita/)).toBeVisible();
+  await expect(page.getByTestId('emphasis-list')).toHaveCount(0);
+});
+
+test('stack: três grupos com ícone + nome, C em noções com nota', async ({ page }) => {
+  await page.goto('/pt');
+  await expect(page.getByTestId('stack-group-using').getByTestId('stack-item')).toHaveCount(10);
+  await expect(page.getByTestId('stack-group-learning').getByTestId('stack-item')).toHaveCount(6);
+  await expect(page.getByTestId('stack-group-basic').getByTestId('stack-item')).toHaveCount(5);
+  const c = page.getByTestId('stack-group-basic').getByTestId('stack-item').filter({ hasText: /^C\b/ });
+  await expect(c).toContainText('primeiros períodos');
+  await expect(page.getByTestId('stack-item').first().locator('svg')).toHaveCount(1);
+});

@@ -3,7 +3,7 @@ import { CountUp } from '@/components/motion/count-up';
 import { Reveal } from '@/components/motion/reveal';
 import { SectionHeading } from '@/components/section-heading';
 import { AboutPhoto } from '@/components/sections/about-photo';
-import { EmphasisList } from '@/components/sections/emphasis-list';
+import { EmphasisMedallions } from '@/components/sections/emphasis-medallions';
 import { StackOrbit } from '@/components/sections/stack-orbit';
 import { stats } from '@/content/stats';
 import { hasProfilePhoto } from '@/lib/profile-photo';
@@ -55,7 +55,7 @@ export async function AboutSection() {
       </div>
       <div className="mt-16">
         <Reveal>
-          <EmphasisList />
+          <EmphasisMedallions />
         </Reveal>
       </div>
     </section>

@@ -17,6 +17,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return { title: t('metaTitle'), robots: { index: false, follow: false } };
 }
 
+// PDF mostra só os 9 logos originais
+const resumeIcons = stackIcons.slice(0, 9);
 const EXPERIENCE_IDS = ['frontend', 'techWinner', 'baan'] as const;
 const EDUCATION_IDS = ['degree', 'cpet'] as const;
 
@@ -128,7 +130,7 @@ export default async function ResumePage({ params }: PageProps) {
             <section>
               <h2 className="font-mono text-[8pt] uppercase tracking-widest text-[#5c5850]">{r('sections.stack')}</h2>
               <ul className="mt-3 flex flex-wrap gap-1.5">
-                {stackIcons.map((icon) => (
+                {resumeIcons.map((icon) => (
                   <li key={icon.id}>
                     <span className="sr-only">{icon.name}</span>
                     <span aria-hidden className="flex size-[8mm] items-center justify-center rounded-full border border-[#d8d3c7]">
@@ -139,7 +141,7 @@ export default async function ResumePage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
-              <p aria-hidden className="mt-3 font-mono text-[7.5pt] text-[#5c5850]">{stackIcons.map((i) => i.name).join(' · ')}</p>
+              <p aria-hidden className="mt-3 font-mono text-[7.5pt] text-[#5c5850]">{resumeIcons.map((i) => i.name).join(' · ')}</p>
             </section>
             <section>
               <h2 className="font-mono text-[8pt] uppercase tracking-widest text-[#5c5850]">{r('sections.certification')}</h2>

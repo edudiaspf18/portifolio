@@ -11,6 +11,9 @@ describe('about content', () => {
       expect((en.about.emphasis as Record<string, string>)[id], id).toBeTruthy();
     }
   });
+  it('toda ênfase tem iconId', () => {
+    expect(emphasis.map((e) => e.iconId)).toEqual(['typescript', 'react', 'nextjs', 'tailwind', 'claude']);
+  });
   it('ênfase: TypeScript, React, Next.js aprendendo; Tailwind e Claude usando', () => {
     const byId = Object.fromEntries(emphasis.map((e) => [e.id, e.status]));
     expect(byId).toEqual({

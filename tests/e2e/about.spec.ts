@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('sobre: foto carrega, texto, ênfase e números finais', async ({ page }) => {
+test('sobre: foto carrega, texto e números finais', async ({ page }) => {
   await page.goto('/pt');
   const section = page.locator('section:has(#about)');
   await section.scrollIntoViewIfNeeded();
@@ -8,14 +8,6 @@ test('sobre: foto carrega, texto, ênfase e números finais', async ({ page }) =
   const photo = section.getByRole('img', { name: /Retrato de Eduardo Dias/ });
   await expect(photo).toBeVisible();
   await expect.poll(() => photo.evaluate((i) => (i as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
-  const rows = page.getByTestId('emphasis-list').getByRole('link');
-  await expect(rows).toHaveCount(5);
-  await expect(rows.first()).toContainText('TypeScript');
-  await expect(rows.first()).toContainText('aprendendo');
-  await expect(rows.nth(3)).toContainText('usando');
-  const tsLink = page.getByRole('link', { name: /TypeScript/ });
-  await expect(tsLink).toHaveAccessibleName(/aprendendo/);
-  await expect(tsLink).toHaveAccessibleName(/Tipagem estrita/);
   await page.getByTestId('stats').scrollIntoViewIfNeeded();
   await expect(page.getByTestId('stat-years')).toHaveText('5+', { timeout: 5000 });
   await expect(page.getByTestId('stat-landings')).toHaveText('4');

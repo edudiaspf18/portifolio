@@ -123,7 +123,15 @@
     "basic": "Basics",
     "extras": "Certification and languages",
     "scrum": "Scrum Foundation (completed)",
-    "languages": "Portuguese native · English basic"
+    "languages": "Portuguese native · English basic",
+    "intro": {
+      "using": "What I use every week on real projects.",
+      "learning": "What I'm learning now, hands-on.",
+      "basic": "What I saw at university or in one-off work."
+    },
+    "notes": {
+      "c": "seen in the first terms at university"
+    }
   },
   "contact": {
     "title": "Let's talk",

@@ -1,6 +1,9 @@
 import { stackIcons } from '@/content/stack-icons';
 import { orbitPosition } from '@/lib/orbit';
 
+// só os 9 logos originais orbitam
+const orbitIcons = stackIcons.slice(0, 9);
+
 interface StackOrbitProps {
   label: string;
 }
@@ -12,8 +15,8 @@ export function StackOrbit({ label }: StackOrbitProps) {
       data-testid="stack-orbit"
       className="absolute inset-0 animate-orbit motion-reduce:animate-none"
     >
-      {stackIcons.map((icon, i) => {
-        const pos = orbitPosition(i, stackIcons.length);
+      {orbitIcons.map((icon, i) => {
+        const pos = orbitPosition(i, orbitIcons.length);
         return (
           <li key={icon.id} className="group absolute size-0 hover:z-20" style={{ left: pos.left, top: pos.top }}>
             <div data-testid="orbit-chip" className="absolute -left-7 -top-7 size-14 animate-orbit-reverse motion-reduce:animate-none">
