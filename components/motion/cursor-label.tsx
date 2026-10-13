@@ -44,7 +44,7 @@ export function CursorLabel({
         aria-hidden
         data-testid="cursor-label"
         style={{ x, y }}
-        className="pointer-events-none absolute left-0 top-0 -ml-9 -mt-4 hidden bg-signal motion-reduce:hidden px-3 py-1 font-mono text-xs uppercase tracking-widest text-[#0f0e0c] opacity-0 transition-opacity duration-200 ease-in-out group-hover/cursor:opacity-100 [@media(hover:hover)]:motion-safe:block"
+        className="pointer-events-none absolute left-0 top-0 -ml-9 -mt-4 hidden bg-signal motion-reduce:hidden px-3 py-1 font-mono text-xs uppercase tracking-widest text-signal-foreground opacity-0 transition-opacity duration-200 ease-in-out group-hover/cursor:opacity-100 [@media(hover:hover)]:motion-safe:block"
       >
         {label}
       </motion.span>

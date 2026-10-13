@@ -30,7 +30,7 @@ export async function Hero() {
               href="#projects"
               className={cn(
                 buttonVariants({ size: 'lg' }),
-                'transition-all duration-200 ease-in-out hover:bg-signal hover:text-[#0f0e0c] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                'transition-all duration-200 ease-in-out hover:bg-signal hover:text-signal-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
               )}
             >
               {t('ctaProjects')}

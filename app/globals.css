@@ -13,6 +13,7 @@
   --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
+  --color-signal-foreground: var(--signal-foreground);
   --animate-marquee: marquee 40s linear infinite;
   @keyframes marquee {
     to {
@@ -109,6 +110,7 @@
   --sidebar-ring: oklch(0.708 0 0);
   --signal: #ff5a1f;
   --signal-ink: #c2410c;
+  --signal-foreground: #0f0e0c;
 }
 
 .dark {
@@ -145,6 +147,7 @@
   --sidebar-ring: oklch(0.556 0 0);
   --signal: #ff5a1f;
   --signal-ink: #ff7a45;
+  --signal-foreground: #0f0e0c;
 }
 
 @layer base {
