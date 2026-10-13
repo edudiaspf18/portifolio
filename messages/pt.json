@@ -136,6 +136,10 @@
   "contact": {
     "title": "Vamos conversar",
     "subtitle": "Landing page, site ou um projeto com IA. Respondo rápido.",
+    "whatsapp": "Chamar no WhatsApp",
+    "email": "Copiar e-mail",
+    "copied": "Copiado",
+    "orbitLabel": "Minhas redes",
     "resume": "Baixar currículo",
     "location": "Anápolis, GO"
   },

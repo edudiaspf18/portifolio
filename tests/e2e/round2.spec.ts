@@ -39,7 +39,7 @@ for (const width of [800, 1024]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/pt');
     await page.evaluate(() => document.getElementById('contact')?.scrollIntoView());
-    const row = page.getByTestId('social-link').first();
+    const row = page.getByTestId('contact-whatsapp');
     await row.hover();
     const box = await row.boundingBox();
     expect(box?.x ?? -1).toBeGreaterThanOrEqual(0);

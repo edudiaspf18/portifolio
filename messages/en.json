@@ -136,6 +136,10 @@
   "contact": {
     "title": "Let's talk",
     "subtitle": "A landing page, a website or an AI project. I reply fast.",
+    "whatsapp": "Message on WhatsApp",
+    "email": "Copy e-mail",
+    "copied": "Copied",
+    "orbitLabel": "My networks",
     "resume": "Download resume",
     "location": "Anápolis, Brazil"
   },
