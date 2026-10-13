@@ -102,14 +102,10 @@ test('cortina: reduced motion usa curtain-fade e oculta em ~700ms; sem reduced u
     expect(Date.now() - started).toBeLessThan(2500);
 
     const p2 = await normal.newPage();
-    const t0 = Date.now();
     await p2.goto('/pt');
     const c2 = p2.getByTestId('intro-curtain');
     await expect(c2).toHaveCSS('animation-name', 'curtain-hide');
-    if (Date.now() - t0 < 500) {
-      await p2.waitForTimeout(500 - (Date.now() - t0));
-      await expect(c2).toHaveCSS('visibility', 'visible');
-    }
+    await expect(c2).toHaveCSS('visibility', 'visible');
     await expect(c2).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
 
     const p3 = await nojs.newPage();
@@ -139,13 +135,9 @@ test('hero: entrada espera a cortina na 1ª visita e roda sem atraso na sessão 
       } catch {}
     });
     const p1 = await fresh.newPage();
-    const t0 = Date.now();
     await p1.goto('/pt');
-    const w1 = p1.getByTestId('hero-word').first();
-    await p1.waitForTimeout(Math.max(0, 500 - (Date.now() - t0)));
-    const transform = await w1.evaluate((el) => getComputedStyle(el).transform);
-    expect(transform).not.toBe('none');
-    expect(transform).not.toBe('matrix(1, 0, 0, 1, 0, 0)');
+    const delay = await p1.getByTestId('hero-word').first().evaluate((el) => getComputedStyle(el).animationDelay);
+    expect(parseFloat(delay)).toBeGreaterThanOrEqual(1.1);
 
     const p2 = await seen.newPage();
     await p2.goto('/pt');

@@ -66,7 +66,7 @@ export function TimelineClient({ items }: TimelineClientProps) {
             </div>
             <div
               data-testid="timeline-content"
-              className="relative mt-4 border-l border-border pb-10 pl-8 pt-2 md:col-span-9 md:mt-0 md:pl-12 md:pt-10"
+              className="relative mt-4 border-l border-border pb-10 pl-8 pt-2 md:col-span-9 md:mt-0 md:pl-12 md:pr-16 md:pt-10"
             >
               <span
                 aria-hidden

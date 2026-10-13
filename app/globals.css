@@ -221,7 +221,7 @@ html:not([data-intro="seen"]) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html:not([data-intro="seen"]) {
     --intro-delay: 0.3s;
   }
 }
