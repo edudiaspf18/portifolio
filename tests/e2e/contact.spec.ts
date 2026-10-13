@@ -121,3 +121,40 @@ test('contato: reduced motion a 1440 não anima órbita nem chips', async ({ bro
     await ctx.close();
   }
 });
+
+test('contato: copiar e-mail por teclado e anúncio aria-live', async ({ browser }) => {
+  const ctx = await browser.newContext({ permissions: ['clipboard-read', 'clipboard-write'] });
+  try {
+    const page = await ctx.newPage();
+    await page.goto('/pt');
+    await expect(page.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 5000 });
+    const email = page.getByTestId('contact-email');
+    await email.focus();
+    await expect(email).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(email).toContainText('Copiado');
+    await expect(page.locator('[aria-live="polite"]').filter({ hasText: 'Copiado' })).toHaveText('Copiado');
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('dududiaspf@gmail.com');
+  } finally {
+    await ctx.close();
+  }
+});
+
+for (const width of [768, 1024, 1440]) {
+  test(`página inteira sem overflow horizontal a ${width}px`, async ({ browser }) => {
+    const ctx = await browser.newContext({ viewport: { width, height: 900 } });
+    try {
+      const page = await ctx.newPage();
+      await page.goto('/pt');
+      const total = await page.evaluate(() => document.documentElement.scrollHeight);
+      for (let y = 0; y <= total; y += 600) {
+        await page.evaluate((top) => window.scrollTo(0, top), y);
+        await page.waitForTimeout(80);
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        expect(overflow, `y=${y}`).toBeLessThanOrEqual(0);
+      }
+    } finally {
+      await ctx.close();
+    }
+  });
+}
