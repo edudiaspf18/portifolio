@@ -19,7 +19,7 @@ interface TimelineClientProps {
 }
 
 export function TimelineClient({ items }: TimelineClientProps) {
-  const ref = useRef<HTMLOListElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 70%', 'end 70%'] });
   const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
@@ -28,13 +28,14 @@ export function TimelineClient({ items }: TimelineClientProps) {
   // propósito (CSS cobre o SSR antes da hidratação). noscript:* cobre JS desabilitado, onde o
   // opacity:0 inline do SSR nunca seria removido.
   return (
-    <ol ref={ref} className="relative ml-2 border-l border-zinc-200 dark:border-zinc-800">
+    <div ref={ref} className="relative ml-2 border-l border-zinc-200 dark:border-zinc-800">
       <motion.span
         aria-hidden
         data-testid="timeline-line"
         style={{ scaleY: reduce ? 1 : scaleY }}
         className="absolute -left-px top-0 h-full w-px origin-top bg-orange-600 motion-reduce:!transform-none noscript:!transform-none dark:bg-orange-500"
       />
+      <ol>
       {items.map((item) => (
         <motion.li
           key={item.id}
@@ -60,6 +61,7 @@ export function TimelineClient({ items }: TimelineClientProps) {
           <p className="mt-3 max-w-xl leading-relaxed text-zinc-500 dark:text-zinc-400">{item.description}</p>
         </motion.li>
       ))}
-    </ol>
+      </ol>
+    </div>
   );
 }

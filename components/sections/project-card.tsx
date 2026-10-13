@@ -25,9 +25,9 @@ export function ProjectCard({ project, niche, description, soonLabel, visitLabel
         {shot ? (
           <Image
             src={`/projects/${project.id}.jpg`}
-            alt={project.name}
+            alt=""
             fill
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 1152px) 560px, (min-width: 768px) 50vw, 100vw"
             className="object-cover object-top"
           />
         ) : (

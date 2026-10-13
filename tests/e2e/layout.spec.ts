@@ -20,7 +20,7 @@ test('menu mobile: abre, navega para #projects, fecha e sem overflow', async ({ 
   const toggle = page.locator('summary[aria-label="Menu"]');
   await expect(toggle).toBeVisible();
   await toggle.click();
-  const link = page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('link', { name: 'Projetos' });
+  const link = page.getByRole('navigation', { name: 'Menu de navegação' }).getByRole('link', { name: 'Projetos' });
   await expect(link).toBeVisible();
   await link.click();
   await expect(page).toHaveURL(/#projects$/);
