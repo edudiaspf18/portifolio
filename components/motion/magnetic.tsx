@@ -12,8 +12,8 @@ export function Magnetic({ children, strength = 0.25 }: MagneticProps) {
   const reduce = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 220, damping: 20 });
-  const sy = useSpring(y, { stiffness: 220, damping: 20 });
+  const sx = useSpring(x, { stiffness: 220, damping: 30 });
+  const sy = useSpring(y, { stiffness: 220, damping: 30 });
 
   function onMove(event: PointerEvent<HTMLDivElement>): void {
     if (reduce || event.pointerType !== 'mouse') return;
