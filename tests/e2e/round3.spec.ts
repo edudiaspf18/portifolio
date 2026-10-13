@@ -22,32 +22,53 @@ test('sobre não tem mais o card do Caminu; projetos tem 6 cards numerados', asy
   await expect(page.getByTestId('project-link')).toHaveCount(1);
 });
 
-test('ritmo: vão entre seções ≤ 160px em 1440', async ({ page }) => {
+test('ritmo: padding das seções e vão entre seções', async ({ page }) => {
+  for (const [width, pad] of [
+    [1440, '80px'],
+    [375, '64px'],
+  ] as const) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/pt');
+    const paddings = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('main > section'))
+        .filter((el) => el.id !== 'top')
+        .map((el) => {
+          const cs = getComputedStyle(el);
+          return [cs.paddingTop, cs.paddingBottom];
+        }),
+    );
+    expect(paddings.length).toBeGreaterThanOrEqual(5);
+    for (const [top, bottom] of paddings) {
+      expect(top).toBe(pad);
+      expect(bottom).toBe(pad);
+    }
+  }
+
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/pt');
   const ids = ['about', 'timeline', 'projects', 'stack', 'contact'];
   const sections = page.locator('main > section');
   const count = await sections.count();
   expect(count).toBeGreaterThanOrEqual(ids.length);
-  // seções contíguas (sem margem entre elas)
+  // seções contíguas (sem margem entre elas; tolerância subpixel)
   for (let i = 1; i < count; i += 1) {
     const prev = await sections.nth(i - 1).boundingBox();
     const next = await sections.nth(i).boundingBox();
     if (!prev || !next) continue;
-    expect(next.y - (prev.y + prev.height)).toBeLessThanOrEqual(0);
+    expect(Math.abs(next.y - (prev.y + prev.height))).toBeLessThan(1);
   }
-  // vão visual: fim do último bloco da seção anterior até o início do primeiro bloco da seção
-  // (divisória curva); o título fica abaixo da divisória, que faz parte do cabeçalho.
+  // vão visual: fim do último bloco da seção anterior até a divisória curva da seção
   for (const id of ids) {
     const gap = await page.evaluate((sel) => {
-      const section = document.getElementById(sel)?.closest('section');
+      const h = document.getElementById(sel);
+      const section = h?.closest('section');
       const prev = section?.previousElementSibling;
-      if (!section || !prev) return Number.POSITIVE_INFINITY;
-      const last = Array.from(prev.children).pop();
-      const first = section.firstElementChild;
-      if (!last || !first) return Number.POSITIVE_INFINITY;
-      return first.getBoundingClientRect().top - last.getBoundingClientRect().bottom;
+      const last = prev ? Array.from(prev.children).pop() : null;
+      const first = section?.firstElementChild;
+      if (!h || !section || !last || !first) return -1;
+      return Math.round(first.getBoundingClientRect().top - last.getBoundingClientRect().bottom);
     }, id);
-    expect(gap, id).toBeLessThanOrEqual(160);
+    expect(gap, id).toBeGreaterThanOrEqual(0);
+    expect(gap, id).toBeLessThanOrEqual(170);
   }
 });

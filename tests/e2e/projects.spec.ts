@@ -26,7 +26,8 @@ test('nenhuma imagem de projeto quebrada (print ou placeholder)', async ({ page 
   const imgs = page.locator('[data-testid="project-card"] img');
   const imgCount = await imgs.count();
   const placeholderCount = await page.locator('[data-testid="project-card"]:not(:has(img))').count();
-  expect(imgCount).toBeGreaterThanOrEqual(1);
+  expect(imgCount).toBe(5);
+  expect(placeholderCount).toBe(1);
   expect(imgCount + placeholderCount).toBe(6);
   await expect(cards).toHaveCount(6);
 
