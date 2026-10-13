@@ -15,12 +15,6 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
   const t = await getTranslations('nav');
   return (
     <>
-      <script
-        dangerouslySetInnerHTML={{
-          __html:
-            "try{var k='intro-seen';if(sessionStorage.getItem(k)){document.documentElement.dataset.intro='seen'}else{sessionStorage.setItem(k,'1')}}catch(e){}",
-        }}
-      />
       <IntroCurtain />
       <a
         href="#content"

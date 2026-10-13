@@ -76,7 +76,7 @@ test('ritmo: padding das seções e vão entre seções', async ({ page }) => {
 test('cortina: aparece no primeiro carregamento, some, e não repete na sessão', async ({ browser }) => {
   const ctx = await browser.newContext();
   const page = await ctx.newPage();
-  await page.goto('/pt');
+  await page.goto('/pt', { waitUntil: 'commit' });
   const curtain = page.getByTestId('intro-curtain');
   await expect(curtain).toBeAttached();
   expect(await page.locator('html').getAttribute('data-intro')).not.toBe('seen');
@@ -88,6 +88,25 @@ test('cortina: aparece no primeiro carregamento, some, e não repete na sessão'
   await ctx.close();
 });
 
+test('cortina: troca de idioma client-side não repete a cortina nem avisa sobre <script>', async ({ browser }) => {
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  const messages: string[] = [];
+  page.on('console', (m) => {
+    if (m.type() === 'error' || m.type() === 'warning') messages.push(m.text());
+  });
+  page.on('pageerror', (e) => messages.push(e.message));
+  await page.goto('/pt');
+  await expect(page.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
+  await expect(page.locator('html')).toHaveAttribute('data-intro', 'seen');
+  await page.getByRole('navigation', { name: 'Idioma' }).getByRole('link', { name: 'en' }).click();
+  await expect(page).toHaveURL(/\/en$/);
+  await expect(page.locator('html')).toHaveAttribute('data-intro', 'seen');
+  await expect(page.getByTestId('intro-curtain')).toHaveCSS('display', 'none');
+  expect(messages.filter((m) => /script tag/i.test(m))).toEqual([]);
+  await ctx.close();
+});
+
 test('cortina: reduced motion usa curtain-fade e oculta em ~700ms; sem reduced usa curtain-hide e segue visível aos 500ms', async ({ browser }) => {
   const reduced = await browser.newContext({ reducedMotion: 'reduce' });
   const normal = await browser.newContext();
@@ -95,21 +114,21 @@ test('cortina: reduced motion usa curtain-fade e oculta em ~700ms; sem reduced u
   try {
     const p1 = await reduced.newPage();
     const started = Date.now();
-    await p1.goto('/pt');
+    await p1.goto('/pt', { waitUntil: 'commit' });
     const c1 = p1.getByTestId('intro-curtain');
     await expect(c1).toHaveCSS('animation-name', 'curtain-fade');
     await expect(c1).toHaveCSS('visibility', 'hidden', { timeout: 900 });
     expect(Date.now() - started).toBeLessThan(2500);
 
     const p2 = await normal.newPage();
-    await p2.goto('/pt');
+    await p2.goto('/pt', { waitUntil: 'commit' });
     const c2 = p2.getByTestId('intro-curtain');
     await expect(c2).toHaveCSS('animation-name', 'curtain-hide');
     await expect(c2).toHaveCSS('visibility', 'visible');
     await expect(c2).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
 
     const p3 = await nojs.newPage();
-    await p3.goto('/pt');
+    await p3.goto('/pt', { waitUntil: 'commit' });
     await expect(p3.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 3000 });
   } finally {
     await reduced.close();
@@ -119,7 +138,7 @@ test('cortina: reduced motion usa curtain-fade e oculta em ~700ms; sem reduced u
 });
 
 test('cortina não intercepta cliques: link do header navega com a cortina visível', async ({ page }) => {
-  await page.goto('/pt');
+  await page.goto('/pt', { waitUntil: 'commit' });
   await expect(page.getByTestId('intro-curtain')).toHaveCSS('visibility', 'visible');
   await page.getByRole('navigation', { name: 'Navegação principal' }).getByRole('link', { name: 'Projetos' }).click({ timeout: 1000 });
   await expect(page).toHaveURL(/#projects$/);
