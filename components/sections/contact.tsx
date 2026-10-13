@@ -26,7 +26,7 @@ export async function ContactSection() {
                 {...(social.href.startsWith("http")
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                className="group -mx-6 flex items-center justify-between rounded-full px-6 py-6 font-display text-3xl tracking-tight transition-all duration-200 ease-in-out hover:bg-muted hover:text-signal-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-5xl"
+                className="group -mx-6 my-1 flex items-center justify-between rounded-full px-6 py-6 md:-mx-10 md:px-10 font-display text-3xl tracking-tight transition-all duration-200 ease-in-out hover:bg-muted hover:text-signal-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-5xl"
               >
                 {social.label}
                 <ArrowUpRight className="size-6 text-muted-foreground transition-all duration-200 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-1 md:size-8" />

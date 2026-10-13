@@ -8,6 +8,7 @@ export function CurveDivider({ className }: CurveDividerProps) {
   return (
     <svg
       aria-hidden
+      data-testid="curve-divider"
       viewBox="0 0 1200 24"
       preserveAspectRatio="none"
       className={cn('h-6 w-full text-border', className)}
