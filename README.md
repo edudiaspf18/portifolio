@@ -12,7 +12,7 @@ Next.js 16 (App Router, RSC) · React 19 · TypeScript · Tailwind v4 · shadcn/
 
 ## Estrutura
 
-- `app/[locale]/` layout, página, not-found localizado, catch-all 404 e OG image por idioma
+- `app/[locale]/` layout raiz por idioma, grupo de rotas `(site)` (layout com header/footer, página, not-found, catch-all 404 e OG image) e `curriculo` (rota A4 fora do `(site)`, sem header/footer)
 - `app/icon.tsx`, `app/apple-icon.tsx` favicon (monograma ED)
 - `components/sections/` seções da página (hero, timeline, projects, stack, contact, footer)
 - `content/` dados tipados: `projects.ts`, `stack.ts`, `timeline.ts`, `socials.ts`
@@ -46,8 +46,8 @@ Para cada projeto, tenta a URL ao vivo; se falhar ou não houver, sobe `npm run 
 
 ## Identidade e movimento
 
-- Tema claro é o padrão (papel `#f5f2eb`, tinta quente, sinal laranja); o escuro é opt-in via toggle. Tokens (`--signal`, `--signal-ink`, `--ring`, fontes, animações `marquee`, `word-up`, `draw`) em `app/globals.css`.
-- Movimento em `components/motion/*` (reveal, magnetic, contador, relógio, barra de progresso, marquee). Todo movimento respeita `prefers-reduced-motion`; sem JS o conteúdo continua visível (as animações simplesmente não aparecem).
+- Tema claro é o padrão (papel `#f5f2eb`, tinta quente, sinal laranja); o escuro é opt-in via toggle. Tokens (`--signal`, `--signal-ink`, `--ring`, fontes, animações `word-up`, `draw`) em `app/globals.css`.
+- Movimento em `components/motion/*` (reveal, magnetic, contador, relógio, barra de progresso, cursor). Todo movimento respeita `prefers-reduced-motion`; sem JS o conteúdo continua visível (as animações simplesmente não aparecem).
 - Lighthouse: a performance varia de 91 a 96 entre execuções nesta máquina (LCP ~100–200 ms, CLS 0; acessibilidade, boas práticas e SEO são 100), então a meta "≥ 95" só é atingida em algumas execuções. Falham no laboratório o LCP simulado e o CSS que bloqueia renderização; várias correções foram tentadas sem ganho confiável.
 - Foto da seção Sobre: `public/images/eduardo.jpg`. Para gerar de novo:
 
