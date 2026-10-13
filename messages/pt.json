@@ -4,6 +4,7 @@
     "description": "Portfólio de Eduardo Dias: AI Engineer em formação com foco em Claude, landing pages de alta conversão e SEO. Anápolis, GO."
   },
   "nav": {
+    "menu": "Menu",
     "timeline": "Trajetória",
     "projects": "Projetos",
     "stack": "Stack",

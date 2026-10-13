@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { LocaleSwitch } from '@/components/locale-switch';
+import { MobileNav } from '@/components/mobile-nav';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 const links = ['timeline', 'projects', 'stack', 'contact'] as const;
@@ -29,6 +30,7 @@ export async function SiteHeader() {
         <div className="flex items-center gap-2">
           <LocaleSwitch />
           <ThemeToggle />
+          <MobileNav label={t('menu')} links={links.map((id) => ({ id, label: t(id) }))} />
         </div>
       </div>
     </header>

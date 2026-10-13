@@ -4,6 +4,7 @@
     "description": "Eduardo Dias' portfolio: AI Engineer in training focused on Claude, high-conversion landing pages and SEO. Anápolis, Brazil."
   },
   "nav": {
+    "menu": "Menu",
     "timeline": "Journey",
     "projects": "Projects",
     "stack": "Stack",
