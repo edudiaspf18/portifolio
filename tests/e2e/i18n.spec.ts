@@ -19,6 +19,20 @@ test.describe('i18n', () => {
     expect((await page.goto('/xx'))?.status()).toBe(404);
     expect((await page.goto('/xx/abc'))?.status()).toBe(404);
   });
+  const notFoundCases = [
+    { locale: 'pt', h1: 'Página não encontrada', back: 'Voltar ao início' },
+    { locale: 'en', h1: 'Page not found', back: 'Back to home' },
+  ];
+  for (const { locale, h1, back } of notFoundCases) {
+    test(`/${locale}/abc → 404 localizado`, async ({ page }) => {
+      const res = await page.goto(`/${locale}/abc`);
+      expect(res?.status()).toBe(404);
+      await expect(page.locator('html')).toHaveAttribute('lang', locale);
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(h1);
+      await expect(page).toHaveTitle(new RegExp(h1));
+      await expect(page.getByRole('link', { name: back })).toHaveAttribute('href', `/${locale}`);
+    });
+  }
   test('switch pt → en muda URL, lang e h1', async ({ page }) => {
     await page.goto('/pt');
     await expect(page.locator('html')).toHaveAttribute('lang', 'pt');
