@@ -56,12 +56,19 @@ test('sobre: órbita com 9 tecnologias acessíveis, anel girando e sem pausar no
   await orbit.evaluate((el) => el.scrollIntoView({ block: 'center' }));
   await expect(orbit.locator('li')).toHaveCount(9);
   for (const name of ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Figma', 'Claude']) {
-    await expect(orbit.getByText(name, { exact: true })).toBeAttached();
+    await expect(orbit.getByText(name, { exact: true }).and(page.locator('.sr-only'))).toHaveCount(1);
   }
   expect(await orbit.evaluate((el) => getComputedStyle(el).animationName)).not.toBe('none');
   // força: o anel gira, então o alvo nunca fica "estável" para o Playwright
-  await orbit.locator('li').nth(4).locator('span[aria-hidden]').first().hover({ force: true });
+  const li = orbit.locator('li').nth(4);
+  await li.locator('span[aria-hidden]').first().hover({ force: true });
+  expect(await li.evaluate((el) => el.matches(':hover'))).toBe(true);
   expect(await orbit.evaluate((el) => getComputedStyle(el).animationPlayState)).toBe('running');
+  // contra-rotação com mesma duração mantém as fichas em pé
+  const ringDuration = await orbit.evaluate((el) => getComputedStyle(el).animationDuration);
+  const chipDuration = await li.getByTestId('orbit-chip').evaluate((el) => getComputedStyle(el).animationDuration);
+  expect(ringDuration).toBe('80s');
+  expect(chipDuration).toBe(ringDuration);
 });
 
 test('sobre: órbita estática em reduced motion e sem overflow em 375px', async ({ browser }) => {
@@ -71,6 +78,22 @@ test('sobre: órbita estática em reduced motion e sem overflow em 375px', async
   const orbit = page.getByTestId('stack-orbit');
   await orbit.scrollIntoViewIfNeeded();
   expect(await orbit.evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
+  expect(await orbit.getByTestId('orbit-chip').first().evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
+  expect(await page.getByTestId('photo-orbit-dot').evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
+  expect(await page.getByTestId('about-assembly').evaluate((el) => getComputedStyle(el).transform)).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow).toBeLessThanOrEqual(0);
+  await ctx.close();
+});
+
+test('sobre: sem overflow em 375px com movimento normal', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 375, height: 800 } });
+  const page = await ctx.newPage();
+  await page.goto('/pt');
+  const orbit = page.getByTestId('stack-orbit');
+  await orbit.evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  await page.waitForTimeout(1500);
+  expect(await orbit.evaluate((el) => getComputedStyle(el).animationName)).not.toBe('none');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
   await ctx.close();

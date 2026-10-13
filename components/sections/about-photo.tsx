@@ -27,26 +27,29 @@ export function AboutPhoto({ src, alt, tag, children }: AboutPhotoProps) {
       viewport={{ once: true, margin: '-80px' }}
       className="relative mx-auto w-full max-w-md px-7 lg:max-w-none"
     >
-      <div className="relative aspect-square w-full">
+      <motion.div
+        data-testid="about-assembly"
+        style={{ y }}
+        className="relative aspect-square w-full motion-reduce:transform-none! noscript:transform-none!"
+      >
         <div aria-hidden className="absolute inset-0 rounded-full border border-border" />
         {children}
         <div aria-hidden className="absolute inset-[14%] rounded-full border border-border" />
-        <span aria-hidden className="absolute inset-[14%] animate-orbit motion-reduce:animate-none">
+        <span aria-hidden data-testid="photo-orbit-dot" className="absolute inset-[14%] animate-orbit motion-reduce:animate-none">
           <span className="absolute left-1/2 top-0 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal" />
         </span>
         <motion.div
           data-testid="about-photo"
-          style={{ y }}
           variants={{ hidden: { clipPath: 'circle(0% at 50% 50%)' }, visible: { clipPath: 'circle(75% at 50% 50%)' } }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-[20%] overflow-hidden rounded-full border border-foreground bg-muted motion-reduce:[clip-path:none]! noscript:[clip-path:none]! noscript:transform-none! motion-reduce:transform-none!"
+          className="absolute inset-[20%] overflow-hidden rounded-full border border-foreground bg-muted motion-reduce:[clip-path:none]! noscript:[clip-path:none]!"
         >
           <Image src={src} alt={alt} fill sizes="(min-width: 768px) 280px, 60vw" className="object-cover" />
         </motion.div>
         <span className="absolute bottom-[14%] left-1/2 -translate-x-1/2 -rotate-6 whitespace-nowrap rounded-full border border-foreground bg-background px-4 py-1 font-mono text-xs uppercase tracking-widest">
           {tag}
         </span>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
