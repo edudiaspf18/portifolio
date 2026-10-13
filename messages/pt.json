@@ -22,7 +22,16 @@
     "title": "AI Engineer em formação. Foco em Claude.",
     "subtitle": "Construo landing pages de alta conversão com SEO e uso IA para entregar mais rápido. Front-end e UX são a minha base.",
     "ctaProjects": "Ver projetos",
-    "ctaContact": "Falar comigo"
+    "ctaContact": "Falar comigo",
+    "titleLead": "AI Engineer em formação,",
+    "titleFocus": "foco em",
+    "titleKey": "Claude",
+    "local": "Anápolis, GO",
+    "clockLabel": "Horário local",
+    "now": "Agora: estudando Next.js, construindo com Claude Code."
+  },
+  "marquee": {
+    "label": "Tecnologias em foco"
   },
   "timeline": {
     "title": "Trajetória",

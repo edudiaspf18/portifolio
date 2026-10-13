@@ -22,7 +22,16 @@
     "title": "AI Engineer in training. Focused on Claude.",
     "subtitle": "I build high-conversion landing pages with SEO and use AI to ship faster. Front-end and UX are my foundation.",
     "ctaProjects": "See projects",
-    "ctaContact": "Get in touch"
+    "ctaContact": "Get in touch",
+    "titleLead": "AI Engineer in training,",
+    "titleFocus": "focused on",
+    "titleKey": "Claude",
+    "local": "Anápolis, Brazil",
+    "clockLabel": "Local time",
+    "now": "Now: learning Next.js, building with Claude Code."
+  },
+  "marquee": {
+    "label": "Technologies in focus"
   },
   "timeline": {
     "title": "Journey",

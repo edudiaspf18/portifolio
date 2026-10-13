@@ -1,40 +1,62 @@
 import { ArrowDown } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import { LiveClock } from '@/components/motion/live-clock';
+import { Magnetic } from '@/components/motion/magnetic';
+import { Reveal } from '@/components/motion/reveal';
+import { HeroTitle } from '@/components/sections/hero-title';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export async function Hero() {
   const t = await getTranslations('hero');
   return (
-    <section id="top" className="mx-auto max-w-6xl px-6 pb-24 pt-24 md:pt-36">
-      <div className="max-w-4xl">
-        <p className="text-sm font-medium text-orange-700 dark:text-orange-500">{t('eyebrow')}</p>
-        <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-          {t('title')}
-        </h1>
-        <p className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">{t('subtitle')}</p>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <a
-            href="#projects"
-            className={cn(
-              buttonVariants({ size: 'lg' }),
-              'bg-zinc-950 text-zinc-50 transition-all duration-200 ease-in-out hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200',
-            )}
-          >
-            {t('ctaProjects')}
-            <ArrowDown className="size-4" />
-          </a>
-          <a
-            href="#contact"
-            className={cn(
-              buttonVariants({ size: 'lg', variant: 'outline' }),
-              'border-zinc-200 transition-all duration-200 ease-in-out hover:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 dark:border-zinc-800 dark:hover:bg-zinc-900',
-            )}
-          >
-            {t('ctaContact')}
-          </a>
-        </div>
+    <section id="top" className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-28">
+      <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <span>Eduardo Dias</span>
+        <span aria-hidden>/</span>
+        <span>{t('local')}</span>
+        <LiveClock label={t('clockLabel')} />
+      </p>
+      <div className="mt-8">
+        <HeroTitle lead={t('titleLead')} focus={t('titleFocus')} keyword={t('titleKey')} />
       </div>
+      <Reveal delay={0.9} className="mt-10 grid gap-10 md:grid-cols-12">
+        <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:col-span-6">
+          {t('subtitle')}
+        </p>
+        <div className="flex flex-wrap items-start gap-3 md:col-span-6 md:justify-end">
+          <Magnetic>
+            <a
+              href="#projects"
+              className={cn(
+                buttonVariants({ size: 'lg' }),
+                'transition-all duration-200 ease-in-out hover:bg-signal hover:text-foreground focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2',
+              )}
+            >
+              {t('ctaProjects')}
+              <ArrowDown className="size-4" />
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="#contact"
+              className={cn(
+                buttonVariants({ size: 'lg', variant: 'outline' }),
+                'border-border transition-all duration-200 ease-in-out hover:border-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2',
+              )}
+            >
+              {t('ctaContact')}
+            </a>
+          </Magnetic>
+        </div>
+      </Reveal>
+      <p className="mt-12 flex items-center gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
+        <span className="relative flex size-2">
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-75 motion-reduce:animate-none" />
+          <span className="relative inline-flex size-2 rounded-full bg-signal" />
+        </span>
+        {t('now')}
+      </p>
     </section>
   );
 }
