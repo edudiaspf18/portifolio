@@ -16,11 +16,11 @@ export async function ContactSection() {
         id="contact"
         index="05"
         title={t("title")}
-        intro={t("subtitle")}
       />
-      <div className="mt-12 grid gap-12 md:grid-cols-12 md:items-center">
-        <Reveal className="md:col-span-7 md:self-center">
-          <div className="flex flex-wrap items-center gap-3">
+      <div className="mt-12 grid gap-12 md:grid-cols-12 md:items-start">
+        <Reveal className="md:col-span-7">
+          <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">{t("subtitle")}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               data-testid="contact-whatsapp"
               href={whatsappHref}
