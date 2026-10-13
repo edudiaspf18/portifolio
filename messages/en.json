@@ -1,10 +1,13 @@
 {
   "meta": {
     "title": "Eduardo Dias · AI Engineer in training",
-    "description": "Eduardo Dias' portfolio: AI Engineer in training focused on Claude, high-conversion landing pages and SEO. Anápolis, Brazil."
+    "description": "Eduardo Dias' portfolio: AI Engineer in training focused on Claude, high-conversion landing pages and SEO. Anápolis, Brazil.",
+    "jobTitle": "AI Engineer in training"
   },
   "nav": {
     "menu": "Menu",
+    "skip": "Skip to content",
+    "mobile": "Navigation menu",
     "primary": "Main navigation",
     "timeline": "Journey",
     "projects": "Projects",
@@ -100,7 +103,7 @@
     "location": "Anápolis, Brazil"
   },
   "footer": {
-    "rights": "© 2026 Eduardo Dias.",
+    "rights": "© {year} Eduardo Dias.",
     "built": "Built with Next.js, Tailwind and Claude."
   },
   "notFound": {

@@ -49,7 +49,7 @@ export default async function HomePage({ params }: PageProps) {
     '@type': 'Person',
     name: 'Eduardo Dias',
     url: `${siteUrl}/${locale}`,
-    jobTitle: locale === 'pt' ? 'AI Engineer em formação' : 'AI Engineer in training',
+    jobTitle: t('jobTitle'),
     description: t('description'),
     address: { '@type': 'PostalAddress', addressLocality: 'Anápolis', addressRegion: 'GO', addressCountry: 'BR' },
     sameAs: socials.filter((s) => s.href.startsWith('http') && !s.href.includes('wa.me')).map((s) => s.href),

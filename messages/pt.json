@@ -1,10 +1,13 @@
 {
   "meta": {
     "title": "Eduardo Dias · AI Engineer em formação",
-    "description": "Portfólio de Eduardo Dias: AI Engineer em formação com foco em Claude, landing pages de alta conversão e SEO. Anápolis, GO."
+    "description": "Portfólio de Eduardo Dias: AI Engineer em formação com foco em Claude, landing pages de alta conversão e SEO. Anápolis, GO.",
+    "jobTitle": "AI Engineer em formação"
   },
   "nav": {
     "menu": "Menu",
+    "skip": "Pular para o conteúdo",
+    "mobile": "Menu de navegação",
     "primary": "Navegação principal",
     "timeline": "Trajetória",
     "projects": "Projetos",
@@ -100,7 +103,7 @@
     "location": "Anápolis, GO"
   },
   "footer": {
-    "rights": "© 2026 Eduardo Dias.",
+    "rights": "© {year} Eduardo Dias.",
     "built": "Feito com Next.js, Tailwind e Claude."
   },
   "notFound": {

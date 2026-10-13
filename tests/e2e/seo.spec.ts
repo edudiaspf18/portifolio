@@ -54,3 +54,30 @@ test('URLs absolutas usam o siteUrl do build, nunca localhost:3000', async ({ pa
     expect(u).not.toContain('localhost:3000');
   }
 });
+
+test('favicon: link rel=icon e apple-touch-icon respondem image/png', async ({ page, request }) => {
+  await page.goto('/pt');
+  const hrefs = await page
+    .locator('link[rel="icon"][type="image/png"], link[rel="apple-touch-icon"]')
+    .evaluateAll((els) => els.map((el) => el.getAttribute('href') ?? ''));
+  expect(hrefs).toHaveLength(2);
+  for (const href of hrefs) {
+    const res = await request.get(href);
+    expect(res.status()).toBe(200);
+    expect(res.headers()['content-type']).toContain('image/png');
+  }
+});
+
+test('footer mostra o ano corrente', async ({ page }) => {
+  await page.goto('/pt');
+  await expect(page.locator('footer')).toContainText(`© ${new Date().getFullYear()} Eduardo Dias.`);
+});
+
+test('skip link aponta para #content e é o primeiro foco', async ({ page }) => {
+  await page.goto('/pt');
+  await page.keyboard.press('Tab');
+  const skip = page.getByRole('link', { name: 'Pular para o conteúdo' });
+  await expect(skip).toBeFocused();
+  await expect(skip).toBeVisible();
+  await expect(page.locator('main#content')).toHaveCount(1);
+});
