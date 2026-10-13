@@ -1,6 +1,6 @@
 export type TechIconRef =
   | { kind: 'si'; id: string }
-  | { kind: 'lucide'; name: 'Search' | 'ChartColumn' | 'FileText' };
+  | { kind: 'lucide'; name: 'Search' | 'ChartColumn' | 'FileText' | 'Bot' | 'Code' };
 export type StackGroup = 'using' | 'learning' | 'basic';
 export interface StackItem {
   id: string;
@@ -27,8 +27,8 @@ export const stackItems: readonly StackItem[] = [
   { id: 'react', name: 'React', icon: { kind: 'si', id: 'react' }, group: 'learning' },
   { id: 'nextjs', name: 'Next.js', icon: { kind: 'si', id: 'nextjs' }, group: 'learning' },
   { id: 'reactnative', name: 'React Native', icon: { kind: 'si', id: 'react' }, group: 'learning' },
-  { id: 'claudeapi', name: 'Claude API', icon: { kind: 'si', id: 'claude' }, group: 'learning' },
-  { id: 'agentsdk', name: 'Agent SDK', icon: { kind: 'si', id: 'claude' }, group: 'learning' },
+  { id: 'claudeapi', name: 'Claude API', icon: { kind: 'lucide', name: 'Code' }, group: 'learning' },
+  { id: 'agentsdk', name: 'Agent SDK', icon: { kind: 'lucide', name: 'Bot' }, group: 'learning' },
   { id: 'wordpress', name: 'WordPress', icon: { kind: 'si', id: 'wordpress' }, group: 'basic' },
   { id: 'php', name: 'PHP', icon: { kind: 'si', id: 'php' }, group: 'basic' },
   { id: 'powerbi', name: 'Power BI', icon: { kind: 'lucide', name: 'ChartColumn' }, group: 'basic' },

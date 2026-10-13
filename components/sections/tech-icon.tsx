@@ -1,8 +1,10 @@
-import { ChartColumn, FileText, Search, type LucideIcon } from 'lucide-react';
+import { Bot, ChartColumn, Code, FileText, Search, type LucideIcon } from 'lucide-react';
 import { stackIcons } from '@/content/stack-icons';
 import type { TechIconRef } from '@/content/stack';
 
-const lucideMap: Record<'Search' | 'ChartColumn' | 'FileText', LucideIcon> = {
+const lucideMap: Record<Extract<TechIconRef, { kind: 'lucide' }>['name'], LucideIcon> = {
+  Bot,
+  Code,
   Search,
   ChartColumn,
   FileText,

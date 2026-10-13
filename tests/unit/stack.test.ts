@@ -16,6 +16,12 @@ describe('stackItems', () => {
       if (item.icon.kind === 'si') expect(ids.has(item.icon.id), item.id).toBe(true);
     }
   });
+  it('marca Claude aparece no máximo uma vez por grupo', () => {
+    for (const g of ['using', 'learning', 'basic'] as const) {
+      const claude = stackItems.filter((i) => i.group === g && i.icon.kind === 'si' && i.icon.id === 'claude');
+      expect(claude.length, g).toBeLessThanOrEqual(1);
+    }
+  });
   it('C tem nota e mensagens nos dois idiomas; intros existem', () => {
     const c = stackItems.find((i) => i.id === 'c');
     expect(c?.note).toBe('c');
