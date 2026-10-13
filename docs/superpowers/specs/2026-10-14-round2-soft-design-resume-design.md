@@ -84,4 +84,8 @@ Novas/alteradas chaves em `messages/pt.json` e `en.json` (paridade garantida pel
 - Currículo: tamanhos de fonte aumentados em relação ao spec; stack anunciada uma vez (linha visível `aria-hidden`); container A4 dentro de `<main>`.
 - `opengraph-image` movido para o grupo de rotas `(site)`; `/curriculo` fica fora do header/footer do site.
 - Numeração dos projetos exibe 001, 002, 004, 005 (ids de conteúdo existentes, sem 003).
+- Período da órbita: 80s (spec dizia 60s; os testes fixam 80s).
+- Currículo omite as tags dos projetos e a linha "5º período" (mostra só o período).
+- Círculo do número da seção: `size-10` (spec dizia `size-9`).
+- Nomes dos chips da órbita aparecem só no hover (visual); ficam em `sr-only` para tecnologia assistiva, sem revelar por toque em telas touch.
 - Lighthouse: performance oscila 91-97 entre execuções; `/pt/curriculo` é `noindex`, então SEO 58 (is-crawlable e meta-description) é esperado.
