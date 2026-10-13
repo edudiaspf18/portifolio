@@ -4,7 +4,7 @@ test('divisor em curva e número em círculo nas seções', async ({ page }) => 
   await page.goto('/pt');
   const heading = page.locator('section:has(h2#timeline)');
   await expect(heading.getByTestId('curve-divider').locator('path')).toBeAttached();
-  const number = heading.getByText('02', { exact: true });
+  const number = heading.getByText('02', { exact: true }).first();
   // Tailwind 4 rounded-full computa para ~3.35544e+07px, não 9999px
   const numberRadius = await number.evaluate((el) => parseFloat(getComputedStyle(el).borderTopLeftRadius));
   expect(numberRadius).toBeGreaterThanOrEqual(100);

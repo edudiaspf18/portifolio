@@ -5,9 +5,11 @@ import { timeline } from '@/content/timeline';
 
 export async function TimelineSection() {
   const t = await getTranslations('timeline');
-  const items: TimelineItem[] = timeline.map(({ id, kind }) => ({
+  const items: TimelineItem[] = timeline.map(({ id, kind, year }, index) => ({
     id,
     kind,
+    year,
+    index,
     period: t(`items.${id}.period`),
     title: t(`items.${id}.title`),
     org: t(`items.${id}.org`),
@@ -17,7 +19,7 @@ export async function TimelineSection() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <SectionHeading id="timeline" index="02" title={t('title')} />
-      <div className="mt-12 md:ml-[41.666%]">
+      <div className="mt-12">
         <TimelineClient items={items} />
       </div>
     </section>

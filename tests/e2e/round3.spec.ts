@@ -157,3 +157,17 @@ test('hero: entrada espera a cortina na 1ª visita e roda sem atraso na sessão 
     await seen.close();
   }
 });
+
+test('trajetória: anos em coluna e conteúdo ocupa a largura', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/pt');
+  const items = page.getByTestId('timeline-item');
+  await expect(items).toHaveCount(6);
+  await expect(page.getByTestId('timeline-year')).toHaveText(['2020', '2021', '2022', '2025', '2026', '2028']);
+  const section = await page.locator('section:has(#timeline)').boundingBox();
+  const content = await items.first().locator('[data-testid="timeline-content"]').boundingBox();
+  expect(content && section && content.width / section.width).toBeGreaterThanOrEqual(0.6);
+  expect(content && section && content.x + content.width).toBeGreaterThanOrEqual((section?.x ?? 0) + (section?.width ?? 0) * 0.9);
+  const line = await page.getByTestId('timeline-line').boundingBox();
+  expect(content && line && Math.abs(line.x - content.x)).toBeLessThanOrEqual(2);
+});
