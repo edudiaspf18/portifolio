@@ -217,9 +217,10 @@
 
 /* Atraso da entrada do hero enquanto a cortina de abertura roda. */
 html:not([data-intro="seen"]) {
-  --intro-delay: 1.1s;
+  --intro-delay: 0.9s;
 }
 
+/* Mesma especificidade da regra acima: vale pela ordem no arquivo (esta vem depois). */
 @media (prefers-reduced-motion: reduce) {
   html:not([data-intro="seen"]) {
     --intro-delay: 0.3s;

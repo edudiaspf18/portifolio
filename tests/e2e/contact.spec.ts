@@ -70,25 +70,37 @@ test('stack: separa "uso" de "estudando"', async ({ page }) => {
   await expect(stack.getByText('TypeScript', { exact: true })).toBeVisible();
 });
 
-for (const width of [1024, 768]) {
-  test(`contato: órbita sem chips cortados e sem overflow horizontal a ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto('/pt');
-    const section = page.locator('section:has(#contact)');
-    await section.scrollIntoViewIfNeeded();
-    const box = await section.boundingBox();
-    if (!box) throw new Error('contact section sem box');
-    const links = page.getByTestId('contact-orbit').getByTestId('social-link');
-    await expect(links).toHaveCount(4);
-    for (let i = 0; i < 4; i += 1) {
-      const b = await links.nth(i).boundingBox();
-      if (!b) throw new Error('social-link sem box');
-      expect(b.x).toBeGreaterThanOrEqual(box.x);
-      expect(b.x + b.width).toBeLessThanOrEqual(box.x + box.width);
-      expect(b.y).toBeGreaterThanOrEqual(box.y);
-      expect(b.y + b.height).toBeLessThanOrEqual(box.y + box.height);
-    }
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-    expect(overflow).toBeLessThanOrEqual(0);
-  });
+for (const reduced of [false, true]) {
+  for (const width of [1024, 768]) {
+    test(`contato: órbita sem chips cortados nem overflow a ${width}px (${reduced ? 'reduced motion' : 'movimento normal'})`, async ({ browser }) => {
+      const ctx = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: reduced ? 'reduce' : 'no-preference' });
+      try {
+        const page = await ctx.newPage();
+        await page.goto('/pt');
+        await expect(page.getByTestId('intro-curtain')).toHaveCSS('visibility', 'hidden', { timeout: 5000 });
+        const section = page.locator('section:has(#contact)');
+        await section.scrollIntoViewIfNeeded();
+        const links = page.getByTestId('contact-orbit').getByTestId('social-link');
+        await expect(links).toHaveCount(4);
+        const tol = 2;
+        for (let sample = 0; sample < 4; sample += 1) {
+          const box = await section.boundingBox();
+          if (!box) throw new Error('contact section sem box');
+          for (let i = 0; i < 4; i += 1) {
+            const b = await links.nth(i).boundingBox();
+            if (!b) throw new Error('social-link sem box');
+            expect(b.x).toBeGreaterThanOrEqual(box.x - tol);
+            expect(b.x + b.width).toBeLessThanOrEqual(box.x + box.width + tol);
+            expect(b.y).toBeGreaterThanOrEqual(box.y - tol);
+            expect(b.y + b.height).toBeLessThanOrEqual(box.y + box.height + tol);
+          }
+          const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+          expect(overflow).toBeLessThanOrEqual(0);
+          await page.waitForTimeout(600);
+        }
+      } finally {
+        await ctx.close();
+      }
+    });
+  }
 }

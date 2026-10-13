@@ -137,7 +137,7 @@ test('hero: entrada espera a cortina na 1ª visita e roda sem atraso na sessão 
     const p1 = await fresh.newPage();
     await p1.goto('/pt');
     const delay = await p1.getByTestId('hero-word').first().evaluate((el) => getComputedStyle(el).animationDelay);
-    expect(parseFloat(delay)).toBeGreaterThanOrEqual(1.1);
+    expect(parseFloat(delay)).toBeGreaterThanOrEqual(0.9);
 
     const p2 = await seen.newPage();
     await p2.goto('/pt');
