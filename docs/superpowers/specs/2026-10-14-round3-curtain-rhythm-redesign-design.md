@@ -45,10 +45,10 @@ House rules das specs anteriores (Server Components, sem `useEffect`, sem `any`,
 ## 8. Stack com ícone + nome, em três grupos, com C
 - `content/stack.ts` passa a ser estruturado: `{ id, name, icon: { kind: 'si', id } | { kind: 'lucide', name }, group: 'using' | 'learning' | 'basic', note? }`. Itens: **Uso no dia a dia**: HTML5, CSS3, JavaScript, Tailwind CSS, shadcn/ui, Figma, Claude Code, SEO (lucide `Search`), GA4 (googleanalytics), GTM (googletagmanager). **Estudando agora**: TypeScript, React, Next.js, React Native (logo React), Claude API, Agent SDK (logo Claude). **Noções**: WordPress, PHP, Power BI (lucide `ChartColumn`, Simple Icons não tem), Office (lucide `FileText`), **C** (Simple Icons `c`) com nota "visto nos primeiros períodos da faculdade".
 - Cada item: ficha circular (`size-16`) com o ícone + nome embaixo; grade `grid-cols-3 sm:grid-cols-4 lg:grid-cols-6`; cada grupo com título mono e uma linha de introdução (mensagens). A nota do C aparece sob o nome em mono pequeno.
-- `scripts/gen-stack-icons.ts` gera também: `c`, `shadcnui`, `googleanalytics`, `googletagmanager`, `wordpress`, `php`, `github`, `instagram`, `whatsapp`, e um `linkedin` **desenhado à mão** (Simple Icons não distribui mais a marca LinkedIn): path simples de "in" em círculo, criado no repositório (não é marca registrada da biblioteca; uso nominativo).
+- `scripts/gen-stack-icons.ts` gera também: `c`, `shadcnui`, `googleanalytics`, `googletagmanager`, `wordpress`, `php`, `github`, `instagram`, `whatsapp`, e um `linkedin` (Simple Icons não distribui mais a marca LinkedIn): glifo da marca usado de forma nominativa, registrado no cabeçalho de `content/stack-icons.ts`.
 
 ## Dados, i18n, SEO
-Mensagens novas/alteradas em pt e en: `intro.label` ("Abrindo o site…" para `aria-label` do overlay), `hero.role` (sem keyword), `meta.description`, `about.body3`, `projects.items.{winner,caminu}` + `projects.academic`, `projects.kinds.*` se necessário, `contact.{whatsapp,email,copy,copied,orbitLabel}`, `stack.{intro.using,intro.learning,intro.basic,notes.c}`, `about.emphasis.*` mantidas. `content/projects.ts` com `kind: 'landing' | 'site' | 'academic'` e `image: boolean`. JSON-LD inalterado (exceto description). Sitemap/robots/OG inalterados.
+Mensagens novas/alteradas em pt e en: `intro.label` (não implementado: a cortina é `aria-hidden`), `hero.role` (sem keyword), `meta.description`, `about.body3`, `projects.items.{winner,caminu}` + `projects.academic`, `projects.kinds.*` se necessário, `contact.{whatsapp,email,copy,copied,orbitLabel}`, `stack.{intro.using,intro.learning,intro.basic,notes.c}`, `about.emphasis.*` mantidas. `content/projects.ts` com `kind: 'landing' | 'site' | 'academic'` e `image: boolean`. JSON-LD inalterado (exceto description). Sitemap/robots/OG inalterados.
 
 ## Erros e bordas
 - Cortina: `sessionStorage` indisponível (modo privado) → cortina roda; erro no script é engolido (try/catch). Sem JS: roda e some via CSS. Reduced-motion: fade.
@@ -63,10 +63,12 @@ Mensagens novas/alteradas em pt e en: `intro.label` ("Abrindo o site…" para `a
 
 ## Divergências
 - §8: o path do `linkedin` não foi desenhado à mão; é o glifo da marca LinkedIn que o Simple Icons distribuía, usado de forma nominativa. O cabeçalho de `content/stack-icons.ts` registra isso.
+- Ritmo (§2): o e2e usa tolerância 170 px (não 160): subpixel mais a altura da divisória curva entre as seções.
 - Ritmo (§2): o teste mede o contrato de padding das seções, não a distância visual entre título e conteúdo.
 - Trajetória (§3): a linha vertical é um elemento próprio com progresso por scroll, alinhado à coluna de anos, em vez de borda por item. Conteúdo com `md:pr-16` para não passar sob o círculo numerado.
 - Projetos (§4): o reveal circular usa um wrapper com `useInView` (`project-reveal.tsx`); a geometria da moldura (`project-frame.tsx`) é feita por CSS.
 - Contato (§5): o botão de currículo é pílula com contorno (não preenchida); só o WhatsApp usa a cor de destaque. `socials` monta e-mail e WhatsApp a partir de `contactEmail`/`whatsappHref`.
+- Stack (§8): Agent SDK e Claude API usam glifos lucide (`Bot`, `Code`) para a marca Claude aparecer uma vez por grupo.
 - Cortina (§1): em reduced motion o atraso do hero é 0,3 s, aplicado só quando a cortina ainda não foi vista.
 - Resolvido: o resumo do currículo (`resume.summary`) também perdeu "foco em Claude" (pt e en).
 - LCP: em viewport desktop (1440) o elemento LCP é o h1 (~48 ms). Em viewport móvel (412) e no Lighthouse é o parágrafo do hero (~1,22 s medido; 3,6 s simulado), igual em contexto novo e com `intro-seen`: o atraso vem do `Reveal` (delay 0,5 s) do bloco do parágrafo, não da cortina. `--intro-delay` caiu para 0,9 s (só h1 e sublinhado o usam); LCP e Lighthouse (perf 90) não mudaram. O `Reveal` do hero passou a `delay={0}` (a cortina já cobre o hero por 0,7 s): LCP medido a 412 px caiu de ~1,22 s para ~0,12 s; o Lighthouse (simulado) segue em 3,6 s / perf 90.
