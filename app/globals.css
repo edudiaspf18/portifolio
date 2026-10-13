@@ -23,7 +23,7 @@
   }
   --animate-curtain-left: curtain-left 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.7s forwards;
   --animate-curtain-right: curtain-right 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.7s forwards;
-  --animate-mono-in: mono-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-mono-in: mono-in 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   --animate-curtain-hide: curtain-hide 0.01s linear 1.35s forwards;
   --animate-curtain-fade: curtain-fade 0.3s ease-out 0.1s forwards;
   @keyframes curtain-left {
@@ -41,11 +41,11 @@
       opacity: 0;
       transform: scale(0.92);
     }
-    40% {
+    25% {
       opacity: 1;
       transform: scale(1);
     }
-    83% {
+    80% {
       opacity: 1;
       transform: scale(1);
     }
