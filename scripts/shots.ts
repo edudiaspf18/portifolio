@@ -1,5 +1,14 @@
+/**
+ * Gera public/projects/<id>.jpg.
+ * Tenta o site ao vivo; se falhar (ou nao houver URL), sobe `npm run dev` DENTRO do projeto irmao.
+ * Aviso: isso pode criar/atualizar `.next/` e arquivos gerados nos projetos irmaos
+ * (next-env.d.ts, tsbuildinfo). Nenhum codigo-fonte e editado.
+ * Raiz dos irmaos: env SHOTS_ROOT (padrao ~/DevWeb).
+ */
 import { spawn, type ChildProcess } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
+import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 import { chromium, type Browser } from '@playwright/test';
@@ -11,7 +20,7 @@ interface Target {
   port: number;
 }
 
-const devRoot = path.join(os.homedir(), 'DevWeb');
+const devRoot = process.env.SHOTS_ROOT ?? path.join(os.homedir(), 'DevWeb');
 const landings = path.join(devRoot, 'landings');
 const outDir = path.join(process.cwd(), 'public', 'projects');
 
@@ -25,24 +34,75 @@ const targets: readonly Target[] = [
   { id: 'winner', dir: path.join(devRoot, 'winner-tech'), live: null, port: 3107 },
 ];
 
-async function waitFor(url: string, ms = 90_000): Promise<boolean> {
+const children = new Set<ChildProcess>();
+
+function killGroup(child: ChildProcess, signal: NodeJS.Signals): void {
+  if (!child.pid) return;
+  try {
+    process.kill(-child.pid, signal);
+  } catch {
+    /* ESRCH: ja encerrado */
+  }
+}
+
+async function stopChild(child: ChildProcess): Promise<void> {
+  killGroup(child, 'SIGTERM');
+  await new Promise((r) => setTimeout(r, 1500));
+  killGroup(child, 'SIGKILL');
+  children.delete(child);
+}
+
+function killAllSync(): void {
+  for (const child of children) killGroup(child, 'SIGKILL');
+}
+
+process.on('exit', killAllSync);
+for (const sig of ['SIGINT', 'SIGTERM'] as const) {
+  process.on(sig, () => {
+    killAllSync();
+    process.exit(130);
+  });
+}
+
+function portIsFree(port: number): Promise<boolean> {
+  return new Promise((resolve) => {
+    const probe = net.createServer();
+    probe.once('error', () => resolve(false));
+    probe.listen(port, () => probe.close(() => resolve(true)));
+  });
+}
+
+async function waitFor(url: string, exited: () => string | null, ms = 90_000): Promise<void> {
   const end = Date.now() + ms;
   while (Date.now() < end) {
+    const reason = exited();
+    if (reason) throw new Error(reason);
     try {
       const res = await fetch(url);
-      if (res.ok) return true;
+      if (res.ok) return;
     } catch {
       /* servidor ainda subindo */
     }
     await new Promise((r) => setTimeout(r, 1000));
   }
-  return false;
+  throw new Error('dev server timeout');
 }
+
+// Esconde o indicador do Next so na pagina fotografada; nada e escrito no repo alvo.
+const hideDevIndicator = 'nextjs-portal { display: none !important; }';
 
 async function capture(browser: Browser, url: string, file: string): Promise<void> {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   try {
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 45_000 });
+    const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 45_000 });
+    if (!response?.ok()) throw new Error(`HTTP ${response?.status() ?? 'sem resposta'} em ${url}`);
+    await page.addStyleTag({ content: hideDevIndicator });
+    const consent = page.getByRole('button', { name: /recusar|aceitar|reject|accept/i }).first();
+    try {
+      await consent.click({ timeout: 2_000 });
+    } catch {
+      /* sem banner de cookies */
+    }
     await page.waitForTimeout(1500);
     await page.screenshot({ path: file, type: 'jpeg', quality: 82 });
   } finally {
@@ -51,17 +111,29 @@ async function capture(browser: Browser, url: string, file: string): Promise<voi
 }
 
 async function viaLocal(browser: Browser, target: Target, file: string): Promise<void> {
+  if (!existsSync(target.dir)) throw new Error(`diretorio inexistente: ${target.dir}`);
+  if (!(await portIsFree(target.port))) {
+    throw new Error(`porta ${target.port} ja esta em uso; libere antes de rodar`);
+  }
   const child: ChildProcess = spawn('npm', ['run', 'dev', '--', '-p', String(target.port)], {
     cwd: target.dir,
     stdio: 'ignore',
     detached: true,
   });
+  children.add(child);
+  let exitReason: string | null = null;
+  child.once('exit', (code, signal) => {
+    exitReason = `dev server encerrou (code=${String(code)} signal=${String(signal)})`;
+  });
+  child.once('error', (err) => {
+    exitReason = `falha ao iniciar dev server: ${err.message}`;
+  });
   try {
     const url = `http://localhost:${target.port}`;
-    if (!(await waitFor(url))) throw new Error('dev server timeout');
+    await waitFor(url, () => exitReason);
     await capture(browser, url, file);
   } finally {
-    if (child.pid) process.kill(-child.pid);
+    await stopChild(child);
   }
 }
 
@@ -69,28 +141,38 @@ async function main(): Promise<void> {
   await mkdir(outDir, { recursive: true });
   const browser = await chromium.launch();
   const failed: string[] = [];
+  const missing: string[] = [];
 
-  for (const target of targets) {
-    const file = path.join(outDir, `${target.id}.jpg`);
-    try {
-      if (!target.live) throw new Error('sem URL ao vivo');
-      await capture(browser, target.live, file);
-      console.log(`ok   ${target.id} (ao vivo)`);
-      continue;
-    } catch (liveError) {
-      console.warn(`warn ${target.id}: ao vivo falhou (${String(liveError)}), tentando local`);
+  try {
+    for (const target of targets) {
+      const file = path.join(outDir, `${target.id}.jpg`);
+      if (target.live) {
+        try {
+          await capture(browser, target.live, file);
+          console.log(`ok   ${target.id} (ao vivo)`);
+          continue;
+        } catch (liveError) {
+          console.warn(`warn ${target.id}: ao vivo falhou (${String(liveError)}), tentando local`);
+        }
+      }
+      try {
+        await viaLocal(browser, target, file);
+        console.log(`ok   ${target.id} (local)`);
+      } catch (localError) {
+        failed.push(target.id);
+        if (!existsSync(file)) missing.push(target.id);
+        console.warn(`FAIL ${target.id}: ${String(localError)}. Print anterior mantido, se existir.`);
+      }
     }
-    try {
-      await viaLocal(browser, target, file);
-      console.log(`ok   ${target.id} (local)`);
-    } catch (localError) {
-      failed.push(target.id);
-      console.warn(`FAIL ${target.id}: ${String(localError)}. Print anterior mantido, se existir.`);
-    }
+  } finally {
+    await browser.close();
   }
 
-  await browser.close();
   if (failed.length > 0) console.warn(`Sem print novo: ${failed.join(', ')}`);
+  if (missing.length > 0) {
+    console.error(`Sem nenhum print: ${missing.join(', ')}`);
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error: unknown) => {

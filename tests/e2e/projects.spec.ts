@@ -23,10 +23,21 @@ test('links externos abrem em nova aba com rel seguro', async ({ page }) => {
 
 test('nenhuma imagem de projeto quebrada (print ou placeholder)', async ({ page }) => {
   await page.goto('/pt');
-  await page.locator('#projects').scrollIntoViewIfNeeded();
-  await page.waitForLoadState('networkidle');
-  const broken = await page.locator('[data-testid="project-card"] img').evaluateAll((imgs) =>
-    imgs.filter((i) => (i as HTMLImageElement).complete && (i as HTMLImageElement).naturalWidth === 0).length,
-  );
-  expect(broken).toBe(0);
+  const cards = page.getByTestId('project-card');
+  const imgs = page.locator('[data-testid="project-card"] img');
+  const imgCount = await imgs.count();
+  const placeholderCount = await page.locator('[data-testid="project-card"]:not(:has(img))').count();
+  expect(imgCount).toBeGreaterThanOrEqual(1);
+  expect(imgCount + placeholderCount).toBe(7);
+  await expect(cards).toHaveCount(7);
+
+  // lazy loading: forca cada imagem a carregar
+  for (let i = 0; i < imgCount; i++) {
+    await imgs.nth(i).scrollIntoViewIfNeeded();
+  }
+  await expect
+    .poll(() => imgs.evaluateAll((els) => els.every((e) => (e as HTMLImageElement).complete)))
+    .toBe(true);
+  const widths = await imgs.evaluateAll((els) => els.map((e) => (e as HTMLImageElement).naturalWidth));
+  for (const w of widths) expect(w).toBeGreaterThan(0);
 });
