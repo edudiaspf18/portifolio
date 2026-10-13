@@ -28,3 +28,15 @@ test('timeline em inglês', async ({ page }) => {
   await page.goto('/en');
   await expect(page.getByTestId('timeline-item').first()).toContainText('IT Technician');
 });
+
+test('timeline: sem JS todos os itens ficam visíveis', async ({ browser }) => {
+  const ctx = await browser.newContext({ javaScriptEnabled: false });
+  const page = await ctx.newPage();
+  await page.goto('/pt');
+  const items = page.getByTestId('timeline-item');
+  await expect(items).toHaveCount(6);
+  for (let i = 0; i < 6; i++) {
+    await expect(items.nth(i)).toHaveCSS('opacity', '1');
+  }
+  await ctx.close();
+});
