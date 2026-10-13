@@ -13,11 +13,11 @@ Server Components por padrão; `'use client'` só com estado/eventos; sem `useEf
 **Exceção explícita aprovada pelo Eduardo:** logos de tecnologia (TypeScript, React etc.) não existem no lucide. Podem ser SVG inline da biblioteca Simple Icons (CC0), restritos à órbita da stack e ao currículo. Todo o resto continua só `lucide-react`.
 
 ## 1. Hero com saudação primeiro
-- `h1` gigante: "Olá, eu sou *Eduardo.*" (EN: "Hi, I'm *Eduardo.*"), mesma animação de palavras e traço laranja desenhado sob "Eduardo". O ponto final continua laranja.
+- `h1` gigante: "Olá, eu sou *Eduardo Dias.*" (EN: "Hi, I'm *Eduardo Dias.*"), mesma animação de palavras e traço laranja desenhado sob "Dias". O ponto final continua laranja. Na linha mono acima do título, em vez do nome repetido, "pode me chamar de Dias" (EN: "you can call me Dias"): toque pessoal alinhado ao Instagram de conteúdo, sem tirar o nome completo do h1 (SEO por nome e tom profissional).
 - Logo abaixo, em serifada grande (~40% do tamanho do h1): "AI Engineer em formação, foco em *Claude*." (EN: "AI Engineer in training, focused on *Claude*."). É um `<p>` com `font-display`, visível sem rolar. O cargo continua em `<title>`, meta description, OG e JSON-LD `jobTitle` (não mudam).
 - Mantidos: linha mono com relógio ao vivo de Anápolis, subtítulo, CTAs magnéticos, status "Agora: ...".
 - Novo: círculos concêntricos em linha fina (SVG decorativo, `aria-hidden`) no terço direito do hero, com um ponto laranja pequeno percorrendo o círculo médio (CSS, lento). Sem gradiente. Reduced-motion: ponto parado.
-- Mensagens: `hero.greeting` ("Olá, eu sou"), `hero.name` ("Eduardo"), `hero.role` (a frase do cargo), `hero.roleKeyword` ("Claude"). Remover `titleLead/titleFocus/titleKey`. Manter `hero.title` e `hero.eyebrow` (usadas pela imagem OG).
+- Mensagens: `hero.greeting` ("Olá, eu sou"), `hero.name` ("Eduardo Dias"), `hero.nickname`, `hero.role` (a frase do cargo), `hero.roleKeyword` ("Claude"). Remover `titleLead/titleFocus/titleKey`. Manter `hero.title` e `hero.eyebrow` (usadas pela imagem OG).
 
 ## 2. Marquee sai; órbita de stack entra
 - Remover `components/motion/marquee.tsx`, `content/marquee.ts`, `messages.marquee.*` e os testes do marquee; a seção deixa de existir entre hero e Sobre.

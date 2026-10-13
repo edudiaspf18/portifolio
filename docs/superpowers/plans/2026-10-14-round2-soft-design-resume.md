@@ -228,11 +228,11 @@ Atenção: o seletor do teste `section:has(h2#timeline)` precisa que o `h2` este
 - Delete: `components/motion/marquee.tsx`, `content/marquee.ts`
 
 **Interfaces:**
-- Produces: `HeroTitle({ greeting, name })`; `HeroOrbits()`; classes `animate-orbit`, `animate-orbit-reverse`; mensagens `hero.greeting`, `hero.name`, `hero.role`, `hero.roleKeyword`, `hero.ctaResume`. Test ids: `hero-word`, `hero-underline`, `hero-role`, `hero-orbits`.
+- Produces: `HeroTitle({ greeting, name })`; `HeroOrbits()`; classes `animate-orbit`, `animate-orbit-reverse`; mensagens `hero.greeting`, `hero.name` ("Eduardo Dias"), `hero.nickname`, `hero.role`, `hero.roleKeyword`, `hero.ctaResume`. Test ids: `hero-word`, `hero-underline`, `hero-role`, `hero-orbits`.
 
 - [ ] **Step 1: Atualizar/criar testes (falham primeiro)**
 
-`tests/e2e/hero.spec.ts`: o h1 contém "Olá, eu sou" e "Eduardo" (PT) e "Hi, I'm" / "Eduardo" (EN); `getByTestId('hero-role')` contém "AI Engineer em formação, foco em" e "Claude" (EN: "AI Engineer in training, focused on"); o `hero-role` aparece abaixo do h1 (bounding box `y` maior) e está dentro do viewport 1440×900 sem rolar; `marquee` não existe (`getByTestId('marquee')` count 0); `hero-orbits` presente; reduced-motion: palavras com `animation-name: none`, ponto orbitando com `animation-name: none` (`[data-testid=hero-orbits] span.animate-orbit` ou o elemento com testid `hero-orbit-dot`); sem JS: palavras visíveis. Manter os testes de relógio, status, underline (agora sob "Eduardo").
+`tests/e2e/hero.spec.ts`: o h1 contém "Olá, eu sou" e "Eduardo Dias" (PT) e "Hi, I'm" / "Eduardo Dias" (EN); a linha mono mostra "pode me chamar de Dias" (EN: "you can call me Dias"); `getByTestId('hero-role')` contém "AI Engineer em formação, foco em" e "Claude" (EN: "AI Engineer in training, focused on"); o `hero-role` aparece abaixo do h1 (bounding box `y` maior) e está dentro do viewport 1440×900 sem rolar; `marquee` não existe (`getByTestId('marquee')` count 0); `hero-orbits` presente; reduced-motion: palavras com `animation-name: none`, ponto orbitando com `animation-name: none` (`[data-testid=hero-orbits] span.animate-orbit` ou o elemento com testid `hero-orbit-dot`); sem JS: palavras visíveis. Manter os testes de relógio, status, underline (agora sob "Eduardo").
 `tests/e2e/i18n.spec.ts`: "switch pt → en": h1 `toContainText('Olá, eu sou')` → após troca `toContainText("Hi, I'm")`.
 `tests/e2e/motion.spec.ts` e `layout.spec.ts`: remover os testes do marquee (reduced-motion/375px) e qualquer menção; manter os demais.
 
@@ -241,8 +241,8 @@ Atenção: o seletor do teste `section:has(h2#timeline)` precisa que o `h2` este
 - [ ] **Step 3: Implementar**
 
 Mensagens (adicionar em pt e en; remover `hero.titleLead`, `hero.titleFocus`, `hero.titleKey` e o namespace `marquee`; manter `hero.title`, `hero.eyebrow`, `subtitle`, `ctaProjects`, `ctaContact`, `local`, `clockLabel`, `now`):
-- PT: `"greeting": "Olá, eu sou"`, `"name": "Eduardo"`, `"role": "AI Engineer em formação, foco em"`, `"roleKeyword": "Claude"`, `"ctaResume": "Baixar currículo"`.
-- EN: `"greeting": "Hi, I'm"`, `"name": "Eduardo"`, `"role": "AI Engineer in training, focused on"`, `"roleKeyword": "Claude"`, `"ctaResume": "Download resume"`.
+- PT: `"greeting": "Olá, eu sou"`, `"name": "Eduardo Dias"`, `"nickname": "pode me chamar de Dias"`, `"role": "AI Engineer em formação, foco em"`, `"roleKeyword": "Claude"`, `"ctaResume": "Baixar currículo"`.
+- EN: `"greeting": "Hi, I'm"`, `"name": "Eduardo Dias"`, `"nickname": "you can call me Dias"`, `"role": "AI Engineer in training, focused on"`, `"roleKeyword": "Claude"`, `"ctaResume": "Download resume"`.
 
 `app/globals.css`: remover `--animate-marquee` + `@keyframes marquee`; adicionar dentro do `@theme inline`:
 ```css
@@ -254,7 +254,7 @@ Mensagens (adicionar em pt e en; remover `hero.titleLead`, `hero.titleFocus`, `h
     }
   }
 ```
-`components/sections/hero-title.tsx` (substituir; mantém o padrão CSS-only e o traço sob o nome):
+`components/sections/hero-title.tsx` (substituir; mantém o padrão CSS-only e o traço sob "Dias"):
 ```tsx
 import { cn } from '@/lib/utils';
 
@@ -288,17 +288,27 @@ function Word({ text, index, italic = false }: WordProps) {
 
 export function HeroTitle({ greeting, name }: HeroTitleProps) {
   const greetingWords = greeting.split(' ');
-  const nameIndex = greetingWords.length;
+  const nameWords = name.split(' ');
+  const lastName = nameWords[nameWords.length - 1] ?? name;
+  const firstNames = nameWords.slice(0, -1);
+  const firstNameIndex = greetingWords.length;
+  const lastIndex = firstNameIndex + firstNames.length;
 
   return (
-    <h1 className="font-display text-[clamp(3.5rem,12vw,10.5rem)] leading-[0.95] tracking-tight">
+    <h1 className="font-display text-[clamp(3.25rem,10.5vw,9.5rem)] leading-[0.95] tracking-tight">
       {greetingWords.map((word, i) => (
         <span key={`g-${i}`}>
           <Word text={word} index={i} />{' '}
         </span>
       ))}
+      <br className="hidden md:block" />
+      {firstNames.map((word, i) => (
+        <span key={`n-${i}`}>
+          <Word text={word} index={firstNameIndex + i} italic />{' '}
+        </span>
+      ))}
       <span className="relative inline-block">
-        <Word text={name} index={nameIndex} italic />
+        <Word text={lastName} index={lastIndex} italic />
         <svg
           aria-hidden
           viewBox="0 0 200 12"
@@ -313,7 +323,7 @@ export function HeroTitle({ greeting, name }: HeroTitleProps) {
             stroke="currentColor"
             strokeWidth="4"
             strokeLinecap="round"
-            style={{ animationDelay: `${0.05 + nameIndex * 0.05 + 0.3}s` }}
+            style={{ animationDelay: `${0.05 + lastIndex * 0.05 + 0.3}s` }}
             className="animate-draw motion-reduce:animate-none"
           />
         </svg>
