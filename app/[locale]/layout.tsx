@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
@@ -46,10 +45,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
-        {/* beforeInteractive: roda antes do paint na carga completa e não re-executa em navegação client-side. */}
-        <Script id="intro-seen" strategy="beforeInteractive">{introScript}</Script>
-      </head>
       <body
         className={cn(
           geistSans.variable,
@@ -58,6 +53,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           'bg-background font-sans text-foreground antialiased dark:bg-dots',
         )}
       >
+        {/* Script de bootstrap da cortina via innerHTML: o parser executa no SSR antes de pintar a cortina;
+            em navegação client-side o React só reatribui innerHTML (sem criar <script>), então não há aviso
+            "Encountered a script tag" nem re-execução. A remontagem é coberta pelo ref em IntroCurtain. */}
+        <div hidden dangerouslySetInnerHTML={{ __html: `<script>${introScript}</script>` }} />
         <NextIntlClientProvider messages={clientMessages}>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             {children}

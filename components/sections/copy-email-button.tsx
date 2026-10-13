@@ -38,8 +38,10 @@ export function CopyEmailButton({ email, label, copiedLabel }: CopyEmailButtonPr
         'rounded-full border-border transition-all duration-200 ease-in-out hover:border-foreground dark:hover:border-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       )}
     >
-      {copied ? <Check className="size-4 text-signal-ink" /> : <Copy className="size-4" />}
-      {copied ? copiedLabel : label}
+      {/* Filhos sempre em elementos estáveis: extensões como o Google Tradutor envolvem nós de texto em
+          <font>; trocar texto solto + ícone lado a lado faria o React chamar insertBefore num nó movido. */}
+      <span className="contents">{copied ? <Check className="size-4 text-signal-ink" /> : <Copy className="size-4" />}</span>
+      <span>{copied ? copiedLabel : label}</span>
     </button>
     <span className="sr-only" aria-live="polite">
       {copied ? copiedLabel : ''}

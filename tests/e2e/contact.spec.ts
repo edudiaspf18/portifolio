@@ -158,3 +158,60 @@ for (const width of [768, 1024, 1440]) {
     }
   });
 }
+
+test('contato: fichas da órbita recebem o clique e abrem a rede', async ({ page, context }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/pt');
+  await expect(page.getByTestId('intro-curtain')).toBeHidden();
+  // Órbita centrada no viewport: uma ficha fora da tela faria elementFromPoint devolver null.
+  await page.getByTestId('contact-orbit').evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  const links = page.getByTestId('contact-orbit').getByTestId('social-link');
+  await expect(links).toHaveCount(4);
+  // O elemento sob o centro de cada ficha deve ser a própria ficha (nada a cobrindo).
+  const hits = await links.evaluateAll((els) =>
+    els.map((a) => {
+      const b = a.getBoundingClientRect();
+      const el = document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2);
+      return Boolean(el?.closest('[data-testid="social-link"]'));
+    }),
+  );
+  expect(hits).toEqual([true, true, true, true]);
+  const first = links.first();
+  const href = await first.getAttribute('href');
+  const [popup] = await Promise.all([context.waitForEvent('page'), first.click({ force: true })]);
+  expect(popup.url()).toBe(href);
+  await popup.close();
+});
+
+test('contato: copiar e-mail sobrevive ao Google Tradutor (texto envolvido em <font>)', async ({ browser }) => {
+  const ctx = await browser.newContext({ permissions: ['clipboard-read', 'clipboard-write'] });
+  const page = await ctx.newPage();
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  try {
+    await page.goto('/pt');
+    await expect(page.getByTestId('intro-curtain')).toBeHidden();
+    await page.locator('#contact').scrollIntoViewIfNeeded();
+    // Simula a tradução automática do Chrome: cada nó de texto do botão passa a viver dentro de <font>.
+    await page.getByTestId('contact-email').evaluate((btn) => {
+      const walker = document.createTreeWalker(btn, NodeFilter.SHOW_TEXT);
+      const nodes: Text[] = [];
+      let node = walker.nextNode();
+      while (node) {
+        nodes.push(node as Text);
+        node = walker.nextNode();
+      }
+      for (const text of nodes) {
+        if (!text.textContent?.trim()) continue;
+        const font = document.createElement('font');
+        text.parentNode?.insertBefore(font, text);
+        font.appendChild(text);
+      }
+    });
+    await page.getByTestId('contact-email').click();
+    await expect(page.getByTestId('contact-email')).toContainText('Copiado');
+    expect(errors).toEqual([]);
+  } finally {
+    await ctx.close();
+  }
+});

@@ -161,8 +161,16 @@ test('hero: entrada espera a cortina na 1ª visita e roda sem atraso na sessão 
     const p2 = await seen.newPage();
     await p2.goto('/pt');
     await expect
-      .poll(async () => p2.getByTestId('hero-word').first().evaluate((el) => getComputedStyle(el).transform), { timeout: 1000 })
-      .toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+      .poll(
+        async () =>
+          p2.getByTestId('hero-word').first().evaluate((el) => {
+            // translateY residual de ponto flutuante (ex.: 1e-10) conta como identidade.
+            const m = new DOMMatrix(getComputedStyle(el).transform);
+            return Math.abs(m.f) < 0.5 && Math.abs(m.a - 1) < 0.01;
+          }),
+        { timeout: 1000 },
+      )
+      .toBe(true);
   } finally {
     await fresh.close();
     await seen.close();

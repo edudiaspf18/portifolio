@@ -38,7 +38,8 @@ export function ContactOrbit({ label, email }: ContactOrbitProps) {
           );
         })}
       </ul>
-      <p className="mt-6 text-center font-mono text-xs text-muted-foreground md:absolute md:inset-0 md:mt-0 md:flex md:items-center md:justify-center md:px-[34%]">
+      {/* Ocupa só o anel interno: se cobrisse o track inteiro, interceptaria o clique nas fichas. */}
+      <p className="mt-6 text-center font-mono text-xs text-muted-foreground md:pointer-events-none md:absolute md:inset-[28%] md:mt-0 md:flex md:items-center md:justify-center md:px-4">
         {user}@<wbr />{domain}
       </p>
     </div>
