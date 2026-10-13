@@ -63,6 +63,12 @@ Mensagens novas/alteradas em pt e en: `intro.label` ("Abrindo o site…" para `a
 
 ## Divergências
 - §8: o path do `linkedin` não foi desenhado à mão; é o glifo da marca LinkedIn que o Simple Icons distribuía, usado de forma nominativa. O cabeçalho de `content/stack-icons.ts` registra isso.
+- Ritmo (§2): o teste mede o contrato de padding das seções, não a distância visual entre título e conteúdo.
+- Trajetória (§3): a linha vertical é um elemento próprio com progresso por scroll, alinhado à coluna de anos, em vez de borda por item. Conteúdo com `md:pr-16` para não passar sob o círculo numerado.
+- Projetos (§4): o reveal circular usa um wrapper com `useInView` (`project-reveal.tsx`); a geometria da moldura (`project-frame.tsx`) é feita por CSS.
+- Contato (§5): o botão de currículo é pílula com contorno (não preenchida); só o WhatsApp usa a cor de destaque. `socials` monta e-mail e WhatsApp a partir de `contactEmail`/`whatsappHref`.
+- Cortina (§1): em reduced motion o atraso do hero é 0,3 s, aplicado só quando a cortina ainda não foi vista.
+- Resumo do currículo (`resume.summary`) ainda diz "com foco em Claude"; a §6 cobriu só hero e metadados.
 
 ## Pendências do Eduardo
 - URL ao vivo do site da Winner Tech, de Charles, Aliança e Cecília.
