@@ -208,7 +208,7 @@ test('375: sem overflow horizontal com e sem cortina; linha alinhada à borda do
   expect(content && line && Math.abs(line.x - content.x)).toBeLessThanOrEqual(2);
 });
 
-test('projetos: reveal circular, borda SVG e ilustração do Caminu', async ({ page }) => {
+test('projetos: reveal circular, borda SVG e print do Caminu', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/pt');
   const cards = page.getByTestId('project-card');
@@ -221,8 +221,7 @@ test('projetos: reveal circular, borda SVG e ilustração do Caminu', async ({ p
   expect(await frameRect.evaluate((el) => (el as SVGGraphicsElement).getBBox().width)).toBeGreaterThan(100);
   expect(await frameRect.evaluate((el) => (el as SVGGraphicsElement).getBBox().height)).toBeGreaterThan(100);
   await cards.nth(7).scrollIntoViewIfNeeded();
-  await expect(cards.nth(7).getByTestId('project-art')).toBeVisible();
-  await expect(cards.nth(7).locator('img')).toHaveCount(0);
+  await expect(cards.nth(7).locator('img')).toHaveCount(1);
   await cards.nth(3).scrollIntoViewIfNeeded();
   await cards.nth(3).hover();
   await expect
@@ -256,9 +255,9 @@ test('ênfase: 5 medalhões com descrição visível sem hover', async ({ page }
 
 test('stack: três grupos com ícone + nome, C em noções com nota', async ({ page }) => {
   await page.goto('/pt');
-  await expect(page.getByTestId('stack-group-using').getByTestId('stack-item')).toHaveCount(10);
+  await expect(page.getByTestId('stack-group-using').getByTestId('stack-item')).toHaveCount(12);
   await expect(page.getByTestId('stack-group-learning').getByTestId('stack-item')).toHaveCount(6);
-  await expect(page.getByTestId('stack-group-basic').getByTestId('stack-item')).toHaveCount(5);
+  await expect(page.getByTestId('stack-group-basic').getByTestId('stack-item')).toHaveCount(3);
   const c = page.getByTestId('stack-item-c');
   await expect(c).toContainText('primeiros períodos');
   await expect(page.getByTestId('stack-item')).toHaveCount(21);

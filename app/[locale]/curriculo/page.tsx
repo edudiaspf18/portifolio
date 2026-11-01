@@ -81,7 +81,7 @@ export default async function ResumePage({ params }: PageProps) {
             </section>
             <section>
               <h2 className="font-mono text-[8pt] uppercase tracking-widest text-[#5c5850]">{r('sections.projects')}</h2>
-              <ul className="mt-3 space-y-2.5">
+              <ul className="mt-3 space-y-1.5">
                 {projects.map((p) => (
                   <li key={p.id}>
                     <span className="font-display text-[12.5pt]">{p.name}</span>

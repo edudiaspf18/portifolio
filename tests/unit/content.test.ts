@@ -19,7 +19,7 @@ describe('content', () => {
     expect(new Set(ids).size).toBe(8);
     expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06', '07', '08']);
     expect(projects.filter((p) => p.url !== null).map((p) => [p.id, p.url])).toEqual([
-      ['esther', 'https://www.estherduartenutri.com.br'],
+      ['cecilia', 'https://cecilia-fontoura.vercel.app'],
     ]);
     expect(Object.fromEntries(projects.map((p) => [p.id, p.kind]))).toEqual({
       charles: 'landing',
@@ -31,7 +31,7 @@ describe('content', () => {
       ellora: 'site',
       caminu: 'academic',
     });
-    expect(projects.filter((p) => !p.hasImage).map((p) => p.id)).toEqual(['caminu']);
+    expect(projects.filter((p) => !p.hasImage)).toEqual([]);
     for (const messages of [pt, en]) {
       expect((messages.projects as Record<string, unknown>).academic).toBeTruthy();
       for (const p of projects) {

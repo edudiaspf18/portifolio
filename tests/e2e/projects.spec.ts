@@ -8,7 +8,7 @@ test('8 cards, 1 com link ao vivo, 6 "em breve", 1 acadêmico, sem href vazio', 
   await expect(page.getByTestId('project-academic')).toHaveCount(1);
   const hrefs = await page.getByTestId('project-link').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
   expect(hrefs.sort()).toEqual([
-    'https://www.estherduartenutri.com.br',
+    'https://cecilia-fontoura.vercel.app',
   ]);
 });
 
@@ -26,8 +26,8 @@ test('nenhuma imagem de projeto quebrada (print ou placeholder)', async ({ page 
   const imgs = page.locator('[data-testid="project-card"] img');
   const imgCount = await imgs.count();
   const placeholderCount = await page.locator('[data-testid="project-card"]:not(:has(img))').count();
-  expect(imgCount).toBe(7);
-  expect(placeholderCount).toBe(1);
+  expect(imgCount).toBe(8);
+  expect(placeholderCount).toBe(0);
   expect(imgCount + placeholderCount).toBe(8);
   await expect(cards).toHaveCount(8);
 

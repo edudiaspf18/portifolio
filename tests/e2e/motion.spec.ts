@@ -24,7 +24,7 @@ test('menu desktop marca a seção ativa', async ({ page }) => {
 test('projetos com link: etiqueta "Ver site" existe e imagem é link', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/pt');
-  const card = page.getByTestId('project-card').nth(3);
+  const card = page.getByTestId('project-card').nth(2);
   await expect(card.locator('a[target="_blank"]')).toHaveCount(2);
   await expect(card.getByTestId('cursor-label')).toBeAttached();
 });
@@ -50,7 +50,7 @@ test('card sem URL não tem etiqueta de cursor', async ({ page }) => {
 test('etiqueta de cursor fica dentro da imagem perto da borda direita', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/pt');
-  const card = page.getByTestId('project-card').nth(3);
+  const card = page.getByTestId('project-card').nth(2);
   await card.scrollIntoViewIfNeeded();
   // clip-path circular recorta hit-test ate o reveal terminar; cantos arredondados (32px) nao recebem hover
   await expect.poll(() => card.evaluate((el) => getComputedStyle(el).clipPath)).toMatch(/circle\((1[0-9]{2}|[2-9][0-9]{2})%/);
@@ -74,7 +74,7 @@ test('reduced motion: etiqueta de cursor oculta', async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1280, height: 900 } });
   const page = await ctx.newPage();
   await page.goto('/pt');
-  await expect(page.getByTestId('project-card').nth(3).getByTestId('cursor-label')).toHaveCSS('display', 'none');
+  await expect(page.getByTestId('project-card').nth(2).getByTestId('cursor-label')).toHaveCSS('display', 'none');
   await ctx.close();
 });
 
