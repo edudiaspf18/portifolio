@@ -16,9 +16,9 @@ test('toggle leva ao escuro com tinta quente', async ({ page }) => {
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(14, 13, 11)');
 });
 
-test('títulos de seção usam a fonte display e numeração', async ({ page }) => {
+test('títulos de seção usam a fonte display, sem numeração', async ({ page }) => {
   await page.goto('/pt');
   const h2 = page.locator('h2#timeline');
-  await expect(h2).toHaveCSS('font-family', /Instrument/);
-  await expect(page.getByText('02', { exact: true }).first()).toBeVisible();
+  await expect(h2).toHaveCSS('font-family', /Schibsted/);
+  await expect(page.locator('section:has(h2#timeline)').getByText('02', { exact: true })).toHaveCount(0);
 });

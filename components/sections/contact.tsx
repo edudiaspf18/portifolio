@@ -14,7 +14,7 @@ export async function ContactSection() {
   const [user, domain] = contactEmail.split("@");
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <SectionHeading id="contact" index="05" title={t("title")} />
+      <SectionHeading id="contact" title={t("title")} />
       <div className="mt-12 grid gap-12 md:grid-cols-12">
         <Reveal className="md:col-span-7">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">{t("subtitle")}</p>

@@ -1,13 +1,10 @@
 import { expect, test } from '@playwright/test';
 
-test('divisor em curva e número em círculo nas seções', async ({ page }) => {
+test('seções sem divisor em curva nem número em círculo', async ({ page }) => {
   await page.goto('/pt');
+  await expect(page.getByTestId('curve-divider')).toHaveCount(0);
   const heading = page.locator('section:has(h2#timeline)');
-  await expect(heading.getByTestId('curve-divider').locator('path')).toBeAttached();
-  const number = heading.getByText('02', { exact: true }).first();
-  // Tailwind 4 rounded-full computa para ~3.35544e+07px, não 9999px
-  const numberRadius = await number.evaluate((el) => parseFloat(getComputedStyle(el).borderTopLeftRadius));
-  expect(numberRadius).toBeGreaterThanOrEqual(100);
+  await expect(heading.getByText('02', { exact: true })).toHaveCount(0);
 });
 
 test('botões e cards com cantos arredondados (sem cantos retos)', async ({ page }) => {
@@ -55,7 +52,7 @@ test('sobre: órbita com 9 tecnologias acessíveis, anel girando e sem pausar no
   // o anel gira, então o Playwright nunca o considera "estável": rola via DOM
   await orbit.evaluate((el) => el.scrollIntoView({ block: 'center' }));
   await expect(orbit.locator('li')).toHaveCount(9);
-  for (const name of ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Figma', 'Claude']) {
+  for (const name of ['HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind CSS', 'PHP', 'WordPress', 'TypeScript', 'Next.js']) {
     await expect(orbit.getByText(name, { exact: true }).and(page.locator('.sr-only'))).toHaveCount(1);
   }
   expect(await orbit.evaluate((el) => getComputedStyle(el).animationName)).not.toBe('none');
@@ -105,9 +102,10 @@ test('sobre: copy nova cita o Caminu em uma frase, sem card', async ({ page }) =
   await page.goto('/pt');
   const about = page.locator('section:has(#about)');
   await expect(about).toContainText('Técnico em Informática para Internet');
-  await expect(about).toContainText('HTML5, CSS3 e JavaScript ES6+');
+  await expect(about).toContainText('HTML, CSS e JavaScript');
   await expect(about).toContainText('BAAN');
-  await expect(about).toContainText('SEO');
+  await expect(about).toContainText('o trabalho é feito no código, em PHP');
+  await expect(about).toContainText('começando a dominar Next.js');
   await expect(about).toContainText('5º período');
   await expect(about).toContainText('Caminu');
   await expect(page.getByTestId('caminu-card')).toHaveCount(0);

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
+import { IBM_Plex_Mono, IBM_Plex_Sans, Schibsted_Grotesk } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
@@ -10,15 +10,11 @@ import { siteUrl } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import '../globals.css';
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+const plexSans = IBM_Plex_Sans({ variable: '--font-plex-sans', weight: ['400', '500', '600'], subsets: ['latin'] });
+const plexMono = IBM_Plex_Mono({ variable: '--font-plex-mono', weight: ['400', '500'], subsets: ['latin'] });
 
-const instrumentSerif = Instrument_Serif({
-  variable: '--font-instrument-serif',
-  weight: '400',
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-});
+// Só o peso 600: todo `font-display` sai no mesmo peso, sem precisar de classe extra em cada título.
+const schibsted = Schibsted_Grotesk({ variable: '--font-schibsted', weight: '600', subsets: ['latin'] });
 
 // 1ª visita: grava a chave e, ao fim da 1ª cortina, marca data-intro=seen (esconde cortinas remontadas por troca de idioma).
 const introScript =
@@ -47,9 +43,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
-          geistSans.variable,
-          geistMono.variable,
-          instrumentSerif.variable,
+          plexSans.variable,
+          plexMono.variable,
+          schibsted.variable,
           'bg-background font-sans text-foreground antialiased dark:bg-dots',
         )}
       >

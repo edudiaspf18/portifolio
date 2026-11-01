@@ -9,14 +9,14 @@ export async function StackSection() {
   const t = await getTranslations("stack");
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <SectionHeading id="stack" index="04" title={t("title")} />
+      <SectionHeading id="stack" title={t("title")} />
       <div className="mt-12 space-y-12">
         {stackGroups.map((group) => (
           <Reveal key={group}>
             <div data-testid={`stack-group-${group}`} className="border-t border-border pt-6">
               <h3
                 className={cn(
-                  "font-mono text-xs uppercase tracking-widest",
+                  "text-sm font-medium",
                   group === "learning" ? "text-signal-ink" : "text-muted-foreground",
                 )}
               >

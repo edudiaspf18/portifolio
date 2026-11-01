@@ -1,6 +1,6 @@
 # Portfólio · Eduardo Dias
 
-Site pessoal bilíngue (PT/EN) de Eduardo Dias, AI Engineer em formação: hero, trajetória, projetos (landing pages reais), stack e contato. Rotas `/pt` e `/en`, tema claro/escuro, SEO completo (metadata, hreflang, JSON-LD, sitemap, OG image, favicon gerado).
+Site pessoal bilíngue (PT/EN) de Eduardo Dias, desenvolvedor web front-end: hero, trajetória, projetos (landing pages reais), stack e contato. Rotas `/pt` e `/en`, tema claro/escuro, SEO completo (metadata, hreflang, JSON-LD, sitemap, OG image, favicon gerado).
 
 ## Identidade (round 2)
 

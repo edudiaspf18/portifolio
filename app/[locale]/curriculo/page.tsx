@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { CurveDivider } from '@/components/curve-divider';
 import { projects } from '@/content/projects';
 import { profile } from '@/content/profile';
+import { coreStackIds } from '@/content/stack';
 import { stackIcons } from '@/content/stack-icons';
 import { hasProfilePhoto } from '@/lib/profile-photo';
 
@@ -17,8 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return { title: t('metaTitle'), robots: { index: false, follow: false } };
 }
 
-// PDF mostra só os 9 logos originais
-const resumeIcons = stackIcons.slice(0, 9);
+const resumeIcons = coreStackIds.flatMap((id) => stackIcons.filter((icon) => icon.id === id));
 const EXPERIENCE_IDS = ['frontend', 'techWinner', 'baan'] as const;
 const EDUCATION_IDS = ['degree', 'cpet'] as const;
 
@@ -58,7 +57,7 @@ export default async function ResumePage({ params }: PageProps) {
           </div>
         </div>
 
-        <CurveDivider className="my-6 text-[#d8d3c7]" />
+        <hr className="my-6 border-[#d8d3c7]" />
 
         <div className="grid grid-cols-[1fr_58mm] gap-10">
           <div className="space-y-7">

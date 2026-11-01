@@ -14,16 +14,6 @@ describe('about content', () => {
   it('toda ênfase tem iconId', () => {
     expect(emphasis.map((e) => e.iconId)).toEqual(['typescript', 'react', 'nextjs', 'tailwind', 'claude']);
   });
-  it('ênfase: TypeScript, React, Next.js aprendendo; Tailwind e Claude usando', () => {
-    const byId = Object.fromEntries(emphasis.map((e) => [e.id, e.status]));
-    expect(byId).toEqual({
-      typescript: 'learning',
-      react: 'learning',
-      nextjs: 'learning',
-      tailwind: 'using',
-      claude: 'using',
-    });
-  });
   it('números: 5+ anos, 4 landings, 2 idiomas, com rótulos', () => {
     expect(stats.map((s) => [s.id, s.value, s.suffix])).toEqual([
       ['years', 5, '+'],

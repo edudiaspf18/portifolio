@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "Eduardo Dias · AI Engineer in training",
-    "description": "Eduardo Dias' portfolio: AI Engineer in training, high-conversion landing pages and SEO. Anápolis, Brazil.",
-    "jobTitle": "AI Engineer in training"
+    "title": "Eduardo Dias · Front-end web developer",
+    "description": "Eduardo Dias' portfolio: web developer focused on front-end and UX. Landing pages, websites and e-commerce stores with PHP and WordPress. Anápolis, Brazil.",
+    "jobTitle": "Front-end web developer"
   },
   "nav": {
     "menu": "Menu",
@@ -20,16 +20,14 @@
   },
   "hero": {
     "eyebrow": "Eduardo Dias · Anápolis, Brazil",
-    "title": "AI Engineer in training.",
-    "subtitle": "I build high-conversion landing pages with SEO and use AI to ship faster. Front-end and UX are my foundation.",
+    "title": "Front-end web developer.",
+    "subtitle": "I build interfaces with a focus on UX and, as a freelancer, websites and e-commerce stores with PHP and WordPress. Currently going deeper into TypeScript and Next.js.",
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
     "local": "Anápolis, Brazil",
-    "now": "Now: learning Next.js, building with Claude Code.",
     "greeting": "Hi, I'm",
     "name": "Eduardo Dias",
-    "nickname": "you can call me Dias",
-    "role": "AI Engineer in training",
+    "role": "Front-end web developer",
     "ctaResume": "Download resume"
   },
   "timeline": {
@@ -57,7 +55,7 @@
         "period": "Mar 2025 – present",
         "title": "Junior Front-End Developer",
         "org": "Winner Tecnologia",
-        "description": "Web interfaces with UX/UI and Figma. High-conversion landing pages with SEO and tracking."
+        "description": "Web interfaces with UX/UI and Figma, landing pages and websites."
       },
       "ai": {
         "period": "Sep 2026",
@@ -156,22 +154,18 @@
   "about": {
     "title": "About me",
     "lead": "I started with the foundation: computer assembly and maintenance, networks and a lot of development in my Technical Degree in Internet Computing.",
-    "body1": "Since finishing the technical course, I practice HTML5, CSS3 and ES6+ JavaScript. The IT routine at BAAN, solving real users' problems, taught me to design for the people who use things and helped me become the developer I am today.",
-    "body2": "In practice, I learned SEO and I build high-conversion landing pages: fast, clear and made to lead people to act. I also build websites and e-commerce stores with WordPress and PHP, and today I work as a freelancer maintaining WordPress and PHP sites.",
-    "body3": "Now my focus is AI Engineering, with Claude. I'm in the 5th term of Software Engineering and building an academic React Native project, Caminu (see Projects).",
+    "body1": "Since finishing the technical course, I have worked with HTML, CSS and JavaScript. The IT routine at BAAN, solving real users’ problems, taught me to design for the people who use things.",
+    "body2": "I started with PHP and WordPress, and I still take freelance work: landing pages, websites and e-commerce stores. Not drag-and-drop WordPress: the work is done in code, in PHP.",
+    "body3": "On the front-end, what I know best today is HTML, CSS, JavaScript, React and Tailwind. I’m going deeper into TypeScript, where I’m already more confident, and starting to master Next.js. Alongside that, I’m in the 5th term of Software Engineering and building Caminu, a React Native app (see Projects).",
     "photoAlt": "Portrait of Eduardo Dias, wearing round glasses and a black t-shirt, outdoors",
     "tag": "Anápolis, Brazil",
     "emphasisTitle": "Languages of focus",
-    "status": {
-      "using": "using",
-      "learning": "learning"
-    },
     "emphasis": {
-      "typescript": "Strict typing in everything I write now. Learning to do it right from the start.",
-      "react": "Components and Server Components. Learning to think of interfaces as systems.",
-      "nextjs": "App Router, SEO and performance. It's where landing pages get fast.",
-      "tailwind": "All the visuals, with tokens and zero loose CSS.",
-      "claude": "Claude Code every day, API and Agent SDK in my studies. It's my specialization."
+      "typescript": "Strict typing in the Cecília and Esther landing pages and in Laço.",
+      "react": "Landing page interfaces and the Laço web dashboard. On mobile, React Native in Caminu.",
+      "nextjs": "App Router, SEO and performance. The base of the landing pages and this portfolio.",
+      "tailwind": "All the styling in recent projects, with tokens and no loose CSS.",
+      "claude": "Claude Code every day. API and Agent SDK in my AI Engineering studies."
     },
     "stats": {
       "years": "years in IT",
@@ -184,7 +178,7 @@
   },
   "resume": {
     "metaTitle": "Resume · Eduardo Dias",
-    "summary": "Front-end developer and AI Engineer in training. Solid foundation in HTML5, CSS3 and ES6+ JavaScript, hands-on SEO and high-conversion landing pages. Five years in technical support taught me to design for the people who use things.",
+    "summary": "Web developer focused on front-end and UX. Strong in HTML, CSS, JavaScript, React and Tailwind, going deeper into TypeScript and Next.js. As a freelancer, I build landing pages, websites and e-commerce stores with PHP and WordPress, written in code. Five years in technical support taught me to design for the people who use things.",
     "sections": {
       "contact": "Contact",
       "profile": "Profile",

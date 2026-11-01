@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('metadata por idioma, canonical e hreflang', async ({ page }) => {
   await page.goto('/en');
-  await expect(page).toHaveTitle(/AI Engineer in training/);
+  await expect(page).toHaveTitle(/Front-end web developer/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/en$/);
   await expect(page.locator('link[rel="alternate"][hreflang="pt"]')).toHaveCount(1);
   await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveCount(1);

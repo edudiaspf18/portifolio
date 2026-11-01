@@ -15,7 +15,6 @@ export async function ProjectsSection() {
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
       <SectionHeading
         id="projects"
-        index="03"
         title={t("title")}
         intro={t("intro")}
       />

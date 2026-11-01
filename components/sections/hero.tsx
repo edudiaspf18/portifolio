@@ -12,9 +12,7 @@ export async function Hero() {
   return (
     <section id="top">
       <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
-        <p className="text-sm text-muted-foreground">
-          {t('nickname')} · {t('local')}
-        </p>
+        <p className="text-sm text-muted-foreground">{t('local')}</p>
         <div className="mt-6">
           <HeroTitle greeting={t('greeting')} name={t('name')} />
         </div>
@@ -62,7 +60,6 @@ export async function Hero() {
             </a>
           </div>
         </Reveal>
-        <p className="mt-12 border-t border-border pt-6 text-sm text-muted-foreground">{t('now')}</p>
       </div>
     </section>
   );

@@ -76,7 +76,7 @@ export function ProjectCard({
         </ProjectMedia>
       </CursorLabel>
       <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
-        <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <p className="text-sm font-medium text-muted-foreground">
           {project.number} · {niche}
         </p>
         <h3 className="font-display text-4xl tracking-tight">{project.name}</h3>
@@ -111,7 +111,7 @@ export function ProjectCard({
           ) : project.kind === "academic" ? (
             <span
               data-testid="project-academic"
-              className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+              className="text-sm font-medium text-muted-foreground"
             >
               {academicLabel}
             </span>

@@ -77,13 +77,7 @@ export function TimelineClient({ items }: TimelineClientProps) {
                     : "border-foreground",
                 )}
               />
-              <span
-                aria-hidden
-                className="absolute right-0 top-10 hidden size-12 items-center justify-center rounded-full border border-border font-mono text-xs text-muted-foreground md:flex"
-              >
-                {String(item.index + 1).padStart(2, "0")}
-              </span>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              <p className="text-sm font-medium text-muted-foreground">
                 {item.period}
               </p>
               <h3 className="mt-2 font-display text-3xl tracking-tight md:text-4xl">

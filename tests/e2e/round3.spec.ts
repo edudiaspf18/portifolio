@@ -2,11 +2,11 @@ import { expect, test } from '@playwright/test';
 
 test('hero e meta sem "foco em Claude"', async ({ page }) => {
   await page.goto('/pt');
-  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer em formação$/);
+  await expect(page.getByTestId('hero-role')).toHaveText(/^Desenvolvedor web front-end$/);
   const description = await page.locator('meta[name="description"]').getAttribute('content');
   expect(description).not.toMatch(/Claude/);
   await page.goto('/en');
-  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training$/);
+  await expect(page.getByTestId('hero-role')).toHaveText(/^Front-end web developer$/);
 });
 
 test('sobre não tem mais o card do Caminu; projetos tem 6 cards numerados', async ({ page }) => {
@@ -242,21 +242,20 @@ test('projetos: reduced motion e sem JS mostram todos os cards', async ({ browse
   }
 });
 
-test('ênfase: 5 medalhões com descrição visível sem hover', async ({ page }) => {
+test('ênfase: 5 linhas com descrição visível, sem rótulo de status', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/pt');
-  const medals = page.getByTestId('emphasis-medallion');
-  await expect(medals).toHaveCount(5);
-  await expect(medals.first()).toContainText('TypeScript');
-  await expect(medals.first()).toContainText('aprendendo');
-  await expect(medals.first().getByText(/Tipagem estrita/)).toBeVisible();
-  await expect(page.getByTestId('emphasis-list')).toHaveCount(0);
+  const rows = page.getByTestId('emphasis-row');
+  await expect(rows).toHaveCount(5);
+  await expect(rows.first()).toContainText('TypeScript');
+  await expect(rows.first().getByText(/Tipagem estrita/)).toBeVisible();
+  await expect(page.getByTestId('emphasis-list')).not.toContainText(/aprendendo|usando/i);
 });
 
 test('stack: três grupos com ícone + nome, C em noções com nota', async ({ page }) => {
   await page.goto('/pt');
-  await expect(page.getByTestId('stack-group-using').getByTestId('stack-item')).toHaveCount(12);
-  await expect(page.getByTestId('stack-group-learning').getByTestId('stack-item')).toHaveCount(6);
+  await expect(page.getByTestId('stack-group-using').getByTestId('stack-item')).toHaveCount(13);
+  await expect(page.getByTestId('stack-group-learning').getByTestId('stack-item')).toHaveCount(5);
   await expect(page.getByTestId('stack-group-basic').getByTestId('stack-item')).toHaveCount(3);
   const c = page.getByTestId('stack-item-c');
   await expect(c).toContainText('primeiros períodos');

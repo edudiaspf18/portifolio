@@ -5,10 +5,10 @@ import en from '@/messages/en.json';
 import pt from '@/messages/pt.json';
 
 describe('stackItems', () => {
-  it('21 itens em 3 grupos 10/6/5', () => {
+  it('21 itens em 3 grupos 13/5/3', () => {
     expect(stackItems).toHaveLength(21);
     const count = (g: string) => stackItems.filter((i) => i.group === g).length;
-    expect([count('using'), count('learning'), count('basic')]).toEqual([12, 6, 3]);
+    expect([count('using'), count('learning'), count('basic')]).toEqual([13, 5, 3]);
   });
   it('todo ícone si existe em stackIcons', () => {
     const ids = new Set(stackIcons.map((i) => i.id));
@@ -35,8 +35,8 @@ describe('stackItems', () => {
   });
   it('nomes esperados', () => {
     expect(stackItems.map((i) => i.name)).toEqual([
-      'HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS', 'shadcn/ui', 'Figma', 'Claude Code', 'SEO', 'GA4', 'GTM', 'WordPress', 'PHP',
-      'TypeScript', 'React', 'Next.js', 'React Native', 'Claude API', 'Agent SDK', 'Power BI', 'Office', 'C',
+      'HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind CSS', 'PHP', 'WordPress', 'shadcn/ui', 'Figma', 'Claude Code', 'SEO', 'GA4', 'GTM',
+      'TypeScript', 'Next.js', 'React Native', 'Claude API', 'Agent SDK', 'Power BI', 'Office', 'C',
     ]);
   });
 });

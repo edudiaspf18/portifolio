@@ -1,8 +1,9 @@
+import { coreStackIds } from '@/content/stack';
 import { stackIcons } from '@/content/stack-icons';
 import { orbitPosition } from '@/lib/orbit';
 
 // só os 9 logos originais orbitam
-const orbitIcons = stackIcons.slice(0, 9);
+const orbitIcons = coreStackIds.flatMap((id) => stackIcons.filter((icon) => icon.id === id));
 
 interface StackOrbitProps {
   label: string;

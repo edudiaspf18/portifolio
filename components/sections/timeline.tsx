@@ -18,7 +18,7 @@ export async function TimelineSection() {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-      <SectionHeading id="timeline" index="02" title={t('title')} />
+      <SectionHeading id="timeline" title={t('title')} />
       <div className="mt-12">
         <TimelineClient items={items} />
       </div>

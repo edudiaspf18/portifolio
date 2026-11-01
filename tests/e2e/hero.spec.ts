@@ -1,15 +1,16 @@
 import { expect, test } from '@playwright/test';
 
-test('hero pt: saudação, nome, cargo, status e sem enfeites', async ({ page }) => {
+test('hero pt: saudação, nome, cargo, subtítulo e sem enfeites', async ({ page }) => {
   await page.goto('/pt');
   const h1 = page.getByRole('heading', { level: 1 });
   await expect(h1).toContainText('Olá, eu sou');
   await expect(h1).toContainText('Eduardo Dias');
-  await expect(page.getByText('pode me chamar de Dias')).toBeVisible();
+  await expect(page.getByText('pode me chamar de Dias')).toHaveCount(0);
   const role = page.getByTestId('hero-role');
-  await expect(role).toHaveText(/^AI Engineer em formação$/);
+  await expect(role).toHaveText(/^Desenvolvedor web front-end$/);
   await expect(role).not.toContainText('Claude');
-  await expect(page.getByText('Agora: estudando Next.js')).toBeVisible();
+  await expect(page.getByText('Agora: estudando Next.js')).toHaveCount(0);
+  await expect(page.getByText('Construo interfaces com foco em UX')).toBeVisible();
   await expect(page.getByTestId('marquee')).toHaveCount(0);
   await expect(page.getByTestId('hero-orbits')).toHaveCount(0);
   await expect(page.getByTestId('live-clock')).toHaveCount(0);
@@ -34,9 +35,8 @@ test('hero en: saudação e cargo em inglês', async ({ page }) => {
   const h1 = page.getByRole('heading', { level: 1 });
   await expect(h1).toContainText("Hi, I'm");
   await expect(h1).toContainText('Eduardo Dias');
-  await expect(page.getByText('you can call me Dias')).toBeVisible();
-  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training$/);
-  await expect(page.getByText('Now: learning Next.js')).toBeVisible();
+  await expect(page.getByTestId('hero-role')).toHaveText(/^Front-end web developer$/);
+  await expect(page.getByText('I build interfaces with a focus on UX')).toBeVisible();
 });
 
 test('hero: palavras sobem', async ({ page }) => {
@@ -59,7 +59,7 @@ test('hero: reduced motion mostra tudo de imediato', async ({ browser }) => {
   for (let i = 0; i < (await words.count()); i++) {
     await expect(words.nth(i)).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
   }
-  await expect(page.getByText('Construo landing pages de alta conversão com SEO').locator('..')).toHaveCSS('opacity', '1');
+  await expect(page.getByText('Construo interfaces com foco em UX').locator('..')).toHaveCSS('opacity', '1');
   await ctx.close();
 });
 
@@ -84,7 +84,7 @@ test('hero: sem JS o título fica visível', async ({ browser }) => {
   for (let i = 0; i < (await words.count()); i++) {
     await expect(words.nth(i)).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
   }
-  await expect(page.getByText('Construo landing pages de alta conversão com SEO').locator('..')).toHaveCSS('opacity', '1');
+  await expect(page.getByText('Construo interfaces com foco em UX').locator('..')).toHaveCSS('opacity', '1');
   await ctx.close();
 });
 

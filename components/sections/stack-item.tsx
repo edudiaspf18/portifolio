@@ -16,7 +16,7 @@ export async function StackItemCard({ item }: StackItemCardProps) {
         </span>
         <span className="text-sm">{item.name}</span>
         {item.note && (
-          <span className="-mx-3 text-balance font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+          <span className="-mx-3 text-balance text-xs text-muted-foreground">
             {t(`notes.${item.note}`)}
           </span>
         )}
