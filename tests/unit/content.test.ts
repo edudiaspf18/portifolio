@@ -13,23 +13,21 @@ describe('content', () => {
       expect(Object.keys(item).sort()).toEqual(['description', 'org', 'period', 'title']);
     }
   });
-  it('projects: 8 ids únicos numerados, kinds, imagens, textos pt/en', () => {
+  it('projects: 6 ids únicos numerados, kinds, imagens, textos pt/en', () => {
     const ids = projects.map((p) => p.id);
-    expect(ids).toEqual(['charles', 'alianca', 'cecilia', 'esther', 'winner', 'laco', 'ellora', 'caminu']);
-    expect(new Set(ids).size).toBe(8);
-    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06', '07', '08']);
+    expect(ids).toEqual(['cecilia', 'esther', 'ellora', 'laco', 'caminu', 'winner']);
+    expect(new Set(ids).size).toBe(6);
+    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06']);
     expect(projects.filter((p) => p.url !== null).map((p) => [p.id, p.url])).toEqual([
       ['cecilia', 'https://cecilia-fontoura.vercel.app'],
     ]);
     expect(Object.fromEntries(projects.map((p) => [p.id, p.kind]))).toEqual({
-      charles: 'landing',
-      alianca: 'landing',
       cecilia: 'landing',
       esther: 'landing',
-      winner: 'site',
-      laco: 'product',
       ellora: 'site',
+      laco: 'product',
       caminu: 'academic',
+      winner: 'site',
     });
     expect(projects.filter((p) => !p.hasImage)).toEqual([]);
     for (const messages of [pt, en]) {

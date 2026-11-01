@@ -79,10 +79,10 @@
     "intro": "Landing pages for real clients, built to convert and to be found on Google.",
     "soon": "Coming soon",
     "visit": "Visit site",
+    "more": "See more on GitHub",
     "tags": {
       "seo": "SEO",
       "ga4": "GA4",
-      "gtm": "GTM",
       "whatsapp": "WhatsApp",
       "cookies": "Cookies",
       "ai": "AI",
@@ -92,14 +92,6 @@
       "ecommerce": "E-commerce"
     },
     "items": {
-      "charles": {
-        "niche": "Used cars and rentals · Anápolis, Brazil",
-        "description": "Showcase of 26 vehicles with filters, a page per car and a direct WhatsApp CTA."
-      },
-      "alianca": {
-        "niche": "Office furniture",
-        "description": "Conversion landing page with GTM tracking and end-to-end tests."
-      },
       "cecilia": {
         "niche": "Aesthetic biomedicine · Uberlândia, Brazil",
         "description": "Editorial landing page with professional credentials up front and the patient journey."
@@ -108,21 +100,21 @@
         "niche": "Online nutrition · Anápolis, Brazil",
         "description": "Online care across Brazil, in-person assessment and booking via WhatsApp."
       },
-      "winner": {
-        "niche": "Corporate · Winner Tech",
-        "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer."
+      "ellora": {
+        "niche": "Jewelry e-commerce · Anápolis, Brazil",
+        "description": "Full WooCommerce e-commerce that moves Instagram DM sales to the brand's own store: ring size and finish filters showing only in-stock items, curated sets, a last-unit badge and Pix checkout."
       },
       "laco": {
         "niche": "White-label loyalty · Posto Marinheiro",
         "description": "Loyalty platform with customer and attendant apps, an admin panel and a Pix VIP subscription, branded for each chain."
       },
-      "ellora": {
-        "niche": "Jewelry e-commerce · Anápolis, Brazil",
-        "description": "Full WooCommerce e-commerce that moves Instagram DM sales to the brand's own store: ring size and finish filters showing only in-stock items, curated sets, a last-unit badge and Pix checkout."
-      },
       "caminu": {
         "niche": "AI travel app · React Native",
         "description": "Plans the trip itinerary with built-in AI: suggests destinations and sights, is accessible for people with disabilities, pet friendly and avoids the usual routes."
+      },
+      "winner": {
+        "niche": "Corporate · Winner Tech",
+        "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer."
       }
     },
     "academic": "Academic project · UniEVANGÉLICA"
@@ -166,7 +158,7 @@
     "title": "About me",
     "lead": "I started with the foundation: computer assembly and maintenance, networks and a lot of development in my Technical Degree in Internet Computing.",
     "body1": "Since finishing the technical course, I practice HTML5, CSS3 and ES6+ JavaScript. The IT routine at BAAN, solving real users' problems, taught me to design for the people who use things and helped me become the developer I am today.",
-    "body2": "In practice, I learned SEO and I build high-conversion landing pages: fast, clear and made to lead people to act.",
+    "body2": "In practice, I learned SEO and I build high-conversion landing pages: fast, clear and made to lead people to act. I also build websites and e-commerce stores with WordPress and PHP, and today I work as a freelancer maintaining WordPress and PHP sites.",
     "body3": "Now my focus is AI Engineering, with Claude. I'm in the 5th term of Software Engineering and building an academic React Native project, Caminu (see Projects).",
     "photoAlt": "Portrait of Eduardo Dias, wearing round glasses and a black t-shirt, outdoors",
     "tag": "Anápolis, Brazil",

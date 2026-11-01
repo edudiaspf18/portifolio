@@ -79,10 +79,10 @@
     "intro": "Landing pages de clientes reais, feitas para converter e ser encontradas no Google.",
     "soon": "Em breve",
     "visit": "Visitar site",
+    "more": "Ver mais no GitHub",
     "tags": {
       "seo": "SEO",
       "ga4": "GA4",
-      "gtm": "GTM",
       "whatsapp": "WhatsApp",
       "cookies": "Cookies",
       "ai": "IA",
@@ -92,14 +92,6 @@
       "ecommerce": "E-commerce"
     },
     "items": {
-      "charles": {
-        "niche": "Seminovos e locadora · Anápolis, GO",
-        "description": "Vitrine de 26 veículos com filtros, página por carro e CTA direto ao WhatsApp."
-      },
-      "alianca": {
-        "niche": "Móveis para escritório",
-        "description": "Landing de conversão com tracking via GTM e testes end-to-end."
-      },
       "cecilia": {
         "niche": "Biomedicina estética · Uberlândia, MG",
         "description": "Landing editorial com credibilidade profissional à vista e jornada da paciente."
@@ -108,21 +100,21 @@
         "niche": "Nutrição online · Anápolis, GO",
         "description": "Atendimento online para todo o Brasil, avaliação presencial e agendamento via WhatsApp."
       },
-      "winner": {
-        "niche": "Institucional · Winner Tech",
-        "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida."
+      "ellora": {
+        "niche": "E-commerce de semijoias · Anápolis, GO",
+        "description": "E-commerce completo em WooCommerce que leva as vendas do Direct do Instagram para uma loja própria: filtro por aro e acabamento só com estoque, composições, selo de última unidade e checkout com Pix."
       },
       "laco": {
         "niche": "Fidelidade white-label · Posto Marinheiro",
         "description": "Plataforma de fidelidade com app do cliente e do frentista, painel admin e assinatura VIP via Pix, na marca de cada rede."
       },
-      "ellora": {
-        "niche": "E-commerce de semijoias · Anápolis, GO",
-        "description": "E-commerce completo em WooCommerce que leva as vendas do Direct do Instagram para uma loja própria: filtro por aro e acabamento só com estoque, composições, selo de última unidade e checkout com Pix."
-      },
       "caminu": {
         "niche": "App de viagens com IA · React Native",
         "description": "Monta o roteiro da viagem com IA integrada: sugere destinos e pontos turísticos, é acessível para PcD, pet friendly e foge do mais do mesmo."
+      },
+      "winner": {
+        "niche": "Institucional · Winner Tech",
+        "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida."
       }
     },
     "academic": "Projeto acadêmico · UniEVANGÉLICA"
@@ -166,7 +158,7 @@
     "title": "Sobre mim",
     "lead": "Comecei pela base: montagem e manutenção de computadores, redes e muito desenvolvimento no Técnico em Informática para Internet.",
     "body1": "Desde o fim do técnico, pratico HTML5, CSS3 e JavaScript ES6+. A rotina de TI na BAAN, resolvendo problema de usuário de verdade, me ensinou a projetar para quem usa e me ajudou a virar o dev que sou hoje.",
-    "body2": "Na prática, aprendi SEO e construo landing pages de alta conversão: rápidas, claras e feitas para levar a pessoa à ação.",
+    "body2": "Na prática, aprendi SEO e construo landing pages de alta conversão: rápidas, claras e feitas para levar a pessoa à ação. Também construo sites e e-commerces em WordPress e PHP, e hoje presto serviços de manutenção como freelancer para WordPress e PHP.",
     "body3": "Agora meu foco é AI Engineering, com Claude. Estou no 5º período de Engenharia de Software e desenvolvo um projeto acadêmico em React Native, o Caminu (veja em Projetos).",
     "photoAlt": "Retrato de Eduardo Dias, de óculos redondos e camiseta preta, ao ar livre",
     "tag": "Anápolis, GO",

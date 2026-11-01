@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
 
-test('8 cards, 1 com link ao vivo, 6 "em breve", 1 acadêmico, sem href vazio', async ({ page }) => {
+test('6 cards, 1 com link ao vivo, 4 "em breve", 1 acadêmico, sem href vazio', async ({ page }) => {
   await page.goto('/pt');
-  await expect(page.getByTestId('project-card')).toHaveCount(8);
+  await expect(page.getByTestId('project-card')).toHaveCount(6);
   await expect(page.getByTestId('project-link')).toHaveCount(1);
-  await expect(page.getByTestId('project-soon')).toHaveCount(6);
+  await expect(page.getByTestId('project-soon')).toHaveCount(4);
   await expect(page.getByTestId('project-academic')).toHaveCount(1);
   const hrefs = await page.getByTestId('project-link').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
   expect(hrefs.sort()).toEqual([
@@ -26,10 +26,10 @@ test('nenhuma imagem de projeto quebrada (print ou placeholder)', async ({ page 
   const imgs = page.locator('[data-testid="project-card"] img');
   const imgCount = await imgs.count();
   const placeholderCount = await page.locator('[data-testid="project-card"]:not(:has(img))').count();
-  expect(imgCount).toBe(8);
+  expect(imgCount).toBe(6);
   expect(placeholderCount).toBe(0);
-  expect(imgCount + placeholderCount).toBe(8);
-  await expect(cards).toHaveCount(8);
+  expect(imgCount + placeholderCount).toBe(6);
+  await expect(cards).toHaveCount(6);
 
   // lazy loading: forca cada imagem a carregar
   for (let i = 0; i < imgCount; i++) {
@@ -40,4 +40,13 @@ test('nenhuma imagem de projeto quebrada (print ou placeholder)', async ({ page 
     .toBe(true);
   const widths = await imgs.evaluateAll((els) => els.map((e) => (e as HTMLImageElement).naturalWidth));
   for (const w of widths) expect(w).toBeGreaterThan(0);
+});
+
+test('botão "Ver mais no GitHub" abre o perfil em nova aba', async ({ page }) => {
+  await page.goto('/pt');
+  const more = page.getByTestId('projects-github');
+  await expect(more).toHaveText(/Ver mais no GitHub/);
+  await expect(more).toHaveAttribute('href', 'https://github.com/edudiaspf18');
+  await expect(more).toHaveAttribute('target', '_blank');
+  await expect(more).toHaveAttribute('rel', /noopener/);
 });

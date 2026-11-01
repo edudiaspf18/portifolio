@@ -9,16 +9,16 @@ test('hero e meta sem "foco em Claude"', async ({ page }) => {
   await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training\.$/);
 });
 
-test('sobre não tem mais o card do Caminu; projetos tem 8 cards numerados', async ({ page }) => {
+test('sobre não tem mais o card do Caminu; projetos tem 6 cards numerados', async ({ page }) => {
   await page.goto('/pt');
   await expect(page.getByTestId('caminu-card')).toHaveCount(0);
   await expect(page.locator('section:has(#about)')).toContainText('Caminu');
   const cards = page.getByTestId('project-card');
-  await expect(cards).toHaveCount(8);
+  await expect(cards).toHaveCount(6);
   await expect(cards.nth(0)).toContainText('01');
-  await expect(cards.nth(7)).toContainText('08');
-  await expect(cards.nth(7)).toContainText('Projeto acadêmico');
-  await expect(cards.nth(7).locator('a')).toHaveCount(0);
+  await expect(cards.nth(5)).toContainText('06');
+  await expect(cards.nth(4)).toContainText('Projeto acadêmico');
+  await expect(cards.nth(4).locator('a')).toHaveCount(0);
   await expect(page.getByTestId('project-link')).toHaveCount(1);
 });
 
@@ -220,8 +220,8 @@ test('projetos: reveal circular, borda SVG e print do Caminu', async ({ page }) 
   const frameRect = cards.first().locator('[data-testid="project-frame"] rect');
   expect(await frameRect.evaluate((el) => (el as SVGGraphicsElement).getBBox().width)).toBeGreaterThan(100);
   expect(await frameRect.evaluate((el) => (el as SVGGraphicsElement).getBBox().height)).toBeGreaterThan(100);
-  await cards.nth(7).scrollIntoViewIfNeeded();
-  await expect(cards.nth(7).locator('img')).toHaveCount(1);
+  await cards.nth(4).scrollIntoViewIfNeeded();
+  await expect(cards.nth(4).locator('img')).toHaveCount(1);
   await cards.nth(3).scrollIntoViewIfNeeded();
   await cards.nth(3).hover();
   await expect
