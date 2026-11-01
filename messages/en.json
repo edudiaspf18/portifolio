@@ -118,7 +118,6 @@
     "delivery": {
       "days7": "Delivered in 7 days",
       "weeks2": "Delivered in 2 weeks",
-      "month1": "Delivered in 1 month",
       "ongoing": "In progress"
     }
   },

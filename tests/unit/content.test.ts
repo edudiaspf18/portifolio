@@ -33,9 +33,9 @@ describe('content', () => {
       cecilia: 'days7',
       esther: 'days7',
       ellora: 'weeks2',
-      laco: 'month1',
+      laco: 'ongoing',
       caminu: 'ongoing',
-      winner: null,
+      winner: 'days7',
     });
     expect(projects.filter((p) => !p.hasImage)).toEqual([]);
     for (const messages of [pt, en]) {
