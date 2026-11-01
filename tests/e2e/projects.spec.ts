@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
 
-test('6 cards, 1 com link ao vivo, 4 "em breve", 1 acadêmico, sem href vazio', async ({ page }) => {
+test('8 cards, 1 com link ao vivo, 6 "em breve", 1 acadêmico, sem href vazio', async ({ page }) => {
   await page.goto('/pt');
-  await expect(page.getByTestId('project-card')).toHaveCount(6);
+  await expect(page.getByTestId('project-card')).toHaveCount(8);
   await expect(page.getByTestId('project-link')).toHaveCount(1);
-  await expect(page.getByTestId('project-soon')).toHaveCount(4);
+  await expect(page.getByTestId('project-soon')).toHaveCount(6);
   await expect(page.getByTestId('project-academic')).toHaveCount(1);
   const hrefs = await page.getByTestId('project-link').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
   expect(hrefs.sort()).toEqual([
@@ -26,10 +26,10 @@ test('nenhuma imagem de projeto quebrada (print ou placeholder)', async ({ page 
   const imgs = page.locator('[data-testid="project-card"] img');
   const imgCount = await imgs.count();
   const placeholderCount = await page.locator('[data-testid="project-card"]:not(:has(img))').count();
-  expect(imgCount).toBe(5);
+  expect(imgCount).toBe(7);
   expect(placeholderCount).toBe(1);
-  expect(imgCount + placeholderCount).toBe(6);
-  await expect(cards).toHaveCount(6);
+  expect(imgCount + placeholderCount).toBe(8);
+  await expect(cards).toHaveCount(8);
 
   // lazy loading: forca cada imagem a carregar
   for (let i = 0; i < imgCount; i++) {

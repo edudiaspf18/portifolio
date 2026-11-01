@@ -13,11 +13,11 @@ describe('content', () => {
       expect(Object.keys(item).sort()).toEqual(['description', 'org', 'period', 'title']);
     }
   });
-  it('projects: 6 ids únicos numerados, kinds, imagens, textos pt/en', () => {
+  it('projects: 8 ids únicos numerados, kinds, imagens, textos pt/en', () => {
     const ids = projects.map((p) => p.id);
-    expect(ids).toEqual(['charles', 'alianca', 'cecilia', 'esther', 'winner', 'caminu']);
-    expect(new Set(ids).size).toBe(6);
-    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06']);
+    expect(ids).toEqual(['charles', 'alianca', 'cecilia', 'esther', 'winner', 'laco', 'ellora', 'caminu']);
+    expect(new Set(ids).size).toBe(8);
+    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06', '07', '08']);
     expect(projects.filter((p) => p.url !== null).map((p) => [p.id, p.url])).toEqual([
       ['esther', 'https://www.estherduartenutri.com.br'],
     ]);
@@ -27,6 +27,8 @@ describe('content', () => {
       cecilia: 'landing',
       esther: 'landing',
       winner: 'site',
+      laco: 'product',
+      ellora: 'site',
       caminu: 'academic',
     });
     expect(projects.filter((p) => !p.hasImage).map((p) => p.id)).toEqual(['caminu']);

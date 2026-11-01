@@ -86,7 +86,10 @@
       "whatsapp": "WhatsApp",
       "cookies": "Cookies",
       "ai": "AI",
-      "a11y": "Accessibility"
+      "a11y": "Accessibility",
+      "pix": "Pix",
+      "whitelabel": "White-label",
+      "ecommerce": "E-commerce"
     },
     "items": {
       "charles": {
@@ -108,6 +111,14 @@
       "winner": {
         "niche": "Corporate · Winner Tech",
         "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer."
+      },
+      "laco": {
+        "niche": "White-label loyalty · Posto Marinheiro",
+        "description": "Loyalty platform with customer and attendant apps, an admin panel and a Pix VIP subscription, branded for each chain."
+      },
+      "ellora": {
+        "niche": "Jewelry · Anápolis, Brazil",
+        "description": "WooCommerce store that automates Instagram DM sales: ring size and finish filters showing only in-stock items, curated sets and a last-unit badge."
       },
       "caminu": {
         "niche": "AI travel app · React Native",

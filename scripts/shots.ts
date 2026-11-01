@@ -30,6 +30,9 @@ const targets: readonly Target[] = [
   { id: 'cecilia', dir: path.join(landings, '004 - LP Cecilia Fontoura'), live: null, port: 3104 },
   { id: 'winner', dir: path.join(devRoot, 'winner-tech'), live: null, port: 3107 },
   { id: 'esther', dir: path.join(landings, '005 - LP Esther Duarte'), live: 'https://www.estherduartenutri.com.br', port: 3105 },
+  { id: 'laco', dir: path.join(devRoot, 'posto marinheiro', 'apps', 'web'), live: null, port: 3108 },
+  // WordPress local: precisa de `bin/serve` rodando no projeto (porta 8088); staging pede senha.
+  { id: 'ellora', dir: path.join(devRoot, 'projetos no wordpress', 'ellora collection'), live: 'http://localhost:8088', port: 8088 },
 ];
 
 const onlyIdx = process.argv.indexOf('--only');

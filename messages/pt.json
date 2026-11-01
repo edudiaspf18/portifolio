@@ -86,7 +86,10 @@
       "whatsapp": "WhatsApp",
       "cookies": "Cookies",
       "ai": "IA",
-      "a11y": "Acessibilidade"
+      "a11y": "Acessibilidade",
+      "pix": "Pix",
+      "whitelabel": "White-label",
+      "ecommerce": "E-commerce"
     },
     "items": {
       "charles": {
@@ -108,6 +111,14 @@
       "winner": {
         "niche": "Institucional · Winner Tech",
         "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida."
+      },
+      "laco": {
+        "niche": "Fidelidade white-label · Posto Marinheiro",
+        "description": "Plataforma de fidelidade com app do cliente e do frentista, painel admin e assinatura VIP via Pix, na marca de cada rede."
+      },
+      "ellora": {
+        "niche": "Semijoias · Anápolis, GO",
+        "description": "Loja WooCommerce que automatiza o Direct do Instagram: filtro por aro e acabamento só com estoque, composições e selo de última unidade."
       },
       "caminu": {
         "niche": "App de viagens com IA · React Native",
