@@ -1,6 +1,5 @@
 interface HeroTitleProps {
-  greeting: string;
-  name: string;
+  text: string;
 }
 
 // Animação em CSS puro: o texto do LCP não depende de hidratação do JS.
@@ -25,15 +24,11 @@ function Word({ text, index }: WordProps) {
   );
 }
 
-export function HeroTitle({ greeting, name }: HeroTitleProps) {
-  const words = [...greeting.split(' '), ...name.split(' ')];
-  const nameStart = greeting.split(' ').length;
-
+export function HeroTitle({ text }: HeroTitleProps) {
   return (
-    <h1 className="font-display text-[clamp(3.25rem,10.5vw,9.5rem)] leading-[0.95] tracking-tight">
-      {words.map((word, i) => (
+    <h1 className="max-w-5xl font-display text-[clamp(2.75rem,8vw,7.5rem)] leading-[0.98] tracking-tight">
+      {text.split(' ').map((word, i) => (
         <span key={i}>
-          {i === nameStart && <br className="hidden md:block" />}
           <Word text={word} index={i} />{' '}
         </span>
       ))}

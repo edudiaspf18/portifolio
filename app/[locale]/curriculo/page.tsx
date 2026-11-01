@@ -46,7 +46,6 @@ export default async function ResumePage({ params }: PageProps) {
               <span className="absolute inset-0 overflow-hidden rounded-full border border-[#0f0e0c]">
                 <Image src="/images/eduardo.jpg" alt="" fill sizes="106px" className="object-cover" />
               </span>
-              <span aria-hidden className="absolute -right-[3.5mm] top-[6mm] size-[3mm] rounded-full bg-[#ff5a1f]" />
             </div>
           ) : null}
           <div>

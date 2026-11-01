@@ -29,6 +29,7 @@ export async function ProjectsSection() {
             soonLabel={t("soon")}
             academicLabel={t("academic")}
             visitLabel={t("visit")}
+            deliveryLabel={project.delivery ? t(`delivery.${project.delivery}`) : null}
             tagLabels={project.tags.map((tag) => t(`tags.${tag}`))}
           />
         ))}

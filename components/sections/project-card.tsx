@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Timer } from "lucide-react";
 import Image from "next/image";
 import { CursorLabel } from "@/components/motion/cursor-label";
 import { ProjectArtCaminu } from "@/components/sections/project-art-caminu";
@@ -17,6 +17,7 @@ interface ProjectCardProps {
   soonLabel: string;
   academicLabel: string;
   visitLabel: string;
+  deliveryLabel: string | null;
   tagLabels: readonly string[];
 }
 
@@ -28,6 +29,7 @@ export function ProjectCard({
   soonLabel,
   academicLabel,
   visitLabel,
+  deliveryLabel,
   tagLabels,
 }: ProjectCardProps) {
   const shot = project.hasImage && hasShot(project.id);
@@ -80,6 +82,12 @@ export function ProjectCard({
           {project.number} · {niche}
         </p>
         <h3 className="font-display text-4xl tracking-tight">{project.name}</h3>
+        {deliveryLabel && (
+          <p data-testid="project-delivery" className="flex items-center gap-2 text-sm font-medium text-signal-ink">
+            <Timer className="size-4" />
+            {deliveryLabel}
+          </p>
+        )}
         <p className="leading-relaxed text-muted-foreground">{description}</p>
         <ul className="flex flex-wrap gap-2">
           {tagLabels.map((label) => (

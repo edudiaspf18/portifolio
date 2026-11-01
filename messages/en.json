@@ -21,11 +21,11 @@
   "hero": {
     "eyebrow": "Eduardo Dias · Anápolis, Brazil",
     "title": "Front-end web developer.",
-    "subtitle": "I build interfaces with a focus on UX and, as a freelancer, websites and e-commerce stores with PHP and WordPress. Currently going deeper into TypeScript and Next.js.",
+    "subtitle": "I work on front-end and UX, and as a freelancer I build websites and e-commerce stores with PHP and WordPress. Currently going deeper into TypeScript and Next.js.",
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
     "local": "Anápolis, Brazil",
-    "greeting": "Hi, I'm",
+    "headline": "Clear, fast interfaces, from Figma to code.",
     "name": "Eduardo Dias",
     "role": "Front-end web developer",
     "ctaResume": "Download resume"
@@ -73,7 +73,7 @@
   },
   "projects": {
     "title": "Projects",
-    "intro": "Landing pages for real clients, built to convert and to be found on Google.",
+    "intro": "Landing pages, e-commerce and products for real clients, with each delivery time.",
     "soon": "Coming soon",
     "visit": "Visit site",
     "more": "See more on GitHub",
@@ -114,7 +114,13 @@
         "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer."
       }
     },
-    "academic": "Academic project · UniEVANGÉLICA"
+    "academic": "Academic project · UniEVANGÉLICA",
+    "delivery": {
+      "days7": "Delivered in 7 days",
+      "weeks2": "Delivered in 2 weeks",
+      "month1": "Delivered in 1 month",
+      "ongoing": "In progress"
+    }
   },
   "stack": {
     "title": "Stack",

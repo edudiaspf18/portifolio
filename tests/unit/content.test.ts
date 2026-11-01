@@ -29,6 +29,14 @@ describe('content', () => {
       caminu: 'academic',
       winner: 'site',
     });
+    expect(Object.fromEntries(projects.map((p) => [p.id, p.delivery]))).toEqual({
+      cecilia: 'days7',
+      esther: 'days7',
+      ellora: 'weeks2',
+      laco: 'month1',
+      caminu: 'ongoing',
+      winner: null,
+    });
     expect(projects.filter((p) => !p.hasImage)).toEqual([]);
     for (const messages of [pt, en]) {
       expect((messages.projects as Record<string, unknown>).academic).toBeTruthy();
@@ -37,6 +45,7 @@ describe('content', () => {
         expect(item, p.id).toBeDefined();
         expect(item.niche).toBeTruthy();
         expect(item.description).toBeTruthy();
+        if (p.delivery) expect((messages.projects.delivery as Record<string, string>)[p.delivery], p.delivery).toBeTruthy();
         for (const tag of p.tags) {
           expect((messages.projects.tags as Record<string, string>)[tag], tag).toBeTruthy();
         }

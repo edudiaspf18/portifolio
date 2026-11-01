@@ -21,11 +21,11 @@
   "hero": {
     "eyebrow": "Eduardo Dias · Anápolis, GO",
     "title": "Desenvolvedor web front-end.",
-    "subtitle": "Construo interfaces com foco em UX e, como freelancer, sites e e-commerces em PHP e WordPress. Hoje aprofundo TypeScript e Next.js.",
+    "subtitle": "Trabalho com front-end e UX e, como freelancer, construo sites e e-commerces em PHP e WordPress. Hoje aprofundo TypeScript e Next.js.",
     "ctaProjects": "Ver projetos",
     "ctaContact": "Falar comigo",
     "local": "Anápolis, GO",
-    "greeting": "Olá, eu sou",
+    "headline": "Interfaces claras e rápidas, do Figma ao código.",
     "name": "Eduardo Dias",
     "role": "Desenvolvedor web front-end",
     "ctaResume": "Baixar currículo"
@@ -73,7 +73,7 @@
   },
   "projects": {
     "title": "Projetos",
-    "intro": "Landing pages de clientes reais, feitas para converter e ser encontradas no Google.",
+    "intro": "Landing pages, e-commerce e produtos para clientes reais, com o prazo de cada entrega.",
     "soon": "Em breve",
     "visit": "Visitar site",
     "more": "Ver mais no GitHub",
@@ -114,7 +114,13 @@
         "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida."
       }
     },
-    "academic": "Projeto acadêmico · UniEVANGÉLICA"
+    "academic": "Projeto acadêmico · UniEVANGÉLICA",
+    "delivery": {
+      "days7": "Entregue em 7 dias",
+      "weeks2": "Entregue em 2 semanas",
+      "month1": "Entregue em 1 mês",
+      "ongoing": "Em andamento"
+    }
   },
   "stack": {
     "title": "Stack",

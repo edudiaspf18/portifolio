@@ -12,16 +12,18 @@ export async function Hero() {
   return (
     <section id="top">
       <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
-        <p className="text-sm text-muted-foreground">{t('local')}</p>
-        <div className="mt-6">
-          <HeroTitle greeting={t('greeting')} name={t('name')} />
-        </div>
-        <p
-          data-testid="hero-role"
-          className="mt-6 font-display text-[clamp(1.75rem,4.6vw,3.75rem)] leading-tight tracking-tight"
-        >
-          {t('role')}
+        <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-base">
+          <span className="font-medium">{t('name')}</span>
+          <span aria-hidden className="text-muted-foreground">·</span>
+          <span data-testid="hero-role" className="text-muted-foreground">
+            {t('role')}
+          </span>
+          <span aria-hidden className="text-muted-foreground">·</span>
+          <span className="text-muted-foreground">{t('local')}</span>
         </p>
+        <div className="mt-8">
+          <HeroTitle text={t('headline')} />
+        </div>
         <Reveal delay={0} className="mt-10 grid gap-10 md:grid-cols-12">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:col-span-6">
             {t('subtitle')}

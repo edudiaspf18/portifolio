@@ -50,3 +50,17 @@ test('botão "Ver mais no GitHub" abre o perfil em nova aba', async ({ page }) =
   await expect(more).toHaveAttribute('target', '_blank');
   await expect(more).toHaveAttribute('rel', /noopener/);
 });
+
+test('projetos: prazo de entrega nos cards', async ({ page }) => {
+  await page.goto('/pt');
+  const cards = page.getByTestId('project-card');
+  const delivery = (i: number) => cards.nth(i).getByTestId('project-delivery');
+  await expect(delivery(0)).toHaveText('Entregue em 7 dias');
+  await expect(delivery(1)).toHaveText('Entregue em 7 dias');
+  await expect(delivery(2)).toHaveText('Entregue em 2 semanas');
+  await expect(delivery(3)).toHaveText('Entregue em 1 mês');
+  await expect(delivery(4)).toHaveText('Em andamento');
+  await expect(delivery(5)).toHaveCount(0);
+  await page.goto('/en');
+  await expect(page.getByTestId('project-card').nth(2).getByTestId('project-delivery')).toHaveText('Delivered in 2 weeks');
+});
