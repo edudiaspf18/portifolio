@@ -1,0 +1,217 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-heading: var(--font-sans);
+  --font-display: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-signal-foreground: var(--signal-foreground);
+  --animate-orbit: orbit 80s linear infinite;
+  --animate-orbit-reverse: orbit 80s linear infinite reverse;
+  @keyframes orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  --animate-curtain-left: curtain-left 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.7s forwards;
+  --animate-curtain-right: curtain-right 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.7s forwards;
+  --animate-mono-in: mono-in 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-curtain-hide: curtain-hide 0.01s linear 1.35s forwards;
+  --animate-curtain-fade: curtain-fade 0.3s ease-out 0.1s forwards;
+  @keyframes curtain-left {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes curtain-right {
+    to {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes mono-in {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    80% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(1.04);
+    }
+  }
+  @keyframes curtain-hide {
+    to {
+      visibility: hidden;
+    }
+  }
+  @keyframes curtain-fade {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  --animate-word-up: word-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  @keyframes word-up {
+    from {
+      transform: translateY(110%);
+    }
+  }
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f5f2eb;
+  --foreground: #0f0e0c;
+  --card: #f5f2eb;
+  --card-foreground: #0f0e0c;
+  --popover: #f5f2eb;
+  --popover-foreground: #0f0e0c;
+  --primary: #0f0e0c;
+  --primary-foreground: #f5f2eb;
+  --secondary: #ebe6d9;
+  --secondary-foreground: #0f0e0c;
+  --muted: #ebe6d9;
+  --muted-foreground: #5c5850;
+  --accent: #ebe6d9;
+  --accent-foreground: #0f0e0c;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #d8d3c7;
+  --input: #d8d3c7;
+  --ring: #c2410c;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 1rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  --signal: #ff5a1f;
+  --signal-ink: #c2410c;
+  --signal-foreground: #0f0e0c;
+}
+
+.dark {
+  --background: #0e0d0b;
+  --foreground: #f2efe8;
+  --card: #0e0d0b;
+  --card-foreground: #f2efe8;
+  --popover: #0e0d0b;
+  --popover-foreground: #f2efe8;
+  --primary: #f2efe8;
+  --primary-foreground: #0e0d0b;
+  --secondary: #1a1814;
+  --secondary-foreground: #f2efe8;
+  --muted: #1a1814;
+  --muted-foreground: #a39e93;
+  --accent: #1a1814;
+  --accent-foreground: #f2efe8;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: #2a2824;
+  --input: #2a2824;
+  --ring: #ff5a1f;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  --signal: #ff5a1f;
+  --signal-ink: #ff7a45;
+  --signal-foreground: #0f0e0c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--foreground) 14%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Atraso da entrada do hero enquanto a cortina de abertura roda. */
+html:not([data-intro="seen"]) {
+  --intro-delay: 0.9s;
+}
+
+/* Mesma especificidade da regra acima: vale pela ordem no arquivo (esta vem depois). */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-intro="seen"]) {
+    --intro-delay: 0.3s;
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "title": "Eduardo Dias · Front-end web developer",
+    "description": "Eduardo Dias' portfolio: web developer focused on front-end and UX. Landing pages, websites and e-commerce stores with PHP and WordPress. Anápolis, Brazil.",
+    "jobTitle": "Front-end web developer"
+  },
+  "nav": {
+    "menu": "Menu",
+    "skip": "Skip to content",
+    "mobile": "Navigation menu",
+    "primary": "Main navigation",
+    "about": "About",
+    "timeline": "Journey",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact",
+    "theme": "Toggle theme",
+    "language": "Language",
+    "home": "Home"
+  },
+  "hero": {
+    "eyebrow": "Eduardo Dias · Anápolis, Brazil",
+    "title": "Front-end web developer.",
+    "subtitle": "I work on front-end and UX, and as a freelancer I build websites and e-commerce stores with PHP and WordPress. Currently going deeper into TypeScript and Next.js.",
+    "ctaProjects": "See projects",
+    "ctaContact": "Get in touch",
+    "local": "Anápolis, Brazil",
+    "headline": "Clear, fast interfaces, from Figma to code.",
+    "name": "Eduardo Dias",
+    "role": "Front-end web developer",
+    "ctaResume": "Download resume"
+  },
+  "timeline": {
+    "title": "Journey",
+    "items": {
+      "techWinner": {
+        "period": "2020 – Mar 2025",
+        "title": "IT Technician",
+        "org": "Winner Tecnologia",
+        "description": "Computer assembly, structured cabling and hands-on technical support."
+      },
+      "baan": {
+        "period": "2021 – Mar 2025",
+        "title": "IT Assistant",
+        "org": "BAAN · Brazilian Air Force",
+        "description": "First-line support and help with core IT infrastructure routines, alongside Winner."
+      },
+      "cpet": {
+        "period": "2022 – 2023",
+        "title": "Technical Degree in Internet Computing",
+        "org": "CPET",
+        "description": "Technical training in web development."
+      },
+      "frontend": {
+        "period": "Mar 2025 – present",
+        "title": "Junior Front-End Developer",
+        "org": "Winner Tecnologia",
+        "description": "Web interfaces with UX/UI and Figma, landing pages and websites."
+      },
+      "ai": {
+        "period": "Sep 2026",
+        "title": "Started AI Engineering",
+        "org": "AI specialization",
+        "description": "AI in the development workflow, plus Claude Code, Claude API and Agent SDK studies."
+      },
+      "degree": {
+        "period": "Jun 2028 (expected)",
+        "title": "Software Engineering",
+        "org": "UniEVANGÉLICA",
+        "description": "Bachelor's degree in progress, 5th term."
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "Landing pages, e-commerce and products for real clients, with each delivery time.",
+    "soon": "Coming soon",
+    "visit": "Visit site",
+    "more": "See more on GitHub",
+    "tags": {
+      "seo": "SEO",
+      "ga4": "GA4",
+      "whatsapp": "WhatsApp",
+      "cookies": "Cookies",
+      "ai": "AI",
+      "a11y": "Accessibility",
+      "pix": "Pix",
+      "whitelabel": "White-label",
+      "ecommerce": "E-commerce"
+    },
+    "items": {
+      "cecilia": {
+        "niche": "Aesthetic biomedicine · Uberlândia, Brazil",
+        "description": "Editorial landing page with professional credentials up front and the patient journey."
+      },
+      "esther": {
+        "niche": "Online nutrition · Anápolis, Brazil",
+        "description": "Online care across Brazil, in-person assessment and booking via WhatsApp."
+      },
+      "ellora": {
+        "niche": "Jewelry e-commerce · Anápolis, Brazil",
+        "description": "Full WooCommerce e-commerce that moves Instagram DM sales to the brand's own store: ring size and finish filters showing only in-stock items, curated sets, a last-unit badge and Pix checkout."
+      },
+      "laco": {
+        "niche": "White-label loyalty · Posto Marinheiro",
+        "description": "Loyalty platform with customer and attendant apps, an admin panel and a Pix VIP subscription, branded for each chain."
+      },
+      "caminu": {
+        "niche": "AI travel app · React Native",
+        "description": "Plans the trip itinerary with built-in AI: suggests destinations and sights, is accessible for people with disabilities, pet friendly and avoids the usual routes."
+      },
+      "winner": {
+        "niche": "Corporate · Winner Tech",
+        "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer."
+      }
+    },
+    "academic": "Academic project · UniEVANGÉLICA",
+    "delivery": {
+      "days7": "Delivered in 7 days",
+      "weeks2": "Delivered in 2 weeks",
+      "ongoing": "In progress"
+    }
+  },
+  "stack": {
+    "title": "Stack",
+    "using": "Daily drivers",
+    "learning": "Learning now",
+    "basic": "Basics",
+    "extras": "Certification and languages",
+    "scrum": "Scrum Foundation (completed)",
+    "languages": "Portuguese native · English basic",
+    "intro": {
+      "using": "What I use every week on real projects.",
+      "learning": "What I'm learning now, hands-on.",
+      "basic": "What I saw at university or in one-off work."
+    },
+    "notes": {
+      "c": "seen in the first terms at university"
+    }
+  },
+  "contact": {
+    "title": "Let's talk",
+    "subtitle": "A landing page, a website or an AI project. I reply fast.",
+    "whatsapp": "Message on WhatsApp",
+    "email": "Copy e-mail",
+    "copied": "Copied",
+    "socialsLabel": "Networks",
+    "resume": "Download resume",
+    "location": "Anápolis, Brazil"
+  },
+  "footer": {
+    "rights": "© {year} Eduardo Dias.",
+    "built": "Anápolis, Brazil · Next.js and Tailwind."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "back": "Back to home"
+  },
+  "about": {
+    "title": "About me",
+    "lead": "I started with the foundation: computer assembly and maintenance, networks and a lot of development in my Technical Degree in Internet Computing.",
+    "body1": "Since finishing the technical course, I have worked with HTML, CSS and JavaScript. The IT routine at BAAN, solving real users’ problems, taught me to design for the people who use things.",
+    "body2": "I started with PHP and WordPress, and I still take freelance work: landing pages, websites and e-commerce stores. Not drag-and-drop WordPress: the work is done in code, in PHP.",
+    "body3": "On the front-end, what I know best today is HTML, CSS, JavaScript, React and Tailwind. I’m going deeper into TypeScript, where I’m already more confident, and starting to master Next.js. Alongside that, I’m in the 5th term of Software Engineering and building Caminu, a React Native app (see Projects).",
+    "photoAlt": "Portrait of Eduardo Dias, wearing round glasses and a black t-shirt, outdoors",
+    "tag": "Anápolis, Brazil",
+    "emphasisTitle": "Languages of focus",
+    "emphasis": {
+      "typescript": "Strict typing in the Cecília and Esther landing pages and in Laço.",
+      "react": "Landing page interfaces and the Laço web dashboard. On mobile, React Native in Caminu.",
+      "nextjs": "App Router, SEO and performance. The base of the landing pages and this portfolio.",
+      "tailwind": "All the styling in recent projects, with tokens and no loose CSS.",
+      "claude": "Claude Code every day. API and Agent SDK in my AI Engineering studies."
+    },
+    "stats": {
+      "years": "years in IT",
+      "landings": "landing pages delivered",
+      "languages": "languages"
+    },
+    "orbit": {
+      "label": "Technologies in my stack"
+    }
+  },
+  "resume": {
+    "metaTitle": "Resume · Eduardo Dias",
+    "summary": "Web developer focused on front-end and UX. Strong in HTML, CSS, JavaScript, React and Tailwind, going deeper into TypeScript and Next.js. As a freelancer, I build landing pages, websites and e-commerce stores with PHP and WordPress, written in code. Five years in technical support taught me to design for the people who use things.",
+    "sections": {
+      "contact": "Contact",
+      "profile": "Profile",
+      "experience": "Experience",
+      "education": "Education",
+      "projects": "Projects",
+      "stack": "Stack",
+      "certification": "Certification",
+      "languages": "Languages"
+    },
+    "caminuLine": "Caminu: AI-powered trip planning app, accessible for people with disabilities and pet friendly (React Native, in progress)."
+  }
+}

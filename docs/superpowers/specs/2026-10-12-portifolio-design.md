@@ -38,7 +38,7 @@ Zinc monocromático + 1 cor de destaque (definida na implementação). Bordas 1p
    - 2028-06 Engenharia de Software, UniEVANGÉLICA (previsão; cursando 5º período)
 3. **Projetos:** 001 Charles Veículos, 002 AliancaM, 003 Evelyn Rafaela, 004 Cecília Fontoura, 005 Esther Duarte, 006 Angélica Batista, winner-tech. Card: print, nicho, stack, entregas (SEO, GA4, tracking WhatsApp), link ao vivo. Nome do cliente exibido. Links conhecidos: 003 `evelynrafaelanutri.com.br`, 005 `estherduartenutri.com.br`, 006 `dra-angelicabatista.com.br`. Demais: badge "em breve" até URL ser informada.
 4. **Stack e aprendizado:** usando (HTML, CSS, JS, Tailwind, shadcn, Figma, Claude Code) vs estudando (TypeScript, React, Next.js, React Native, Agent SDK). WordPress/PHP/Power BI básicos. Scrum Foundation. Idiomas: PT nativo, EN básico.
-5. **Contato:** e-mail `dududiaspf@gmail.com`, LinkedIn `/in/eduardo-dias8a924131a`, GitHub `github.com/edudiaspf18`, Instagram `instagram.com/dudu_diaspf`, WhatsApp (62) 99426-7841, download do currículo.
+5. **Contato:** e-mail `dududiaspf@gmail.com`, LinkedIn `/in/eduardo-dias-8a924131a`, GitHub `github.com/edudiaspf18`, Instagram `instagram.com/dudu_diaspf`, WhatsApp (62) 99426-7841, download do currículo.
 
 ## Dados e i18n
 Conteúdo estático tipado, tudo no servidor. `'use client'` só em theme-toggle, locale-switch, timeline. Rotas `/pt` e `/en` com `hreflang`; redirecionamento por `Accept-Language` só no primeiro acesso. Tema via `next-themes` (class, sem flash).

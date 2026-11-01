@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "title": "Eduardo Dias · Desenvolvedor web front-end",
+    "description": "Portfólio de Eduardo Dias: desenvolvedor web com foco em front-end e UX. Landing pages, sites e e-commerces em PHP e WordPress. Anápolis, GO.",
+    "jobTitle": "Desenvolvedor web front-end"
+  },
+  "nav": {
+    "menu": "Menu",
+    "skip": "Pular para o conteúdo",
+    "mobile": "Menu de navegação",
+    "primary": "Navegação principal",
+    "about": "Sobre",
+    "timeline": "Trajetória",
+    "projects": "Projetos",
+    "stack": "Stack",
+    "contact": "Contato",
+    "theme": "Alternar tema",
+    "language": "Idioma",
+    "home": "Início"
+  },
+  "hero": {
+    "eyebrow": "Eduardo Dias · Anápolis, GO",
+    "title": "Desenvolvedor web front-end.",
+    "subtitle": "Trabalho com front-end e UX e, como freelancer, construo sites e e-commerces em PHP e WordPress. Hoje aprofundo TypeScript e Next.js.",
+    "ctaProjects": "Ver projetos",
+    "ctaContact": "Falar comigo",
+    "local": "Anápolis, GO",
+    "headline": "Interfaces claras e rápidas, do Figma ao código.",
+    "name": "Eduardo Dias",
+    "role": "Desenvolvedor web front-end",
+    "ctaResume": "Baixar currículo"
+  },
+  "timeline": {
+    "title": "Trajetória",
+    "items": {
+      "techWinner": {
+        "period": "2020 – mar/2025",
+        "title": "Técnico de TI",
+        "org": "Winner Tecnologia",
+        "description": "Montagem de computadores, cabeamento estruturado e suporte direto na resolução de problemas técnicos."
+      },
+      "baan": {
+        "period": "2021 – mar/2025",
+        "title": "Auxiliar de TI",
+        "org": "BAAN · Força Aérea Brasileira",
+        "description": "Atendimento primário e apoio às rotinas de infraestrutura de TI, em paralelo à Winner."
+      },
+      "cpet": {
+        "period": "2022 – 2023",
+        "title": "Técnico em Informática para Internet",
+        "org": "CPET",
+        "description": "Formação técnica em desenvolvimento web."
+      },
+      "frontend": {
+        "period": "mar/2025 – hoje",
+        "title": "Desenvolvedor Front-End Júnior",
+        "org": "Winner Tecnologia",
+        "description": "Interfaces web com UX/UI e Figma, landing pages e sites."
+      },
+      "ai": {
+        "period": "set/2026",
+        "title": "Início em AI Engineering",
+        "org": "Especialização em IA",
+        "description": "Uso de IA no fluxo de desenvolvimento e estudo de Claude Code, Claude API e Agent SDK."
+      },
+      "degree": {
+        "period": "jun/2028 (previsão)",
+        "title": "Engenharia de Software",
+        "org": "UniEVANGÉLICA",
+        "description": "Bacharelado em andamento, 5º período."
+      }
+    }
+  },
+  "projects": {
+    "title": "Projetos",
+    "intro": "Landing pages, e-commerce e produtos para clientes reais, com o prazo de cada entrega.",
+    "soon": "Em breve",
+    "visit": "Visitar site",
+    "more": "Ver mais no GitHub",
+    "tags": {
+      "seo": "SEO",
+      "ga4": "GA4",
+      "whatsapp": "WhatsApp",
+      "cookies": "Cookies",
+      "ai": "IA",
+      "a11y": "Acessibilidade",
+      "pix": "Pix",
+      "whitelabel": "White-label",
+      "ecommerce": "E-commerce"
+    },
+    "items": {
+      "cecilia": {
+        "niche": "Biomedicina estética · Uberlândia, MG",
+        "description": "Landing editorial com credibilidade profissional à vista e jornada da paciente."
+      },
+      "esther": {
+        "niche": "Nutrição online · Anápolis, GO",
+        "description": "Atendimento online para todo o Brasil, avaliação presencial e agendamento via WhatsApp."
+      },
+      "ellora": {
+        "niche": "E-commerce de semijoias · Anápolis, GO",
+        "description": "E-commerce completo em WooCommerce que leva as vendas do Direct do Instagram para uma loja própria: filtro por aro e acabamento só com estoque, composições, selo de última unidade e checkout com Pix."
+      },
+      "laco": {
+        "niche": "Fidelidade white-label · Posto Marinheiro",
+        "description": "Plataforma de fidelidade com app do cliente e do frentista, painel admin e assinatura VIP via Pix, na marca de cada rede."
+      },
+      "caminu": {
+        "niche": "App de viagens com IA · React Native",
+        "description": "Monta o roteiro da viagem com IA integrada: sugere destinos e pontos turísticos, é acessível para PcD, pet friendly e foge do mais do mesmo."
+      },
+      "winner": {
+        "niche": "Institucional · Winner Tech",
+        "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida."
+      }
+    },
+    "academic": "Projeto acadêmico · UniEVANGÉLICA",
+    "delivery": {
+      "days7": "Entregue em 7 dias",
+      "weeks2": "Entregue em 2 semanas",
+      "ongoing": "Em andamento"
+    }
+  },
+  "stack": {
+    "title": "Stack",
+    "using": "Uso no dia a dia",
+    "learning": "Estudando agora",
+    "basic": "Noções",
+    "extras": "Certificação e idiomas",
+    "scrum": "Scrum Foundation (concluído)",
+    "languages": "Português nativo · Inglês básico",
+    "intro": {
+      "using": "O que uso toda semana em projetos reais.",
+      "learning": "O que estou aprendendo agora, com projeto de verdade na mão.",
+      "basic": "O que vi na faculdade ou em trabalhos pontuais."
+    },
+    "notes": {
+      "c": "visto nos primeiros períodos da faculdade"
+    }
+  },
+  "contact": {
+    "title": "Vamos conversar",
+    "subtitle": "Landing page, site ou um projeto com IA. Respondo rápido.",
+    "whatsapp": "Chamar no WhatsApp",
+    "email": "Copiar e-mail",
+    "copied": "Copiado",
+    "socialsLabel": "Redes",
+    "resume": "Baixar currículo",
+    "location": "Anápolis, GO"
+  },
+  "footer": {
+    "rights": "© {year} Eduardo Dias.",
+    "built": "Anápolis, GO · Next.js e Tailwind."
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "back": "Voltar ao início"
+  },
+  "about": {
+    "title": "Sobre mim",
+    "lead": "Comecei pela base: montagem e manutenção de computadores, redes e muito desenvolvimento no Técnico em Informática para Internet.",
+    "body1": "Desde o fim do técnico, trabalho com HTML, CSS e JavaScript. A rotina de TI na BAAN, resolvendo problema de usuário de verdade, me ensinou a projetar para quem usa.",
+    "body2": "Comecei com PHP e WordPress, e sigo atendendo como freelancer: landing pages, sites e e-commerces. Não é WordPress de arrastar e soltar: o trabalho é feito no código, em PHP.",
+    "body3": "No front-end, o que mais domino hoje é HTML, CSS, JavaScript, React e Tailwind. Estou aprofundando TypeScript, onde já tenho mais segurança, e começando a dominar Next.js. Em paralelo, curso o 5º período de Engenharia de Software e desenvolvo o Caminu, um app em React Native (veja em Projetos).",
+    "photoAlt": "Retrato de Eduardo Dias, de óculos redondos e camiseta preta, ao ar livre",
+    "tag": "Anápolis, GO",
+    "emphasisTitle": "Linguagens de ênfase",
+    "emphasis": {
+      "typescript": "Tipagem estrita nas landings da Cecília e da Esther e no Laço.",
+      "react": "Interfaces das landings e o painel web do Laço. No celular, React Native no Caminu.",
+      "nextjs": "App Router, SEO e performance. Base das landings e deste portfólio.",
+      "tailwind": "Todo o visual dos projetos recentes, com tokens e zero CSS solto.",
+      "claude": "Claude Code no dia a dia. API e Agent SDK nos estudos de AI Engineering."
+    },
+    "stats": {
+      "years": "anos em TI",
+      "landings": "landings entregues",
+      "languages": "idiomas"
+    },
+    "orbit": {
+      "label": "Tecnologias da minha stack"
+    }
+  },
+  "resume": {
+    "metaTitle": "Currículo · Eduardo Dias",
+    "summary": "Desenvolvedor web com foco em front-end e UX. Domino HTML, CSS, JavaScript, React e Tailwind, e aprofundo TypeScript e Next.js. Como freelancer, construo landing pages, sites e e-commerces em PHP e WordPress, direto no código. Cinco anos em suporte técnico me ensinaram a projetar para quem usa.",
+    "sections": {
+      "contact": "Contato",
+      "profile": "Perfil",
+      "experience": "Experiência",
+      "education": "Formação",
+      "projects": "Projetos",
+      "stack": "Stack",
+      "certification": "Certificação",
+      "languages": "Idiomas"
+    },
+    "caminuLine": "Caminu: app de roteiros de viagem com IA, acessível para PcD e pet friendly (React Native, em desenvolvimento)."
+  }
+}

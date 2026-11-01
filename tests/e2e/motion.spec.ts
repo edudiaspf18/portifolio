@@ -1,0 +1,98 @@
+import { expect, test } from '@playwright/test';
+
+test('barra de progresso cresce com o scroll', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/pt');
+  const bar = page.getByTestId('scroll-progress');
+  await expect(bar).toBeAttached();
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await expect
+    .poll(() => bar.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).a))
+    .toBeGreaterThan(0.9);
+});
+
+test('menu desktop marca a seção ativa', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/pt');
+  const nav = page.getByRole('navigation', { name: 'Navegação principal' });
+  await page.locator('h2#projects').scrollIntoViewIfNeeded();
+  await page.evaluate(() => document.getElementById('projects')?.scrollIntoView());
+  await expect(nav.getByRole('link', { name: 'Projetos' })).toHaveAttribute('aria-current', 'location');
+  await expect(nav.getByRole('link', { name: 'Contato' })).not.toHaveAttribute('aria-current', 'location');
+});
+
+test('projetos com link: etiqueta "Ver site" existe e imagem é link', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/pt');
+  const card = page.getByTestId('project-card').nth(0);
+  await expect(card.locator('a[target="_blank"]')).toHaveCount(2);
+  await expect(card.getByTestId('cursor-label')).toBeAttached();
+});
+
+test('reduced motion e sem JS: seções revelam sem scroll', async ({ browser }) => {
+  for (const options of [{ reducedMotion: 'reduce' as const }, { javaScriptEnabled: false }]) {
+    const ctx = await browser.newContext(options);
+    const page = await ctx.newPage();
+    await page.goto('/pt');
+    const cards = page.getByTestId('project-card');
+    await expect(cards.first()).toHaveCSS('clip-path', 'none');
+    await expect(cards.last()).toHaveCSS('clip-path', 'none');
+    await ctx.close();
+  }
+});
+
+test('card sem URL não tem etiqueta de cursor', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/pt');
+  await expect(page.getByTestId('project-card').nth(1).getByTestId('cursor-label')).toHaveCount(0);
+});
+
+test('etiqueta de cursor fica dentro da imagem perto da borda direita', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/pt');
+  const card = page.getByTestId('project-card').nth(0);
+  await card.scrollIntoViewIfNeeded();
+  // clip-path circular recorta hit-test ate o reveal terminar; cantos arredondados (32px) nao recebem hover
+  await expect.poll(() => card.evaluate((el) => getComputedStyle(el).clipPath)).toMatch(/circle\((1[0-9]{2}|[2-9][0-9]{2})%/);
+  // container visivel (a midia interna e maior e recortada por causa do parallax)
+  const box = await card.getByTestId('cursor-label').locator('xpath=..').boundingBox();
+  if (!box) throw new Error('sem box');
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.move(box.x + box.width - 40, box.y + 40, { steps: 4 });
+  const label = card.getByTestId('cursor-label');
+  await expect(label).toHaveCSS('opacity', '1');
+  const l = await label.boundingBox();
+  const c = await label.locator('xpath=..').boundingBox();
+  if (!l || !c) throw new Error('sem box');
+  expect(l.x).toBeGreaterThanOrEqual(c.x - 1);
+  expect(l.y).toBeGreaterThanOrEqual(c.y - 1);
+  expect(l.x + l.width).toBeLessThanOrEqual(c.x + c.width + 1);
+  expect(l.y + l.height).toBeLessThanOrEqual(c.y + c.height + 1);
+});
+
+test('reduced motion: etiqueta de cursor oculta', async ({ browser }) => {
+  const ctx = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1280, height: 900 } });
+  const page = await ctx.newPage();
+  await page.goto('/pt');
+  await expect(page.getByTestId('project-card').nth(0).getByTestId('cursor-label')).toHaveCSS('display', 'none');
+  await ctx.close();
+});
+
+test('hover em CTA: tinta escura sobre signal no tema escuro; currículo outline: borda foreground', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.addInitScript(() => localStorage.setItem('theme', 'dark'));
+  await page.goto('/pt');
+  await expect(page.locator('html')).toHaveClass(/dark/);
+  const cta = page.getByRole('link', { name: 'Ver projetos' });
+  await cta.scrollIntoViewIfNeeded();
+  await cta.hover();
+  await expect(cta).toHaveCSS('background-color', 'rgb(255, 90, 31)');
+  await expect(cta).toHaveCSS('color', 'rgb(15, 14, 12)');
+  // currículo é outline: no hover a borda fica foreground e o fundo muda (muted/input no escuro)
+  const resume = page.getByTestId('contact-resume');
+  await resume.scrollIntoViewIfNeeded();
+  const bgBefore = await resume.evaluate((el) => getComputedStyle(el).backgroundColor);
+  await resume.hover();
+  await expect.poll(() => resume.evaluate((el) => getComputedStyle(el).backgroundColor)).not.toBe(bgBefore);
+  await expect(resume).toHaveCSS('border-top-color', await page.evaluate(() => getComputedStyle(document.body).color));
+});
