@@ -1,18 +1,19 @@
 import { expect, test } from '@playwright/test';
 
-test('hero pt: saudação, nome, cargo, relógio, status e sem marquee', async ({ page }) => {
+test('hero pt: saudação, nome, cargo, status e sem enfeites', async ({ page }) => {
   await page.goto('/pt');
   const h1 = page.getByRole('heading', { level: 1 });
   await expect(h1).toContainText('Olá, eu sou');
   await expect(h1).toContainText('Eduardo Dias');
   await expect(page.getByText('pode me chamar de Dias')).toBeVisible();
   const role = page.getByTestId('hero-role');
-  await expect(role).toHaveText(/^AI Engineer em formação\.$/);
+  await expect(role).toHaveText(/^AI Engineer em formação$/);
   await expect(role).not.toContainText('Claude');
-  await expect(page.getByTestId('live-clock')).toHaveText(/^\d{2}:\d{2}$/);
   await expect(page.getByText('Agora: estudando Next.js')).toBeVisible();
   await expect(page.getByTestId('marquee')).toHaveCount(0);
-  await expect(page.getByTestId('hero-orbits')).toBeAttached();
+  await expect(page.getByTestId('hero-orbits')).toHaveCount(0);
+  await expect(page.getByTestId('live-clock')).toHaveCount(0);
+  await expect(page.getByTestId('hero-underline')).toHaveCount(0);
 });
 
 test('hero: cargo abaixo do h1 e dentro do viewport 1440x900', async ({ browser }) => {
@@ -34,11 +35,11 @@ test('hero en: saudação e cargo em inglês', async ({ page }) => {
   await expect(h1).toContainText("Hi, I'm");
   await expect(h1).toContainText('Eduardo Dias');
   await expect(page.getByText('you can call me Dias')).toBeVisible();
-  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training\.$/);
+  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training$/);
   await expect(page.getByText('Now: learning Next.js')).toBeVisible();
 });
 
-test('hero: palavras sobem e o traço desenha', async ({ page }) => {
+test('hero: palavras sobem', async ({ page }) => {
   await page.goto('/pt');
   const words = page.getByTestId('hero-word');
   // Olá, eu, sou, Eduardo, Dias
@@ -48,7 +49,6 @@ test('hero: palavras sobem e o traço desenha', async ({ page }) => {
   await expect(page.getByTestId('hero-word')).toHaveCount(4);
   await page.goto('/pt');
   await expect(words.last()).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
-  await expect(page.getByTestId('hero-underline')).toBeAttached();
 });
 
 test('hero: reduced motion mostra tudo de imediato', async ({ browser }) => {
@@ -60,8 +60,6 @@ test('hero: reduced motion mostra tudo de imediato', async ({ browser }) => {
     await expect(words.nth(i)).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
   }
   await expect(page.getByText('Construo landing pages de alta conversão com SEO').locator('..')).toHaveCSS('opacity', '1');
-  const dot = await page.getByTestId('hero-orbit-dot').evaluate((el) => getComputedStyle(el).animationName);
-  expect(dot).toBe('none');
   await ctx.close();
 });
 
@@ -87,7 +85,6 @@ test('hero: sem JS o título fica visível', async ({ browser }) => {
     await expect(words.nth(i)).toHaveCSS('transform', /none|matrix\(1, 0, 0, 1, 0, 0\)/);
   }
   await expect(page.getByText('Construo landing pages de alta conversão com SEO').locator('..')).toHaveCSS('opacity', '1');
-  await expect(page.getByTestId('hero-underline')).toHaveCSS('stroke-dasharray', 'none');
   await ctx.close();
 });
 
@@ -100,16 +97,4 @@ test('hero: link de currículo discreto aponta para o PDF do idioma', async ({ p
     'href',
     '/curriculo-eduardo-dias-en.pdf',
   );
-});
-
-test('hero: círculos decorativos pintam atrás do texto', async ({ page }) => {
-  await page.goto('/pt');
-  const z = await page.evaluate(() => {
-    const h1Wrap = document.querySelector('h1')!.parentElement!;
-    const cs = getComputedStyle(h1Wrap);
-    return { position: cs.position, zIndex: cs.zIndex };
-  });
-  expect(z.position).toBe('relative');
-  expect(Number(z.zIndex)).toBeGreaterThanOrEqual(10);
-  await expect(page.getByTestId('hero-orbits')).toHaveCSS('pointer-events', 'none');
 });

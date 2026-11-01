@@ -25,7 +25,6 @@
     "ctaProjects": "Ver projetos",
     "ctaContact": "Falar comigo",
     "local": "Anápolis, GO",
-    "clockLabel": "Horário local",
     "now": "Agora: estudando Next.js, construindo com Claude Code.",
     "greeting": "Olá, eu sou",
     "name": "Eduardo Dias",
@@ -142,13 +141,13 @@
     "whatsapp": "Chamar no WhatsApp",
     "email": "Copiar e-mail",
     "copied": "Copiado",
-    "orbitLabel": "Minhas redes",
+    "socialsLabel": "Redes",
     "resume": "Baixar currículo",
     "location": "Anápolis, GO"
   },
   "footer": {
     "rights": "© {year} Eduardo Dias.",
-    "built": "Feito com Next.js, Tailwind e Claude."
+    "built": "Anápolis, GO · Next.js e Tailwind."
   },
   "notFound": {
     "title": "Página não encontrada",

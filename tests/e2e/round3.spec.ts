@@ -2,11 +2,11 @@ import { expect, test } from '@playwright/test';
 
 test('hero e meta sem "foco em Claude"', async ({ page }) => {
   await page.goto('/pt');
-  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer em formação\.$/);
+  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer em formação$/);
   const description = await page.locator('meta[name="description"]').getAttribute('content');
   expect(description).not.toMatch(/Claude/);
   await page.goto('/en');
-  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training\.$/);
+  await expect(page.getByTestId('hero-role')).toHaveText(/^AI Engineer in training$/);
 });
 
 test('sobre não tem mais o card do Caminu; projetos tem 6 cards numerados', async ({ page }) => {

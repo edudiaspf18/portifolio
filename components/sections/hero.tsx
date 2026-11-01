@@ -1,9 +1,7 @@
 import { ArrowDown, Download } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { LiveClock } from '@/components/motion/live-clock';
 import { Magnetic } from '@/components/motion/magnetic';
 import { Reveal } from '@/components/motion/reveal';
-import { HeroOrbits } from '@/components/sections/hero-orbits';
 import { HeroTitle } from '@/components/sections/hero-title';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -12,26 +10,21 @@ export async function Hero() {
   const t = await getTranslations('hero');
   const locale = await getLocale();
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
-        <HeroOrbits />
-        <p className="relative z-10 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          <span>{t('nickname')}</span>
-          <span aria-hidden>/</span>
-          <span>{t('local')}</span>
-          <LiveClock label={t('clockLabel')} />
+    <section id="top">
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
+        <p className="text-sm text-muted-foreground">
+          {t('nickname')} · {t('local')}
         </p>
-        <div className="relative z-10 mt-8">
+        <div className="mt-6">
           <HeroTitle greeting={t('greeting')} name={t('name')} />
         </div>
         <p
           data-testid="hero-role"
-          className="relative z-10 mt-6 font-display text-[clamp(1.75rem,4.6vw,3.75rem)] leading-tight tracking-tight"
+          className="mt-6 font-display text-[clamp(1.75rem,4.6vw,3.75rem)] leading-tight tracking-tight"
         >
           {t('role')}
-          <span className="text-signal">.</span>
         </p>
-        <Reveal delay={0} className="relative z-10 mt-10 grid gap-10 md:grid-cols-12">
+        <Reveal delay={0} className="mt-10 grid gap-10 md:grid-cols-12">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:col-span-6">
             {t('subtitle')}
           </p>
@@ -69,13 +62,7 @@ export async function Hero() {
             </a>
           </div>
         </Reveal>
-        <p className="relative z-10 mt-12 flex items-center gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-75 motion-reduce:animate-none" />
-            <span className="relative inline-flex size-2 rounded-full bg-signal" />
-          </span>
-          {t('now')}
-        </p>
+        <p className="mt-12 border-t border-border pt-6 text-sm text-muted-foreground">{t('now')}</p>
       </div>
     </section>
   );

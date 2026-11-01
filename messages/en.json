@@ -25,7 +25,6 @@
     "ctaProjects": "See projects",
     "ctaContact": "Get in touch",
     "local": "Anápolis, Brazil",
-    "clockLabel": "Local time",
     "now": "Now: learning Next.js, building with Claude Code.",
     "greeting": "Hi, I'm",
     "name": "Eduardo Dias",
@@ -142,13 +141,13 @@
     "whatsapp": "Message on WhatsApp",
     "email": "Copy e-mail",
     "copied": "Copied",
-    "orbitLabel": "My networks",
+    "socialsLabel": "Networks",
     "resume": "Download resume",
     "location": "Anápolis, Brazil"
   },
   "footer": {
     "rights": "© {year} Eduardo Dias.",
-    "built": "Built with Next.js, Tailwind and Claude."
+    "built": "Anápolis, Brazil · Next.js and Tailwind."
   },
   "notFound": {
     "title": "Page not found",
