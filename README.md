@@ -9,7 +9,7 @@ Design suave: saudação gigante ("Olá, eu sou" + nome em itálico) com cargo l
 ## Rodada 3
 
 - Cortina de abertura (monograma ED) roda uma vez por sessão (`data-intro="seen"` via `sessionStorage`); o hero espera ~0,9 s na primeira visita. Reduced motion e sem JS: cortina some rápido ou fica oculta. Em Lighthouse o LCP é o parágrafo do hero (atrasado pela entrada), não a cortina.
-- 6 projetos em Projetos, incluindo o Caminu, marcado como projeto acadêmico (UniEVANGÉLICA, sem link, ilustração em SVG). Cards revelam em círculo ao entrar na tela, com borda SVG.
+- 8 projetos em Projetos, incluindo o Caminu, marcado como projeto acadêmico (UniEVANGÉLICA, sem link, ilustração em SVG). Cards revelam em círculo ao entrar na tela, com borda SVG.
 - Stack em três grupos com ícone + nome. Ícones: `npm run gen:icons` regenera `content/stack-icons.ts` (Simple Icons).
 - Contato: botões "Chamar no WhatsApp", "Copiar e-mail" (cai para `mailto:` sem clipboard) e "Baixar currículo", mais órbita com LinkedIn, GitHub, Instagram e WhatsApp.
 - Currículo: `npm run resume` (servidor de produção na porta 3100 no ar) regenera os dois PDFs.
