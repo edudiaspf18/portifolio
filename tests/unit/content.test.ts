@@ -65,7 +65,7 @@ describe('content', () => {
     expect(byId.email).toBe('mailto:dududiaspf@gmail.com');
     expect(byId.github).toBe('https://github.com/edudiaspf18');
     expect(byId.instagram).toBe('https://www.instagram.com/dudu_diaspf/');
-    expect(byId.linkedin).toBe('https://www.linkedin.com/in/eduardo-dias-8a924131a');
+    expect(byId.linkedin).toBe('https://www.linkedin.com/in/eduardodias-dev');
     expect(byId.whatsapp).toBe('https://wa.me/5562994267841');
   });
 });

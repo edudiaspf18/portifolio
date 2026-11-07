@@ -16,7 +16,7 @@ export const whatsappHref = 'https://wa.me/5562994267841';
 
 export const socials: readonly Social[] = [
   { id: 'email', href: `mailto:${contactEmail}`, label: contactEmail },
-  { id: 'linkedin', iconId: 'linkedin', href: 'https://www.linkedin.com/in/eduardo-dias-8a924131a', label: 'LinkedIn', handle: 'eduardo-dias' },
+  { id: 'linkedin', iconId: 'linkedin', href: 'https://www.linkedin.com/in/eduardodias-dev', label: 'LinkedIn', handle: 'eduardodias-dev' },
   { id: 'github', iconId: 'github', href: 'https://github.com/edudiaspf18', label: 'GitHub', handle: 'edudiaspf18' },
   { id: 'instagram', iconId: 'instagram', href: 'https://www.instagram.com/dudu_diaspf/', label: 'Instagram', handle: '@dudu_diaspf' },
   { id: 'whatsapp', iconId: 'whatsapp', href: whatsappHref, label: 'WhatsApp', handle: '(62) 99426-7841' },

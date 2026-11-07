@@ -102,7 +102,7 @@ export default async function ResumePage({ params }: PageProps) {
                   <a href="https://wa.me/5562994267841" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.phone}</a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/eduardo-dias-8a924131a" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.linkedin.replace('linkedin.com/', '')}</a>
+                  <a href="https://www.linkedin.com/in/eduardodias-dev" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.linkedin.replace('linkedin.com/', '')}</a>
                 </li>
                 <li>
                   <a href="https://github.com/edudiaspf18" className="transition-all duration-200 ease-in-out hover:text-[#c2410c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c2410c]">{profile.github}</a>
