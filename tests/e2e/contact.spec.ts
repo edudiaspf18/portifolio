@@ -20,7 +20,7 @@ test('contato: botões, cópia de e-mail e lista de redes', async ({ browser }) 
     'https://github.com/edudiaspf18',
     'https://wa.me/5562994267841',
     'https://www.instagram.com/dudu_diaspf/',
-    'https://www.linkedin.com/in/eduardo-dias-8a924131a',
+    'https://www.linkedin.com/in/eduardodias-dev',
   ]);
   for (const link of await links.all()) {
     await expect(link).toHaveAttribute('target', '_blank');

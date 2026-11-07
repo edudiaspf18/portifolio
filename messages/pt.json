@@ -86,7 +86,9 @@
       "a11y": "Acessibilidade",
       "pix": "Pix",
       "whitelabel": "White-label",
-      "ecommerce": "E-commerce"
+      "ecommerce": "E-commerce",
+      "lgpd": "LGPD",
+      "admin": "Painel admin"
     },
     "items": {
       "cecilia": {
@@ -112,6 +114,14 @@
       "winner": {
         "niche": "Institucional · Winner Tech",
         "description": "Site que apresenta os sistemas Zelo, Alfa, Lume e Laço e a oferta de sites sob medida."
+      },
+      "unidas": {
+        "niche": "Logística · Unidas Express",
+        "description": "Consulta de cobertura: o cliente escolhe estado e cidade e vê se a entrega é no endereço ou só na retirada, com mapa do Brasil, empresas parceiras, tema escuro, contato por WhatsApp e página de privacidade."
+      },
+      "unidas-admin": {
+        "niche": "Painel administrativo · Unidas Express",
+        "description": "Painel com login para a equipe incluir e remover cidades por estado, definir entrega ou retirada e acompanhar o histórico. Cada alteração atualiza o site do cliente. Acesso restrito, sem endereço público."
       }
     },
     "academic": "Projeto acadêmico · UniEVANGÉLICA",

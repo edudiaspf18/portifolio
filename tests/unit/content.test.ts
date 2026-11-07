@@ -13,13 +13,14 @@ describe('content', () => {
       expect(Object.keys(item).sort()).toEqual(['description', 'org', 'period', 'title']);
     }
   });
-  it('projects: 6 ids únicos numerados, kinds, imagens, textos pt/en', () => {
+  it('projects: 8 ids únicos numerados, kinds, imagens, textos pt/en', () => {
     const ids = projects.map((p) => p.id);
-    expect(ids).toEqual(['cecilia', 'esther', 'ellora', 'laco', 'caminu', 'winner']);
-    expect(new Set(ids).size).toBe(6);
-    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06']);
+    expect(ids).toEqual(['cecilia', 'esther', 'ellora', 'laco', 'caminu', 'winner', 'unidas', 'unidas-admin']);
+    expect(new Set(ids).size).toBe(8);
+    expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06', '07', '08']);
     expect(projects.filter((p) => p.url !== null).map((p) => [p.id, p.url])).toEqual([
       ['cecilia', 'https://cecilia-fontoura.vercel.app'],
+      ['unidas', 'https://unidasexpress.com.br'],
     ]);
     expect(Object.fromEntries(projects.map((p) => [p.id, p.kind]))).toEqual({
       cecilia: 'landing',
@@ -28,6 +29,8 @@ describe('content', () => {
       laco: 'product',
       caminu: 'academic',
       winner: 'site',
+      unidas: 'site',
+      'unidas-admin': 'product',
     });
     expect(Object.fromEntries(projects.map((p) => [p.id, p.delivery]))).toEqual({
       cecilia: 'days7',
@@ -36,6 +39,8 @@ describe('content', () => {
       laco: 'ongoing',
       caminu: 'ongoing',
       winner: 'days7',
+      unidas: null,
+      'unidas-admin': null,
     });
     expect(projects.filter((p) => !p.hasImage)).toEqual([]);
     for (const messages of [pt, en]) {
@@ -60,7 +65,7 @@ describe('content', () => {
     expect(byId.email).toBe('mailto:dududiaspf@gmail.com');
     expect(byId.github).toBe('https://github.com/edudiaspf18');
     expect(byId.instagram).toBe('https://www.instagram.com/dudu_diaspf/');
-    expect(byId.linkedin).toBe('https://www.linkedin.com/in/eduardo-dias-8a924131a');
+    expect(byId.linkedin).toBe('https://www.linkedin.com/in/eduardodias-dev');
     expect(byId.whatsapp).toBe('https://wa.me/5562994267841');
   });
 });

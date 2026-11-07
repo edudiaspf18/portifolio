@@ -86,7 +86,9 @@
       "a11y": "Accessibility",
       "pix": "Pix",
       "whitelabel": "White-label",
-      "ecommerce": "E-commerce"
+      "ecommerce": "E-commerce",
+      "lgpd": "LGPD",
+      "admin": "Admin panel"
     },
     "items": {
       "cecilia": {
@@ -112,6 +114,14 @@
       "winner": {
         "niche": "Corporate · Winner Tech",
         "description": "Site presenting the Zelo, Alfa, Lume and Laço systems and the custom website offer."
+      },
+      "unidas": {
+        "niche": "Logistics · Unidas Express",
+        "description": "Coverage lookup: customers pick a state and city and see whether delivery is to the address or pickup only, with a Brazil map, partner companies, dark theme, WhatsApp contact and a privacy page."
+      },
+      "unidas-admin": {
+        "niche": "Admin panel · Unidas Express",
+        "description": "Login-protected panel where the team adds and removes cities by state, sets delivery or pickup and tracks the change history. Every change updates the client site. Restricted access, no public address."
       }
     },
     "academic": "Academic project · UniEVANGÉLICA",
