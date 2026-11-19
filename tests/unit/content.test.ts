@@ -33,7 +33,7 @@ describe('content', () => {
       'unidas-admin': 'product',
     });
     expect(Object.fromEntries(projects.map((p) => [p.id, p.delivery]))).toEqual({
-      laura: null,
+      laura: 'days3',
       esther: 'days7',
       ellora: 'weeks2',
       laco: 'ongoing',
