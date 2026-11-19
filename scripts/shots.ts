@@ -25,7 +25,7 @@ const landings = path.join(devRoot, 'landings');
 const outDir = path.join(process.cwd(), 'public', 'projects');
 
 const targets: readonly Target[] = [
-  { id: 'cecilia', dir: path.join(landings, '004 - LP Cecilia Fontoura'), live: 'https://cecilia-fontoura.vercel.app', port: 3104 },
+  { id: 'laura', dir: path.join(devRoot, '3D Sites', 'Construtor com IA', 'Regras', 'P002', 'laura-ribs', 'site'), live: 'https://laura-ribs-semijoias.vercel.app', port: 3104 },
   { id: 'winner', dir: path.join(devRoot, 'winner-tech'), live: null, port: 3107 },
   { id: 'esther', dir: path.join(landings, '005 - LP Esther Duarte'), live: 'https://www.estherduartenutri.com.br', port: 3105 },
   { id: 'laco', dir: path.join(devRoot, 'posto marinheiro', 'apps', 'web'), live: null, port: 3108 },

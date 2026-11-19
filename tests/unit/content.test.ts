@@ -15,15 +15,15 @@ describe('content', () => {
   });
   it('projects: 8 ids únicos numerados, kinds, imagens, textos pt/en', () => {
     const ids = projects.map((p) => p.id);
-    expect(ids).toEqual(['cecilia', 'esther', 'ellora', 'laco', 'caminu', 'winner', 'unidas', 'unidas-admin']);
+    expect(ids).toEqual(['laura', 'esther', 'ellora', 'laco', 'caminu', 'winner', 'unidas', 'unidas-admin']);
     expect(new Set(ids).size).toBe(8);
     expect(projects.map((p) => p.number)).toEqual(['01', '02', '03', '04', '05', '06', '07', '08']);
     expect(projects.filter((p) => p.url !== null).map((p) => [p.id, p.url])).toEqual([
-      ['cecilia', 'https://cecilia-fontoura.vercel.app'],
+      ['laura', 'https://laura-ribs-semijoias.vercel.app'],
       ['unidas', 'https://unidasexpress.com.br'],
     ]);
     expect(Object.fromEntries(projects.map((p) => [p.id, p.kind]))).toEqual({
-      cecilia: 'landing',
+      laura: 'site',
       esther: 'landing',
       ellora: 'site',
       laco: 'product',
@@ -33,7 +33,7 @@ describe('content', () => {
       'unidas-admin': 'product',
     });
     expect(Object.fromEntries(projects.map((p) => [p.id, p.delivery]))).toEqual({
-      cecilia: 'days7',
+      laura: 'days3',
       esther: 'days7',
       ellora: 'weeks2',
       laco: 'ongoing',

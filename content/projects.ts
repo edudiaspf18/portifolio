@@ -1,7 +1,7 @@
-export type ProjectId = 'cecilia' | 'esther' | 'ellora' | 'laco' | 'caminu' | 'winner' | 'unidas' | 'unidas-admin';
+export type ProjectId = 'laura' | 'esther' | 'ellora' | 'laco' | 'caminu' | 'winner' | 'unidas' | 'unidas-admin';
 export type ProjectTag = 'seo' | 'ga4' | 'whatsapp' | 'cookies' | 'ai' | 'a11y' | 'pix' | 'whitelabel' | 'ecommerce' | 'lgpd' | 'admin';
 export type ProjectKind = 'landing' | 'site' | 'product' | 'academic';
-export type ProjectDelivery = 'days7' | 'weeks2' | 'ongoing';
+export type ProjectDelivery = 'days3' | 'days7' | 'weeks2' | 'ongoing';
 
 export interface Project {
   id: ProjectId;
@@ -20,7 +20,7 @@ const php = ['HTML', 'CSS', 'JavaScript', 'PHP'] as const;
 const web = ['Next.js', 'React', 'TypeScript', 'Tailwind'] as const;
 
 export const projects: readonly Project[] = [
-  { id: 'cecilia', number: '01', name: 'Dra. Cecília Fontoura', url: 'https://cecilia-fontoura.vercel.app', stack: [...web, 'Playwright'], tags: ['whatsapp'], kind: 'landing', delivery: 'days7', hasImage: true },
+  { id: 'laura', number: '01', name: 'Laura Ribs Semijoias', url: 'https://laura-ribs-semijoias.vercel.app', stack: ['HTML', 'CSS', 'JavaScript'], tags: ['whatsapp'], kind: 'site', delivery: 'days3', hasImage: true },
   { id: 'esther', number: '02', name: 'Esther Duarte', url: null, stack: [...web], tags: ['seo', 'ga4', 'cookies', 'whatsapp'], kind: 'landing', delivery: 'days7', hasImage: true },
   { id: 'ellora', number: '03', name: 'Ellora Collection', url: null, stack: ['PHP', 'WordPress', 'WooCommerce'], tags: ['ecommerce', 'whatsapp'], kind: 'site', delivery: 'weeks2', hasImage: true },
   { id: 'laco', number: '04', name: 'Laço', url: null, stack: ['Next.js', 'React Native', 'Expo', 'Fastify', 'Prisma', 'PostgreSQL'], tags: ['pix', 'whitelabel'], kind: 'product', delivery: 'ongoing', hasImage: true },

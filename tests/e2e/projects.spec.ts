@@ -8,7 +8,7 @@ test('8 cards, 2 com link ao vivo, 5 "em breve", 1 acadêmico, sem href vazio', 
   await expect(page.getByTestId('project-academic')).toHaveCount(1);
   const hrefs = await page.getByTestId('project-link').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
   expect(hrefs.sort()).toEqual([
-    'https://cecilia-fontoura.vercel.app',
+    'https://laura-ribs-semijoias.vercel.app',
     'https://unidasexpress.com.br',
   ]);
 });
